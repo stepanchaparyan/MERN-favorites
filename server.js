@@ -7,6 +7,9 @@ connectDB();
 
 app.use(express.json({ extended: true }));
 
+app.use('/register', require('./routes/register'));
+app.use('/auth', require('./routes/auth'));
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`server started at port ${PORT}`));
