@@ -9,9 +9,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
 // @route POST /auth
-// @des Login user
 // @access Public
-
 router.post(
   '/',
   [
@@ -57,9 +55,7 @@ router.post(
 );
 
 // @route Get /auth
-// @des Get user
 // @access Private
-
 router.get('/', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
