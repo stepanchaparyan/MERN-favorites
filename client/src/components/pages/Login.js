@@ -1,6 +1,15 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AuthContext from '../../context/authContext/authContext';
+import {
+  Container,
+  Title,
+  Form,
+  Input,
+  Errors,
+  QuestionText,
+  ErrorButton
+} from './LoginStyled';
 
 const Login = props => {
   const { login, isAuthencated, error, clearErrors } = useContext(AuthContext);
@@ -12,6 +21,7 @@ const Login = props => {
       clearErrors();
     }
   }, [isAuthencated, props.history]);
+
   const [user, setUser] = useState({
     email: '',
     password: ''
@@ -35,18 +45,20 @@ const Login = props => {
     });
     clearErrors();
   };
+
   return (
-    <div className='login'>
-      <h1>Login</h1>
-      <form onSubmit={onsubmit}>
-        <input
+    <Container>
+      <Title>Login</Title>
+      <Form onSubmit={onsubmit}>
+        <Input
           type='email'
           name='email'
           placeholder='Email'
           value={email}
           onChange={onchange}
+          required
         />
-        <input
+        <Input
           type='password'
           name='password'
           placeholder='Password'
@@ -54,19 +66,31 @@ const Login = props => {
           onChange={onchange}
           required
         />
-        <input type='submit' value='Login' className='btn' />
-      </form>
-      <div className='question'>
-        {error !== null && (
-          <button className='danger' type='button'>
-            {error} <span onClick={() => clearErrors()}>X</span>
-          </button>
-        )}
-        <p>
-          Dont' have an accout? <Link to='/register'>Sign Up</Link>
-        </p>
-      </div>
-    </div>
+        <Input type='submit' value='Login' />
+      </Form>
+      {error !== null && (
+        <Errors>
+          {!Array.isArray(error) ? (
+            <ErrorButton type='button' onClick={() => clearErrors()}>
+              {error}
+            </ErrorButton>
+          ) : (
+            error.map(err => (
+              <ErrorButton
+                key={err.msg}
+                type='button'
+                onClick={() => clearErrors()}
+              >
+                {err.msg}
+              </ErrorButton>
+            ))
+          )}
+        </Errors>
+      )}
+      <QuestionText>
+        Dont' have an accout? &nbsp;<Link to='/register'>Sign Up</Link>
+      </QuestionText>
+    </Container>
   );
 };
 export default Login;

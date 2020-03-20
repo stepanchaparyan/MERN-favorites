@@ -1,6 +1,15 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AuthContext from '../../context/authContext/authContext';
+import {
+  Container,
+  Title,
+  Form,
+  Input,
+  Errors,
+  QuestionText,
+  ErrorButton
+} from './RegisterStyled';
 
 const Register = props => {
   const { register, isAuthencated, error, clearErrors, setError } = useContext(
@@ -28,7 +37,6 @@ const Register = props => {
   const onsubmit = e => {
     e.preventDefault();
     if (password !== password2) {
-      console.log('passsss');
       setError('Password does not match');
     } else {
       register({
@@ -39,31 +47,34 @@ const Register = props => {
     }
   };
   return (
-    <div className='register'>
-      <h1>Sign Up</h1>
-      <form onSubmit={onsubmit}>
-        <input
+    <Container>
+      <Title>Sign Up</Title>
+      <Form onSubmit={onsubmit}>
+        <Input
           type='text'
           name='name'
           placeholder='Name'
           value={name}
           onChange={onchange}
+          required
         />
-        <input
+        <Input
           type='email'
           name='email'
           placeholder='Email'
           value={email}
           onChange={onchange}
+          required
         />
-        <input
+        <Input
           type='password'
           name='password'
           placeholder='Password'
           value={password}
           onChange={onchange}
+          required
         />
-        <input
+        <Input
           type='password'
           name='password2'
           placeholder='Confirm Password'
@@ -71,20 +82,31 @@ const Register = props => {
           onChange={onchange}
           required
         />
-        <input type='submit' value='Sing Up' className='btn' />
-      </form>
-      <div className='question'>
-        {error !== null && error !== undefined &&
-          error.map((err, i) => (
-            <button key={i} className='danger' type='button'>
-              {err.msg} <span onClick={() => clearErrors()}>X</span>
-            </button>
-          ))}
-        <p>
-          Already have an accout? <Link to='/login'>Sign In </Link>
-        </p>
-      </div>
-    </div>
+        <Input type='submit' value='Sing Up' />
+      </Form>
+      {error !== null && (
+        <Errors>
+          {!Array.isArray(error) ? (
+            <ErrorButton type='button' onClick={() => clearErrors()}>
+              {error}
+            </ErrorButton>
+          ) : (
+            error.map(err => (
+              <ErrorButton
+                key={err.msg}
+                type='button'
+                onClick={() => clearErrors()}
+              >
+                {err.msg}
+              </ErrorButton>
+            ))
+          )}
+        </Errors>
+      )}
+      <QuestionText>
+        Already have an accout? &nbsp;<Link to='/login'>Sign In</Link>
+      </QuestionText>
+    </Container>
   );
 };
 

@@ -1,17 +1,14 @@
-import React, { useContext, useEffect } from 'react'
-import AuthContext from '../../context/authContext/authContext'
+import React, { useContext, useEffect } from 'react';
+import AuthContext from '../../context/authContext/authContext';
+import { Container } from './HomeStyled';
 
 const Home = () => {
-  const { loadUser } = useContext(AuthContext)
+  const { loadUser } = useContext(AuthContext);
 
   useEffect(() => {
-    loadUser()
-  }, [])
+    loadUser();
+  }, []);
 
-  return (
-    <div>
-      Home page
-    </div>
-  )
-}
-export default Home
+  return <Container>You are logged in to Home page</Container>;
+};
+export default Home;
