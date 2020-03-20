@@ -1,6 +1,6 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import AuthContext from '../../context/authContext/authContext';
+import AuthContext from '../../../context/authContext/authContext';
 import {
   Container,
   Title,
@@ -9,55 +9,47 @@ import {
   Errors,
   QuestionText,
   ErrorButton
-} from './RegisterStyled';
+} from './LoginStyled';
 
-const Register = props => {
-  const { register, isAuthencated, error, clearErrors, setError } = useContext(
-    AuthContext
-  );
+const Login = props => {
+  const { login, isAuthencated, error, clearErrors } = useContext(AuthContext);
   useEffect(() => {
     if (isAuthencated) {
       props.history.push('/');
+      clearErrors();
+    } else {
+      clearErrors();
     }
   }, [isAuthencated, props.history]);
 
   const [user, setUser] = useState({
-    name: '',
     email: '',
-    password: '',
-    password2: ''
+    password: ''
   });
-  const { name, email, password, password2 } = user;
+  const { email, password } = user;
+
   const onchange = e => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value
+    });
     if (error !== null) {
       clearErrors();
     }
   };
   const onsubmit = e => {
     e.preventDefault();
-    if (password !== password2) {
-      setError('Password does not match');
-    } else {
-      register({
-        name,
-        email,
-        password
-      });
-    }
+    login({
+      email,
+      password
+    });
+    clearErrors();
   };
+
   return (
     <Container>
-      <Title>Sign Up</Title>
+      <Title>Login</Title>
       <Form onSubmit={onsubmit}>
-        <Input
-          type='text'
-          name='name'
-          placeholder='Name'
-          value={name}
-          onChange={onchange}
-          required
-        />
         <Input
           type='email'
           name='email'
@@ -74,15 +66,7 @@ const Register = props => {
           onChange={onchange}
           required
         />
-        <Input
-          type='password'
-          name='password2'
-          placeholder='Confirm Password'
-          value={password2}
-          onChange={onchange}
-          required
-        />
-        <Input type='submit' value='Sing Up' />
+        <Input type='submit' value='Login' />
       </Form>
       {error !== null && (
         <Errors>
@@ -104,10 +88,9 @@ const Register = props => {
         </Errors>
       )}
       <QuestionText>
-        Already have an accout? &nbsp;<Link to='/login'>Sign In</Link>
+        Dont' have an accout? &nbsp;<Link to='/register'>Sign Up</Link>
       </QuestionText>
     </Container>
   );
 };
-
-export default Register;
+export default Login;
