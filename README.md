@@ -1,9 +1,6 @@
 # MERN-favorites
 
-## Mongo
-## Express
-## React
-## Node
+### Mongo Express React Node
 
 #### Used technologies
 ``` 
