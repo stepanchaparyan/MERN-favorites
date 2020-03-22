@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import AuthContext from '../../../context/authContext/authContext';
 import { Container, Logo, AuthLinks, GuestLinks, UserName, Logout } from './NavbarStyled';
+import logo from '../../../assets/logo';
 
 const Navbar = () => {
   const { user, logout, isAuthencated, clearErrors } = useContext(AuthContext);
@@ -26,7 +27,7 @@ const Navbar = () => {
 
   return (
     <Container>
-      <Logo>Made by me</Logo>
+      <Logo src={logo} alt='logo' />
       {isAuthencated ? authLinks : guestLinks}
     </Container>
   );

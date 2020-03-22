@@ -9,8 +9,9 @@ export const Container = styled.div`
   font-size: 20px;
 `;
 
-export const Logo = styled.div`
-  color: white;
+export const Logo = styled.img`
+  width: 40px;
+  height: auto;
 `;
 
 export const AuthLinks = styled.div`

@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import AuthContext from '../../../context/authContext/authContext';
 import {
   Container,
@@ -51,50 +52,50 @@ const Register = props => {
       <Title>Sign Up</Title>
       <Form onSubmit={onsubmit}>
         <Input
-          type='text'
-          name='name'
-          placeholder='Name'
+          type="text"
+          name="name"
+          placeholder="Name"
           value={name}
           onChange={onchange}
           required
         />
         <Input
-          type='email'
-          name='email'
-          placeholder='Email'
+          type="email"
+          name="email"
+          placeholder="Email"
           value={email}
           onChange={onchange}
           required
         />
         <Input
-          type='password'
-          name='password'
-          placeholder='Password'
+          type="password"
+          name="password"
+          placeholder="Password"
           value={password}
           onChange={onchange}
           required
         />
         <Input
-          type='password'
-          name='password2'
-          placeholder='Confirm Password'
+          type="password"
+          name="password2"
+          placeholder="Confirm Password"
           value={password2}
           onChange={onchange}
           required
         />
-        <Input type='submit' value='Sing Up' />
+        <Input type="submit" value="Sing Up" />
       </Form>
       {error !== null && (
         <Errors>
           {!Array.isArray(error) ? (
-            <ErrorButton type='button' onClick={() => clearErrors()}>
+            <ErrorButton type="button" onClick={() => clearErrors()}>
               {error}
             </ErrorButton>
           ) : (
             error.map(err => (
               <ErrorButton
                 key={err.msg}
-                type='button'
+                type="button"
                 onClick={() => clearErrors()}
               >
                 {err.msg}
@@ -104,10 +105,14 @@ const Register = props => {
         </Errors>
       )}
       <QuestionText>
-        Already have an accout? &nbsp;<Link to='/login'>Sign In</Link>
+        Already have an accout? &nbsp;<Link to="/login">Sign In</Link>
       </QuestionText>
     </Container>
   );
+};
+
+Register.propTypes = {
+  history: PropTypes.object
 };
 
 export default Register;

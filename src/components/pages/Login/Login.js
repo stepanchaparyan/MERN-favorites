@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import AuthContext from '../../../context/authContext/authContext';
 import {
   Container,
@@ -87,10 +88,14 @@ const Login = props => {
           )}
         </Errors>
       )}
-      <QuestionText>
-        Dont' have an accout? &nbsp;<Link to='/register'>Sign Up</Link>
+      <QuestionText>Dont have an accout? &nbsp;<Link to='/register'>Sign Up</Link>
       </QuestionText>
     </Container>
   );
 };
+
+Login.propTypes = {
+  history: PropTypes.object
+};
+
 export default Login;
