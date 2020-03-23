@@ -11,7 +11,7 @@
     "dev": "rm -rf build && cross-env NODE_ENV=development webpack --mode development",
     "watch": "rm -rf build && cross-env NODE_ENV=development webpack --mode development --watch",
     "stats": "webpack --json > stats.json && webpack-bundle-analyzer stats.json",
-    "lint": "eslint .",
+    "eslint": "eslint .",
     "eslint-fix": "eslint --fix \"src/**/*.js\"",
     "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md|vue)\"",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -99,8 +99,8 @@
     }
   },
   "lint-staged": {
-    "*.+(js|jsx)": [
-      "eslint --fix",
+    "*.{js,jsx}": [
+      "npm run eslint",
       "git add"
     ],
     "*.+(json|css|scss|md)": [

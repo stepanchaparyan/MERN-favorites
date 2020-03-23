@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 
 //connet to mongoDB
-const connectDB = require('./config/mongoDB');
+const connectDB = require('./mongoConfig/mongoDB');
 connectDB();
 
 app.use(express.json({ extended: true }));
