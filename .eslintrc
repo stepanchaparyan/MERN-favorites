@@ -49,7 +49,6 @@
     "no-console": 0,
     "block-scoped-var": 2,
     "consistent-return": 0,
-    "curly": [1, "all"],
     "default-case": 1,
     "dot-location": [1, "property"],
     "dot-notation": [1, { "allowKeywords": true }],
