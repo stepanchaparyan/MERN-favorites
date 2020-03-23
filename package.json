@@ -43,7 +43,7 @@
       "git add"
     ],
     "*.+(json|css|scss|md)": [
-      "prettier --write",
+      "prettier --write" ,
       "git add"
     ]
   },
