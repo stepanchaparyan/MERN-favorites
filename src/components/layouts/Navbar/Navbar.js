@@ -20,14 +20,14 @@ const Navbar = () => {
 
   const guestLinks = (
     <GuestLinks>
-      <Link to='/register'>SignUp</Link>
-      <Link to='/login'>Login</Link>
+      <Link to="/register">SignUp</Link>
+      <Link to="/login">Login</Link>
     </GuestLinks>
   );
 
   return (
     <Container>
-      <Logo src={logo} alt='logo' />
+      <Logo src={logo} alt="logo" />
       {isAuthencated ? authLinks : guestLinks}
     </Container>
   );

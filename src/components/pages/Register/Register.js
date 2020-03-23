@@ -2,20 +2,10 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AuthContext from '../../../context/authContext/authContext';
-import {
-  Container,
-  Title,
-  Form,
-  Input,
-  Errors,
-  QuestionText,
-  ErrorButton
-} from './RegisterStyled';
+import { Container, Title, Form, Input, Errors, QuestionText, ErrorButton } from './RegisterStyled';
 
 const Register = props => {
-  const { register, isAuthencated, error, clearErrors, setError } = useContext(
-    AuthContext
-  );
+  const { register, isAuthencated, error, clearErrors, setError } = useContext(AuthContext);
   useEffect(() => {
     if (isAuthencated) {
       props.history.push('/');
@@ -93,11 +83,7 @@ const Register = props => {
             </ErrorButton>
           ) : (
             error.map(err => (
-              <ErrorButton
-                key={err.msg}
-                type="button"
-                onClick={() => clearErrors()}
-              >
+              <ErrorButton key={err.msg} type="button" onClick={() => clearErrors()}>
                 {err.msg}
               </ErrorButton>
             ))

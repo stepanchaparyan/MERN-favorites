@@ -20,9 +20,9 @@ const App = () => {
         <div>
           <Navbar />
           <Switch>
-            <PrivateRoute exact path='/' component={Home} />
-            <Route exact path='/register' component={Register} />
-            <Route exact path='/login' component={Login} />
+            <PrivateRoute exact path="/" component={Home} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
           </Switch>
           <Footer />
         </div>

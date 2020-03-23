@@ -2,15 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AuthContext from '../../../context/authContext/authContext';
-import {
-  Container,
-  Title,
-  Form,
-  Input,
-  Errors,
-  QuestionText,
-  ErrorButton
-} from './LoginStyled';
+import { Container, Title, Form, Input, Errors, QuestionText, ErrorButton } from './LoginStyled';
 
 const Login = props => {
   const { login, isAuthencated, error, clearErrors } = useContext(AuthContext);
@@ -52,43 +44,40 @@ const Login = props => {
       <Title>Login</Title>
       <Form onSubmit={onsubmit}>
         <Input
-          type='email'
-          name='email'
-          placeholder='Email'
+          type="email"
+          name="email"
+          placeholder="Email"
           value={email}
           onChange={onchange}
           required
         />
         <Input
-          type='password'
-          name='password'
-          placeholder='Password'
+          type="password"
+          name="password"
+          placeholder="Password"
           value={password}
           onChange={onchange}
           required
         />
-        <Input type='submit' value='Login' />
+        <Input type="submit" value="Login" />
       </Form>
       {error !== null && (
         <Errors>
           {!Array.isArray(error) ? (
-            <ErrorButton type='button' onClick={() => clearErrors()}>
+            <ErrorButton type="button" onClick={() => clearErrors()}>
               {error}
             </ErrorButton>
           ) : (
             error.map(err => (
-              <ErrorButton
-                key={err.msg}
-                type='button'
-                onClick={() => clearErrors()}
-              >
+              <ErrorButton key={err.msg} type="button" onClick={() => clearErrors()}>
                 {err.msg}
               </ErrorButton>
             ))
           )}
         </Errors>
       )}
-      <QuestionText>Dont have an accout? &nbsp;<Link to='/register'>Sign Up</Link>
+      <QuestionText>
+        Dont have an accout? &nbsp;<Link to="/register">Sign Up</Link>
       </QuestionText>
     </Container>
   );

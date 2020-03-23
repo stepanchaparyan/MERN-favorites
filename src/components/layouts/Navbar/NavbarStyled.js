@@ -18,7 +18,7 @@ export const AuthLinks = styled.div`
   display: flex;
   & > div {
     padding: 0 10px;
-  } 
+  }
   & > div:hover {
     color: black;
   }

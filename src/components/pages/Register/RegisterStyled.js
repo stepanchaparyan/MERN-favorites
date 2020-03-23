@@ -29,7 +29,7 @@ export const Input = styled.input`
   margin: 2px;
   outline: none;
 
-  &[type="submit"] {
+  &[type='submit'] {
     width: 20%;
     border: 0;
     background-color: cadetblue;
@@ -66,4 +66,3 @@ export const ErrorButton = styled.button`
   outline: none;
   cursor: pointer;
 `;
-
