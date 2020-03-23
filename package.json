@@ -32,6 +32,21 @@
     "url": "https://github.com/stepanchaparyan/MERN-favorites/issues"
   },
   "homepage": "https://github.com/stepanchaparyan/MERN-favorites#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "npm run eslint",
+      "git add"
+    ],
+    "*.+(json|css|scss|md)": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
@@ -92,20 +107,5 @@
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.1",
     "xml-loader": "^1.2.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "npm run eslint",
-      "git add"
-    ],
-    "*.+(json|css|scss|md)": [
-      "prettier --write",
-      "git add"
-    ]
   }
 }
