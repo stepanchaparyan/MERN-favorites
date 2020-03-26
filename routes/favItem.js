@@ -18,8 +18,13 @@ router.get('/', auth, async (req, res) => {
 //REQUEST ADD NEW FAVITEM
 router.post(
   '/add',
-  [ auth,
-    [ check('title', 'Please provide the title').not().isEmpty() ]
+  [
+    auth,
+    [
+      check('title', 'Please provide the title')
+        .not()
+        .isEmpty()
+    ]
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -49,41 +54,44 @@ router.post(
 //REQUEST FIND FAVITEM BY ID
 router.get('/:id', auth, async (req, res) => {
   try {
-    const favItem = await FavItem.findById(req.params.id)
-    if (!favItem) return res.status(404).json({ msg: 'FavItem not found' })
-    res.json(favItem)
+    const favItem = await FavItem.findById(req.params.id);
+    if (!favItem) return res.status(404).json({ msg: 'FavItem not found' });
+    res.json(favItem);
   } catch (err) {
-    res.status(500).send('Server Error')
+    res.status(500).send('Server Error');
   }
 });
-
 
 //REQUEST FIND FAVITEM AND UPDATE
 router.put('/update/:id', auth, async (req, res) => {
   const { author, title, completed, description } = req.body;
-  // build Guest object 
+  // build Guest object
   const favItemFields = { author, title, completed, description };
   try {
-    let favItem = await FavItem.findById(req.params.id)
-    if (!favItem) return res.status(404).json({ msg: 'FavItem not found' })
-    favItem = await FavItem.findByIdAndUpdate(req.params.id, { $set: favItemFields }, { new: true })
-    res.send(favItem)
+    let favItem = await FavItem.findById(req.params.id);
+    if (!favItem) return res.status(404).json({ msg: 'FavItem not found' });
+    favItem = await FavItem.findByIdAndUpdate(
+      req.params.id,
+      { $set: favItemFields },
+      { new: true }
+    );
+    res.send(favItem);
   } catch (err) {
-    console.errors(err.message)
-    res.status(500).send('Server Error')
+    console.errors(err.message);
+    res.status(500).send('Server Error');
   }
-})
+});
 
 //REQUEST FIND FAVITEM AND DELETE
 router.delete('/:id', auth, async (req, res) => {
   try {
-    let favItem = await FavItem.findById(req.params.id)
-    if (!favItem) return res.status(404).json({ msg: 'FavItem not found' })
-    await FavItem.findByIdAndRemove(req.params.id)
-    res.send('FavItem Removed successfully')
+    let favItem = await FavItem.findById(req.params.id);
+    if (!favItem) return res.status(404).json({ msg: 'FavItem not found' });
+    await FavItem.findByIdAndRemove(req.params.id);
+    res.send('FavItem Removed successfully');
   } catch (err) {
-    console.errors(err.message).json('Server Error')
+    console.errors(err.message).json('Server Error');
   }
-})
+});
 
 module.exports = router;

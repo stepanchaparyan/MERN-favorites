@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const favItemSchema = new mongoose.Schema({
   user: {
@@ -11,15 +11,15 @@ const favItemSchema = new mongoose.Schema({
   },
   title: {
     type: String,
-    required: true,
+    required: true
   },
   description: {
-    type: String,
+    type: String
   },
   completed: {
     type: Boolean,
     default: false
   }
-})
+});
 
-module.exports = mongoose.model('favItem', favItemSchema)
+module.exports = mongoose.model('favItem', favItemSchema);
