@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   display: flex;
@@ -9,40 +10,38 @@ export const Container = styled.div`
   font-size: 20px;
 `;
 
+export const LogoNameContainer = styled.div`
+  display: flex;
+`;
+
 export const Logo = styled.img`
   width: 40px;
   height: auto;
 `;
 
-export const AuthLinks = styled.div`
-  display: flex;
-  & > div {
-    padding: 0 10px;
-  }
-  & > div:hover {
-    color: black;
-  }
+export const UserName = styled.div`
+  font-weight: 200;
+  padding-left: 32px;
 `;
 
-export const GuestLinks = styled.div`
+export const NavLinks = styled.div`
   display: flex;
-  & > a {
-    color: black;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 20px;
-    padding: 0 10px;
-  }
-  & > a:hover {
+`;
+
+export const LinkStyled = styled(Link)`
+  display: flex;
+  padding: 0 10px;
+  text-decoration: none;
+  color: black;
+  &:hover {
     color: white;
   }
 `;
 
-export const UserName = styled.div`
-  font-weight: 200;
-`;
-
 export const Logout = styled.div`
-  color: white;
   cursor: pointer;
+  color: black;
+  &:hover {
+    color: white;
+  }
 `;

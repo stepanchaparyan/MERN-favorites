@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import AuthContext from '../../../context/authContext/authContext';
 import { Container } from './HomeStyled';
+import FavItemsList from '../../favItems/FavItemsList/FavItemsList';
 
 const Home = () => {
   const { loadUser } = useContext(AuthContext);
@@ -9,6 +10,10 @@ const Home = () => {
     loadUser();
   }, []);
 
-  return <Container>You are logged in to Home page</Container>;
+  return (
+    <Container>
+      <FavItemsList />
+    </Container>
+  );
 };
 export default Home;

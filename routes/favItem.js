@@ -18,28 +18,21 @@ router.get('/', auth, async (req, res) => {
 //REQUEST ADD NEW FAVITEM
 router.post(
   '/add',
-  [
-    auth,
-    [
-      check('title', 'Please provide the title')
-        .not()
-        .isEmpty()
-    ]
-  ],
+  [auth, [check('title', 'Password at least 2 character long').isLength({ min: 2 })]],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { author, title, completed, description } = req.body;
+    const { author, title, category, description } = req.body;
 
     try {
       const newFavItem = new FavItem({
         user: req.user.id,
         author,
         title,
-        completed,
+        category,
         description
       });
       const favItem = await newFavItem.save();
@@ -64,9 +57,9 @@ router.get('/:id', auth, async (req, res) => {
 
 //REQUEST FIND FAVITEM AND UPDATE
 router.put('/update/:id', auth, async (req, res) => {
-  const { author, title, completed, description } = req.body;
+  const { author, title, category, description } = req.body;
   // build Guest object
-  const favItemFields = { author, title, completed, description };
+  const favItemFields = { author, title, category, description };
   try {
     let favItem = await FavItem.findById(req.params.id);
     if (!favItem) return res.status(404).json({ msg: 'FavItem not found' });

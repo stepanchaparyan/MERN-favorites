@@ -13,12 +13,13 @@ const favItemSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  description: {
-    type: String
+  category: {
+    type: String,
+    default: 'Other'
   },
-  completed: {
-    type: Boolean,
-    default: false
+  description: {
+    type: String,
+    default: 'description'
   }
 });
 
