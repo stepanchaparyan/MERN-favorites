@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import FavItemContext from '../../../context/favItemContext/favItemContext';
 import { Container, Title, Form, Input, Errors, ErrorButton } from './FavItemFormStyled';
 
@@ -15,6 +15,8 @@ const FavItemForm = () => {
     clearErrors
   } = context;
 
+  const container = useRef();
+
   useEffect(() => {
     if (editFavItem !== null) {
       setFavItem(editFavItem);
@@ -26,6 +28,10 @@ const FavItemForm = () => {
         description: ''
       });
     }
+    document.addEventListener('click', handleClick);
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
   }, [editFavItem, context]);
 
   const [favItem, setFavItem] = useState({
@@ -45,6 +51,7 @@ const FavItemForm = () => {
     e.preventDefault();
     if (editFavItem === null) {
       addFavItem(favItem);
+      toggle_Form(false);
     } else {
       update_FavItem(favItem);
       clearEdit();
@@ -61,8 +68,16 @@ const FavItemForm = () => {
     clearEdit();
     toggle_Form(!toggleForm);
   };
+
+  const handleClick = e => {
+    if (!container.current.contains(e.target)) {
+      toggle_Form(false);
+      return;
+    }
+  };
+
   return (
-    <Container>
+    <Container ref={container}>
       <Title>{editFavItem !== null ? 'Edit FavItem' : 'Add new favorite item'}</Title>
       <Form onSubmit={onsubmit}>
         <Input type="text" placeholder="Author" name="author" value={author} onChange={onchange} />

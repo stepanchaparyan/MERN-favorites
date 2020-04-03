@@ -29,7 +29,6 @@ const FavItemState = props => {
   const getFavItems = async () => {
     try {
       const res = await axios.get('/favItem');
-      console.log(res.data);
       dispatch({
         type: GET_FAVITEMS,
         payload: res.data

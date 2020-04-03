@@ -6,11 +6,12 @@ export const Container = styled.div`
   color: cadetblue;
   z-index: 1;
   position: absolute;
-  background-color: darkmagenta;
+  background-color: lightgray;
   left: 50%;
-  top: 40%;
+  top: 42%;
   transform: translate(-50%, -50%);
   border-radius: 4px;
+  min-width: 45%;
 `;
 
 export const Title = styled.div`
@@ -29,11 +30,11 @@ export const Form = styled.form`
 
 export const Input = styled.input`
   border: 0px;
-  border-bottom: 1px solid cadetblue;
-  width: 30%;
-  padding: 7px 10px;
-  margin: 2px;
+  width: 50%;
+  padding: 8px 10px;
+  margin: 4px;
   outline: none;
+  border-radius: 4px;
 
   &[type='submit'] {
     width: 20%;
@@ -42,8 +43,20 @@ export const Input = styled.input`
     font-weight: 600;
     font-size: 16px;
     margin-top: 20px;
-    border-radius: 3%;
+    border-radius: 5%;
     cursor: pointer;
+    margin-bottom: 30px;
+  }
+
+  &[type='button'] {
+    width: 30%;
+    border: 0;
+    background-color: gray;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 5%;
+    cursor: pointer;
+    margin-bottom: 30px;
   }
 `;
 
