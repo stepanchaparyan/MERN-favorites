@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 90%;
 `;
 
 export const CardContainer = styled.div`
@@ -25,4 +24,9 @@ export const Button = styled.button`
   border-radius: 3px;
   align-self: center;
   font-weight: 600;
+`;
+
+export const LoadingMessage = styled.h3`
+  display: flex;
+  justify-content: center;
 `;

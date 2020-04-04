@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import FavItemContext from '../../../context/favItemContext/favItemContext';
 import FavItemCard from '../FavItemCard/FavItemCard';
 import FavItemForm from '../FavItemForm/FavItemForm';
-import { Container, CardContainer, Button } from './FavItemsListStyled';
+import { Container, CardContainer, Button, LoadingMessage } from './FavItemsListStyled';
 
 const FavItemsList = () => {
   const context = useContext(FavItemContext);
@@ -27,7 +27,9 @@ const FavItemsList = () => {
   };
 
   if (favItems === null || favItems.length === 0) {
-    return <h3>{loading ? 'Loading favItems...' : 'Please add a favItem'}</h3>;
+    return (
+      <LoadingMessage>{loading ? 'Loading favItems...' : 'Please add a favItem'}</LoadingMessage>
+    );
   }
 
   return (

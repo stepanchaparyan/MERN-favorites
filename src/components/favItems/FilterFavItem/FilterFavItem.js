@@ -1,16 +1,27 @@
 import React, { useContext, useState } from 'react';
 import Select from 'react-select';
 import FavItemContext from '../../../context/favItemContext/favItemContext';
+import { Container, customStyles } from './FilterFavItemStyled';
 
 const FilterFavItem = () => {
-  const { filter_FavItem, clearFilterFavItem } = useContext(FavItemContext);
+  const { favItems, filter_FavItem, clearFilterFavItem } = useContext(FavItemContext);
 
-  const options = [
-    { value: 'Movie', label: 'Movie' },
-    { value: 'Music', label: 'Music' },
-    { value: 'Book', label: 'Book' },
-    { value: 'null', label: 'All' }
-  ];
+  // generate options
+  const options = favItems.map(favItem => ({
+    value: favItem.category,
+    label: favItem.category
+  }));
+
+  // 1. create set from favItem.category
+  // 2. add null into set
+  // 3. create obj using that set
+
+  // const options = [
+  //   { value: 'Movie', label: 'Movie' },
+  //   { value: 'Music', label: 'Music' },
+  //   { value: 'Book', label: 'Book' },
+  //   { value: 'null', label: 'All' }
+  // ];
 
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -23,35 +34,15 @@ const FilterFavItem = () => {
     }
   };
 
-  const customStyles = {
-    option: (provided, state) => ({
-      ...provided,
-      borderBottom: '1px dotted pink',
-      color: state.isSelected ? 'red' : 'blue',
-      padding: 20
-    }),
-    control: () => ({
-      // none of react-select's styles are passed to <Control />
-      width: 200,
-      display: 'flex'
-    }),
-    singleValue: (provided, state) => {
-      const opacity = state.isDisabled ? 0.5 : 1;
-      const transition = 'opacity 300ms';
-
-      return { ...provided, opacity, transition };
-    }
-  };
-
   return (
-    <div>
+    <Container>
       <Select
         value={selectedOption}
         onChange={handleChange}
         options={options}
         styles={customStyles}
       />
-    </div>
+    </Container>
   );
 };
 export default FilterFavItem;

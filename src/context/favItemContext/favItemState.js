@@ -142,6 +142,7 @@ const FavItemState = props => {
       payload: !state.toggleForm
     });
   };
+  // Filter favItem
   const filter_FavItem = selectedCategory => {
     dispatch({
       type: FILTER_FAVITEM,

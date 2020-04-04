@@ -1,5 +1,6 @@
 import React, { useRef, useContext } from 'react';
 import FavItemContext from '../../../context/favItemContext/favItemContext';
+import { Container } from './SearchFavItemStyled';
 
 const SearchFavItem = () => {
   const { search_FavItem, clearSearchFavItem } = useContext(FavItemContext);
@@ -12,16 +13,14 @@ const SearchFavItem = () => {
     }
   };
   return (
-    <div>
+    <Container>
       <input
         ref={favItem}
         onChange={onchange}
         type="text"
         placeholder="Search FavItem by name..."
-        className="search"
       />
-      <i className="fas fa-search search-icon" />
-    </div>
+    </Container>
   );
 };
 export default SearchFavItem;
