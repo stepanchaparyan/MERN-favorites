@@ -6,7 +6,16 @@ import { Container, CardContainer, Button } from './FavItemsListStyled';
 
 const FavItemsList = () => {
   const context = useContext(FavItemContext);
-  const { loading, toggle_Form, toggleForm, clearEdit, favItems, getFavItems } = context;
+  const {
+    loading,
+    toggle_Form,
+    toggleForm,
+    clearEdit,
+    favItems,
+    getFavItems,
+    filterFavItems,
+    searchFavItem
+  } = context;
 
   useEffect(() => {
     getFavItems();
@@ -18,17 +27,32 @@ const FavItemsList = () => {
   };
 
   if (favItems === null || favItems.length === 0) {
-    return <h3>{loading ? 'Loading favItems...' : 'Please add a guest'}</h3>;
+    return <h3>{loading ? 'Loading favItems...' : 'Please add a favItem'}</h3>;
   }
 
   return (
     <Container>
       <Button onClick={toggleFormStatus}>Add new Item</Button>
-      <CardContainer>
-        {favItems.map(item => (
-          <FavItemCard favItem={item} key={item._id} />
-        ))}
-      </CardContainer>
+
+      {!filterFavItems && !searchFavItem ? (
+        <CardContainer>
+          {favItems.map(favItem => (
+            <FavItemCard key={favItem._id} favItem={favItem} />
+          ))}
+        </CardContainer>
+      ) : (
+        <>
+          <CardContainer>
+            {searchFavItem &&
+              searchFavItem.map(favItem => <FavItemCard favItem={favItem} key={favItem._id} />)}
+          </CardContainer>
+          <CardContainer>
+            {filterFavItems &&
+              filterFavItems.map(favItem => <FavItemCard favItem={favItem} key={favItem._id} />)}
+          </CardContainer>
+        </>
+      )}
+
       {toggleForm && <FavItemForm />}
     </Container>
   );

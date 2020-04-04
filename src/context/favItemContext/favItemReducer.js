@@ -7,7 +7,11 @@ import {
   GET_FAVITEMS,
   FAVITEM_ERROR,
   TOGGLE_FORM,
-  CLEAR_ERRORS
+  CLEAR_ERRORS,
+  FILTER_FAVITEM,
+  CLEAR_FILTER,
+  SEARCH_FAVITEM,
+  CLEAR_SEARCH
 } from '../types';
 
 export default (state, { type, payload }) => {
@@ -59,6 +63,27 @@ export default (state, { type, payload }) => {
       return {
         ...state,
         error: null
+      };
+    case FILTER_FAVITEM:
+      return {
+        ...state,
+        filterFavItems: state.favItems.filter(favItem => favItem.category === payload)
+      };
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        filterFavItems: null
+      };
+    case SEARCH_FAVITEM:
+      const regex = new RegExp(`${payload}`, 'gi');
+      return {
+        ...state,
+        searchFavItem: state.favItems.filter(favItem => favItem.title.match(regex))
+      };
+    case CLEAR_SEARCH:
+      return {
+        ...state,
+        searchFavItem: null
       };
     default:
       return state;

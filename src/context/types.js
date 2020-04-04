@@ -14,3 +14,7 @@ export const UPDATE_FAVITEM = 'UPDATE_FAVITEM';
 export const GET_FAVITEMS = 'GET_FAVITEMS';
 export const FAVITEM_ERROR = 'FAVITEM_ERROR';
 export const TOGGLE_FORM = 'TOGGLE_FORM';
+export const FILTER_FAVITEM = 'FILTER_FAVITEM';
+export const CLEAR_FILTER = 'CLEAR_FILTER';
+export const SEARCH_FAVITEM = 'SEARCH_FAVITEM';
+export const CLEAR_SEARCH = 'CLEAR_SEARCH';

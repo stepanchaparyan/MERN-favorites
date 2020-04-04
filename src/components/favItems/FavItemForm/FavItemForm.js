@@ -51,11 +51,10 @@ const FavItemForm = () => {
     e.preventDefault();
     if (editFavItem === null) {
       addFavItem(favItem);
-      toggle_Form(false);
     } else {
       update_FavItem(favItem);
-      clearEdit();
-      toggle_Form(!toggleForm);
+      // clearEdit();
+      // toggle_Form(!toggleForm);
     }
     setFavItem({
       author: '',
@@ -76,6 +75,11 @@ const FavItemForm = () => {
     }
   };
 
+  const removeErrors = () => {
+    // toggle_Form(true);
+    clearErrors();
+  };
+
   return (
     <Container ref={container}>
       <Title>{editFavItem !== null ? 'Edit FavItem' : 'Add new favorite item'}</Title>
@@ -91,7 +95,7 @@ const FavItemForm = () => {
         />
         <Input
           type="text"
-          placeholder="Category"
+          placeholder="Category - Movie, Song, Book, Other"
           name="category"
           value={category}
           onChange={onchange}
@@ -109,12 +113,12 @@ const FavItemForm = () => {
       {error && (
         <Errors>
           {!Array.isArray(error) ? (
-            <ErrorButton type="button" onClick={() => clearErrors()}>
+            <ErrorButton type="button" onClick={removeErrors}>
               {error}
             </ErrorButton>
           ) : (
             error.map(err => (
-              <ErrorButton key={err.msg} type="button" onClick={() => clearErrors()}>
+              <ErrorButton key={err.msg} type="button" onClick={removeErrors}>
                 {err.msg}
               </ErrorButton>
             ))

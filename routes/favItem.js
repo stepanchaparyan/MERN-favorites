@@ -18,7 +18,7 @@ router.get('/', auth, async (req, res) => {
 //REQUEST ADD NEW FAVITEM
 router.post(
   '/add',
-  [auth, [check('title', 'Password at least 2 character long').isLength({ min: 2 })]],
+  [auth, [check('title', 'Please enter title at least 2 character long').isLength({ min: 2 })]],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -56,24 +56,33 @@ router.get('/:id', auth, async (req, res) => {
 });
 
 //REQUEST FIND FAVITEM AND UPDATE
-router.put('/update/:id', auth, async (req, res) => {
-  const { author, title, category, description } = req.body;
-  // build Guest object
-  const favItemFields = { author, title, category, description };
-  try {
-    let favItem = await FavItem.findById(req.params.id);
-    if (!favItem) return res.status(404).json({ msg: 'FavItem not found' });
-    favItem = await FavItem.findByIdAndUpdate(
-      req.params.id,
-      { $set: favItemFields },
-      { new: true }
-    );
-    res.send(favItem);
-  } catch (err) {
-    console.errors(err.message);
-    res.status(500).send('Server Error');
+router.put(
+  '/update/:id',
+  [auth, [check('title', 'Please enter title at least 2 character long').isLength({ min: 2 })]],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { author, title, category, description } = req.body;
+    // build Guest object
+    const favItemFields = { author, title, category, description };
+    try {
+      let favItem = await FavItem.findById(req.params.id);
+      if (!favItem) return res.status(404).json({ msg: 'FavItem not found' });
+      favItem = await FavItem.findByIdAndUpdate(
+        req.params.id,
+        { $set: favItemFields },
+        { new: true }
+      );
+      res.send(favItem);
+    } catch (err) {
+      console.errors(err.message);
+      res.status(500).send('Server Error');
+    }
   }
-});
+);
 
 //REQUEST FIND FAVITEM AND DELETE
 router.delete('/:id', auth, async (req, res) => {

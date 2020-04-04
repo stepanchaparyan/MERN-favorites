@@ -8,3 +8,14 @@ export const Container = styled.div`
   font-weight: 600;
   font-size: 24px;
 `;
+
+export const Module = styled.div`
+  display: flex;
+
+  flex-direction: column;
+  width: 1166px;
+`;
+
+export const Search_Filter = styled.div`
+  display: flex;
+`;

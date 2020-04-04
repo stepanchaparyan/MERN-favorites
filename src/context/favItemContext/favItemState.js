@@ -12,7 +12,11 @@ import {
   GET_FAVITEMS,
   FAVITEM_ERROR,
   TOGGLE_FORM,
-  CLEAR_ERRORS
+  CLEAR_ERRORS,
+  FILTER_FAVITEM,
+  CLEAR_FILTER,
+  SEARCH_FAVITEM,
+  CLEAR_SEARCH
 } from '../types';
 
 const FavItemState = props => {
@@ -21,7 +25,9 @@ const FavItemState = props => {
     loading: true,
     favItems: [],
     error: null,
-    toggleForm: false
+    toggleForm: false,
+    filterFavItems: null,
+    searchFavItem: null
   };
   const [state, dispatch] = useReducer(favItemReducer, intialState);
 
@@ -52,6 +58,13 @@ const FavItemState = props => {
         type: ADD_FAVITEM,
         payload: res.data
       });
+      dispatch({
+        type: TOGGLE_FORM,
+        payload: !state.toggleForm
+      });
+      dispatch({
+        type: CLEAR_ERRORS
+      });
     } catch (err) {
       dispatch({
         type: FAVITEM_ERROR,
@@ -76,14 +89,6 @@ const FavItemState = props => {
     }
   };
 
-  // toggleForm
-  const toggle_Form = () => {
-    dispatch({
-      type: TOGGLE_FORM,
-      payload: !state.toggleForm
-    });
-  };
-
   // update favItem
   const update_FavItem = async favItem => {
     const config = {
@@ -97,6 +102,13 @@ const FavItemState = props => {
         type: UPDATE_FAVITEM,
         payload: res.data
       });
+      dispatch({
+        type: TOGGLE_FORM,
+        payload: !state.toggleForm
+      });
+      dispatch({
+        type: CLEAR_ERRORS
+      });
       getFavItems();
     } catch (err) {
       dispatch({
@@ -106,7 +118,7 @@ const FavItemState = props => {
     }
   };
 
-  // Edit Guest
+  // Edit favItem
   const edit_FavItem = favItem => {
     dispatch({
       type: EDIT_FAVITEM,
@@ -123,6 +135,36 @@ const FavItemState = props => {
       type: CLEAR_ERRORS
     });
   };
+  // toggleForm
+  const toggle_Form = () => {
+    dispatch({
+      type: TOGGLE_FORM,
+      payload: !state.toggleForm
+    });
+  };
+  const filter_FavItem = selectedCategory => {
+    dispatch({
+      type: FILTER_FAVITEM,
+      payload: selectedCategory
+    });
+  };
+  const clearFilterFavItem = () => {
+    dispatch({
+      type: CLEAR_FILTER
+    });
+  };
+  // Search favItem
+  const search_FavItem = favItem => {
+    dispatch({
+      type: SEARCH_FAVITEM,
+      payload: favItem
+    });
+  };
+  const clearSearchFavItem = () => {
+    dispatch({
+      type: CLEAR_SEARCH
+    });
+  };
 
   return (
     <FavItemContext.Provider
@@ -132,6 +174,8 @@ const FavItemState = props => {
         error: state.error,
         loading: state.loading,
         toggleForm: state.toggleForm,
+        filterFavItems: state.filterFavItems,
+        searchFavItem: state.searchFavItem,
         addFavItem,
         removeFavItem,
         edit_FavItem,
@@ -139,7 +183,11 @@ const FavItemState = props => {
         toggle_Form,
         update_FavItem,
         clearErrors,
-        getFavItems
+        getFavItems,
+        filter_FavItem,
+        clearFilterFavItem,
+        search_FavItem,
+        clearSearchFavItem
       }}
     >
       {props.children}

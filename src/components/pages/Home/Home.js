@@ -1,7 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import AuthContext from '../../../context/authContext/authContext';
-import { Container } from './HomeStyled';
+import { Container, Module, Search_Filter } from './HomeStyled';
 import FavItemsList from '../../favItems/FavItemsList/FavItemsList';
+import SearchFavItem from '../../favItems/SearchFavItem/SearchFavItem';
+import FilterFavItem from '../../favItems/FilterFavItem/FilterFavItem';
 
 const Home = () => {
   const { loadUser } = useContext(AuthContext);
@@ -12,7 +14,13 @@ const Home = () => {
 
   return (
     <Container>
-      <FavItemsList />
+      <Module>
+        <Search_Filter>
+          <FilterFavItem />
+          <SearchFavItem />
+        </Search_Filter>
+        <FavItemsList />
+      </Module>
     </Container>
   );
 };
