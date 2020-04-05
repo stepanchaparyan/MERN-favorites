@@ -4,24 +4,15 @@ import FavItemContext from '../../../context/favItemContext/favItemContext';
 import { Container, customStyles } from './FilterFavItemStyled';
 
 const FilterFavItem = () => {
-  const { favItems, filter_FavItem, clearFilterFavItem } = useContext(FavItemContext);
+  const { filter_FavItem, clearFilterFavItem } = useContext(FavItemContext);
 
-  // generate options
-  const options = favItems.map(favItem => ({
-    value: favItem.category,
-    label: favItem.category
-  }));
-
-  // 1. create set from favItem.category
-  // 2. add null into set
-  // 3. create obj using that set
-
-  // const options = [
-  //   { value: 'Movie', label: 'Movie' },
-  //   { value: 'Music', label: 'Music' },
-  //   { value: 'Book', label: 'Book' },
-  //   { value: 'null', label: 'All' }
-  // ];
+  const options = [
+    { value: 'Movie', label: 'Movie' },
+    { value: 'Music', label: 'Music' },
+    { value: 'Books', label: 'Books' },
+    { value: 'Other', label: 'Other' },
+    { value: 'null', label: 'All' }
+  ];
 
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -41,6 +32,7 @@ const FilterFavItem = () => {
         onChange={handleChange}
         options={options}
         styles={customStyles}
+        placeholder="Filter your cards"
       />
     </Container>
   );

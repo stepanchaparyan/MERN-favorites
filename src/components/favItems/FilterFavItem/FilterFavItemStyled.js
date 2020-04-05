@@ -1,16 +1,21 @@
 import styled from 'styled-components';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  & div {
+    color: cadetblue;
+    font-size: 18px;
+  }
+`;
 
 export const customStyles = {
   option: (provided, state) => ({
     ...provided,
-    borderBottom: '1px dotted pink',
-    color: state.isSelected ? 'red' : 'blue',
-    padding: 20
+    color: state.isSelected ? 'black' : 'cadetblue',
+    backgroundColor: state.isSelected ? 'lightGray' : 'white',
+    padding: 8,
+    fontSize: 16
   }),
   control: () => ({
-    // none of react-select's styles are passed to <Control />
     width: 200,
     display: 'flex'
   }),

@@ -19,7 +19,7 @@ const favItemSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    default: 'description'
+    default: 'Description'
   }
 });
 

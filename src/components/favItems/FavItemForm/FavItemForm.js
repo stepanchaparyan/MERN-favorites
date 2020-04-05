@@ -1,6 +1,16 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
 import FavItemContext from '../../../context/favItemContext/favItemContext';
-import { Container, Title, Form, Input, Errors, ErrorButton } from './FavItemFormStyled';
+import {
+  Container,
+  Title,
+  Form,
+  Input,
+  Errors,
+  ErrorButton,
+  Select,
+  Option,
+  DefaultOption
+} from './FavItemFormStyled';
 
 const FavItemForm = () => {
   const context = useContext(FavItemContext);
@@ -22,10 +32,10 @@ const FavItemForm = () => {
       setFavItem(editFavItem);
     } else {
       setFavItem({
-        author: '',
+        author: 'Unknown',
         title: '',
-        category: '',
-        description: ''
+        category: 'Other',
+        description: 'Description'
       });
     }
     document.addEventListener('click', handleClick);
@@ -41,6 +51,7 @@ const FavItemForm = () => {
     description: ''
   });
   const { author, title, category, description } = favItem;
+  console.log('author', favItem);
   const onchange = e => {
     setFavItem({
       ...favItem,
@@ -93,13 +104,13 @@ const FavItemForm = () => {
           onChange={onchange}
           required
         />
-        <Input
-          type="text"
-          placeholder="Category - Movie, Song, Book, Other"
-          name="category"
-          value={category}
-          onChange={onchange}
-        />
+        <Select value={category} name="category" onChange={onchange}>
+          <DefaultOption value="Other">Select category</DefaultOption>
+          <Option value="Movie">Movie</Option>
+          <Option value="Music">Music</Option>
+          <Option value="Books">Books</Option>
+          <Option value="Other">Other</Option>
+        </Select>
         <Input
           type="text"
           placeholder="Description"

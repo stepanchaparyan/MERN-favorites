@@ -74,3 +74,24 @@ export const ErrorButton = styled.button`
   outline: none;
   cursor: pointer;
 `;
+
+export const Select = styled.select`
+  width: 56%;
+  background: white;
+  height: 32px;
+  outline: none;
+  border-radius: 4px;
+  padding-left: 5px;
+`;
+
+export const Option = styled.option`
+  color: black;
+  height: 47px;
+  padding: 20px;
+  font-size: 18px;
+  color: cadetblue;
+`;
+
+export const DefaultOption = styled.option`
+  display: none;
+`;
