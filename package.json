@@ -4,7 +4,7 @@
   "description": "Mongo, Express, React, Node",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon server.js",
+    "server": "nodemon app.js",
     "dev-server": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
     "start": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run dev-server\"",
     "build": "rm -rf build && cross-env NODE_ENV=production webpack --mode production",
