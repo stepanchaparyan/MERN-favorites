@@ -15,7 +15,15 @@ export const Module = styled.div`
   width: 1048px;
 `;
 
-export const Search_Filter = styled.div`
+export const Info = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+export const Filter_Search = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+`;
+
+export const FavItemStatContainer = styled.div``;

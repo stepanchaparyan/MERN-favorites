@@ -1,6 +1,6 @@
 import React, { useRef, useContext } from 'react';
 import FavItemContext from '../../../context/favItemContext/favItemContext';
-import { Container } from './SearchFavItemStyled';
+import { Container, Input } from './SearchFavItemStyled';
 
 const SearchFavItem = () => {
   const { search_FavItem, clearSearchFavItem } = useContext(FavItemContext);
@@ -14,7 +14,7 @@ const SearchFavItem = () => {
   };
   return (
     <Container>
-      <input
+      <Input
         ref={favItem}
         onChange={onchange}
         type="text"
