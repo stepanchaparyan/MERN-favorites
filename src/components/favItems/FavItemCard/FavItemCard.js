@@ -19,6 +19,27 @@ const FavItemCard = ({ favItem }) => {
     toggle_Form(!toggleForm);
   };
 
+  const colorPicker = () => {
+    let color;
+    switch (category) {
+      case 'Movie':
+        color = 'red';
+        break;
+      case 'Music':
+        color = 'Navy';
+        break;
+      case 'Books':
+        color = 'Green';
+        break;
+      case 'Other':
+        color = 'Indigo';
+        break;
+      default:
+        color = 'black';
+    }
+    return color;
+  };
+
   return (
     <Container>
       <Info>
@@ -31,7 +52,7 @@ const FavItemCard = ({ favItem }) => {
       </Info>
       <Info>
         <InfoName>Category: </InfoName>
-        <InfoData>{category}</InfoData>
+        <InfoData color={colorPicker()}>{category}</InfoData>
       </Info>
       <Info>
         <InfoName>Description: </InfoName>
@@ -44,7 +65,7 @@ const FavItemCard = ({ favItem }) => {
 };
 
 FavItemCard.propTypes = {
-  favItem: PropTypes.any.isRequired
+  favItem: PropTypes.object.isRequired
 };
 
 export default FavItemCard;

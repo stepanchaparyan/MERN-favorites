@@ -76,10 +76,11 @@ export const ErrorButton = styled.button`
 `;
 
 export const Select = styled.select`
-  width: 56%;
+  width: 54%;
   background: white;
   height: 32px;
   outline: none;
+  border: none;
   border-radius: 4px;
   padding-left: 5px;
 `;

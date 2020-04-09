@@ -24,7 +24,7 @@ export const InfoName = styled.div`
 
 export const InfoData = styled.div`
   padding: 10px 0;
-  color: cadetblue;
+  color: ${props => (props.color ? props.color : 'cadetblue')};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
