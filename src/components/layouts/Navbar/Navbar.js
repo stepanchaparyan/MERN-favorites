@@ -1,7 +1,14 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import AuthContext from '../../../context/authContext/authContext';
-import { Container, Logo, AuthLinks, GuestLinks, UserName, Logout } from './NavbarStyled';
+import {
+  Container,
+  LogoNameContainer,
+  Logo,
+  NavLinks,
+  LinkStyled,
+  UserName,
+  Logout
+} from './NavbarStyled';
 import logo from '../../../assets/logo';
 
 const Navbar = () => {
@@ -12,23 +19,23 @@ const Navbar = () => {
     clearErrors();
   };
   const authLinks = (
-    <AuthLinks>
-      <UserName>{user && user.name}</UserName>
+    <NavLinks>
+      {isAuthencated && <UserName>{user && user.name}</UserName>}
       <Logout onClick={onLogout}>Logout</Logout>
-    </AuthLinks>
+    </NavLinks>
   );
 
-  const guestLinks = (
-    <GuestLinks>
-      <Link to="/register">SignUp</Link>
-      <Link to="/login">Login</Link>
-    </GuestLinks>
+  const favItemLinks = (
+    <NavLinks>
+      <LinkStyled to="/register">SignUp</LinkStyled>
+      <LinkStyled to="/login">Login</LinkStyled>
+    </NavLinks>
   );
 
   return (
     <Container>
       <Logo src={logo} alt="logo" />
-      {isAuthencated ? authLinks : guestLinks}
+      {isAuthencated ? authLinks : favItemLinks}
     </Container>
   );
 };
