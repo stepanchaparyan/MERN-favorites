@@ -10,18 +10,14 @@ export const Container = styled.div`
   font-size: 20px;
 `;
 
-export const LogoNameContainer = styled.div`
-  display: flex;
-`;
-
 export const Logo = styled.img`
-  width: 40px;
+  width: 290px;
   height: auto;
 `;
 
 export const UserName = styled.div`
   font-weight: 200;
-  padding-left: 32px;
+  padding-right: 32px;
 `;
 
 export const NavLinks = styled.div`

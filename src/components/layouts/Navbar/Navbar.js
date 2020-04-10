@@ -20,6 +20,7 @@ const Navbar = () => {
   };
   const authLinks = (
     <NavLinks>
+      {isAuthencated && <UserName>{user && user.name}</UserName>}
       <Logout onClick={onLogout}>Logout</Logout>
     </NavLinks>
   );
@@ -33,10 +34,7 @@ const Navbar = () => {
 
   return (
     <Container>
-      <LogoNameContainer>
-        <Logo src={logo} alt="logo" />
-        {isAuthencated && <UserName>{user && user.name}</UserName>}
-      </LogoNameContainer>
+      <Logo src={logo} alt="logo" />
       {isAuthencated ? authLinks : favItemLinks}
     </Container>
   );
