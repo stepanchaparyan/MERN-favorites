@@ -26,13 +26,13 @@ const FavItemCard = ({ favItem }) => {
         color = 'red';
         break;
       case 'Music':
-        color = 'Navy';
+        color = 'blue';
         break;
       case 'Books':
-        color = 'Green';
+        color = 'limeGreen';
         break;
       case 'Other':
-        color = 'Indigo';
+        color = 'orange';
         break;
       default:
         color = 'black';
