@@ -16,7 +16,9 @@ import {
   FILTER_FAVITEM,
   CLEAR_FILTER,
   SEARCH_FAVITEM,
-  CLEAR_SEARCH
+  CLEAR_SEARCH,
+  SEARCH_FILTER_FAVITEM,
+  CLEAR_SEARCH_FILTER
 } from '../types';
 
 const FavItemState = props => {
@@ -27,7 +29,8 @@ const FavItemState = props => {
     error: null,
     toggleForm: false,
     filterFavItems: null,
-    searchFavItem: null
+    searchFavItem: null,
+    searchFilterFavItems: null
   };
   const [state, dispatch] = useReducer(favItemReducer, intialState);
 
@@ -149,7 +152,7 @@ const FavItemState = props => {
       payload: selectedCategory
     });
   };
-  const clearFilterFavItem = () => {
+  const clearFilter = () => {
     dispatch({
       type: CLEAR_FILTER
     });
@@ -161,9 +164,20 @@ const FavItemState = props => {
       payload: favItem
     });
   };
-  const clearSearchFavItem = () => {
+  const clearSearch = () => {
     dispatch({
       type: CLEAR_SEARCH
+    });
+  };
+  const search_filter_FavItems = data => {
+    dispatch({
+      type: SEARCH_FILTER_FAVITEM,
+      payload: data
+    });
+  };
+  const clearSearchFilter = () => {
+    dispatch({
+      type: CLEAR_SEARCH_FILTER
     });
   };
 
@@ -177,6 +191,7 @@ const FavItemState = props => {
         toggleForm: state.toggleForm,
         filterFavItems: state.filterFavItems,
         searchFavItem: state.searchFavItem,
+        searchFilterFavItems: state.searchFilterFavItems,
         addFavItem,
         removeFavItem,
         edit_FavItem,
@@ -186,9 +201,11 @@ const FavItemState = props => {
         clearErrors,
         getFavItems,
         filter_FavItem,
-        clearFilterFavItem,
+        clearFilter,
         search_FavItem,
-        clearSearchFavItem
+        clearSearch,
+        search_filter_FavItems,
+        clearSearchFilter
       }}
     >
       {props.children}

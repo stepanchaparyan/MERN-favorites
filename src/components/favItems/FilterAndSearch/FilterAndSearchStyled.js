@@ -1,10 +1,20 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const SelectContainer = styled.div`
   & div {
     color: cadetblue;
     font-size: 18px;
   }
+`;
+
+export const InputContainer = styled.div`
+  margin-left: 10px;
+`;
+
+export const Input = styled.input`
+  outline: none;
+  border: 1px solid cadetblue;
+  padding-left: 2px;
 `;
 
 export const customStyles = {

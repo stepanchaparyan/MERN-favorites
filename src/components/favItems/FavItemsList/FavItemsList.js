@@ -14,7 +14,8 @@ const FavItemsList = () => {
     favItems,
     getFavItems,
     filterFavItems,
-    searchFavItem
+    searchFavItem,
+    searchFilterFavItems
   } = context;
 
   useEffect(() => {
@@ -39,6 +40,12 @@ const FavItemsList = () => {
       {!filterFavItems && !searchFavItem ? (
         <CardContainer>
           {favItems.map(favItem => (
+            <FavItemCard key={favItem._id} favItem={favItem} />
+          ))}
+        </CardContainer>
+      ) : searchFilterFavItems ? (
+        <CardContainer>
+          {searchFilterFavItems.map(favItem => (
             <FavItemCard key={favItem._id} favItem={favItem} />
           ))}
         </CardContainer>

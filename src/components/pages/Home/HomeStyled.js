@@ -20,7 +20,7 @@ export const Info = styled.div`
   justify-content: space-between;
 `;
 
-export const Filter_Search = styled.div`
+export const FilterAndSearchContainer = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;

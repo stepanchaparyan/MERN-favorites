@@ -11,7 +11,9 @@ import {
   FILTER_FAVITEM,
   CLEAR_FILTER,
   SEARCH_FAVITEM,
-  CLEAR_SEARCH
+  CLEAR_SEARCH,
+  SEARCH_FILTER_FAVITEM,
+  CLEAR_SEARCH_FILTER
 } from '../types';
 
 export default (state, { type, payload }) => {
@@ -84,6 +86,19 @@ export default (state, { type, payload }) => {
       return {
         ...state,
         searchFavItem: null
+      };
+    case SEARCH_FILTER_FAVITEM:
+      const regexp = new RegExp(`${payload[0]}`, 'gi');
+      return {
+        ...state,
+        searchFilterFavItems: state.favItems
+          .filter(favItem => favItem.title.match(regexp))
+          .filter(favItem => favItem.category === payload[1])
+      };
+    case CLEAR_SEARCH_FILTER:
+      return {
+        ...state,
+        searchFilterFavItems: null
       };
     default:
       return state;

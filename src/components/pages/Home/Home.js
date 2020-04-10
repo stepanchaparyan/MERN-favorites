@@ -1,10 +1,15 @@
 import React, { useContext, useEffect } from 'react';
 import AuthContext from '../../../context/authContext/authContext';
-import { Container, Module, Info, Filter_Search, FavItemStatContainer } from './HomeStyled';
 import FavItemsList from '../../favItems/FavItemsList/FavItemsList';
-import SearchFavItem from '../../favItems/SearchFavItem/SearchFavItem';
-import FilterFavItem from '../../favItems/FilterFavItem/FilterFavItem';
+import FilterAndSearch from '../../favItems/FilterAndSearch/FilterAndSearch';
 import FavItemStat from '../../favItems/FavItemStat/FavItemStat';
+import {
+  Container,
+  Module,
+  Info,
+  FilterAndSearchContainer,
+  FavItemStatContainer
+} from './HomeStyled';
 
 const Home = () => {
   const { loadUser } = useContext(AuthContext);
@@ -17,10 +22,9 @@ const Home = () => {
     <Container>
       <Module>
         <Info>
-          <Filter_Search>
-            <SearchFavItem />
-            <FilterFavItem />
-          </Filter_Search>
+          <FilterAndSearchContainer>
+            <FilterAndSearch />
+          </FilterAndSearchContainer>
           <FavItemStatContainer>
             <FavItemStat />
           </FavItemStatContainer>
