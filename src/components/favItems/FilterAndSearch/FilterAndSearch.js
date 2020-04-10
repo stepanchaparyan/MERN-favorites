@@ -22,7 +22,7 @@ const FilterAndSearch = () => {
   const searchInput = useRef('');
 
   const options = [
-    { value: 'Movie', label: 'Movie' },
+    { value: 'Film', label: 'Film' },
     { value: 'Music', label: 'Music' },
     { value: 'Books', label: 'Books' },
     { value: 'Other', label: 'Other' },

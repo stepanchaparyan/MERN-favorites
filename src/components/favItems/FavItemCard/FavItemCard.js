@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import FavItemContext from '../../../context/favItemContext/favItemContext';
-import { Container, Info, InfoName, InfoData, Button } from './FavItemCardStyled';
+import { Container, Info, InfoName, InfoData, Button, Label } from './FavItemCardStyled';
 
 const FavItemCard = ({ favItem }) => {
   const { removeFavItem, edit_FavItem, clearEdit, toggle_Form, toggleForm } = useContext(
@@ -22,7 +22,7 @@ const FavItemCard = ({ favItem }) => {
   const colorPicker = () => {
     let color;
     switch (category) {
-      case 'Movie':
+      case 'Film':
         color = 'red';
         break;
       case 'Music':
@@ -45,6 +45,7 @@ const FavItemCard = ({ favItem }) => {
       <Info>
         <InfoName>Author: </InfoName>
         <InfoData>{author}</InfoData>
+        <Label color={colorPicker()}>{category.charAt(0)}</Label>
       </Info>
       <Info>
         <InfoName>Title: </InfoName>
@@ -52,7 +53,7 @@ const FavItemCard = ({ favItem }) => {
       </Info>
       <Info>
         <InfoName>Category: </InfoName>
-        <InfoData color={colorPicker()}>{category}</InfoData>
+        <InfoData>{category}</InfoData>
       </Info>
       <Info>
         <InfoName>Description: </InfoName>

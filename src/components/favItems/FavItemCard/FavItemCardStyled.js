@@ -18,17 +18,18 @@ export const Info = styled.div`
 `;
 
 export const InfoName = styled.div`
-  width: 50%;
+  width: 45%;
   padding: 10px 0;
 `;
 
 export const InfoData = styled.div`
   padding: 10px 0;
-  color: ${props => (props.color ? props.color : 'cadetblue')};
+  color: cadetblue;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 120px;
+  width: 45%;
 `;
 
 export const Button = styled.button`
@@ -39,4 +40,12 @@ export const Button = styled.button`
   font-size: 16px;
   margin-top: 5px;
   cursor: pointer;
+`;
+
+export const Label = styled.div`
+  padding: 8px 0 0 8px;
+  width: 8%;
+  background-color: ${props => (props.color ? props.color : 'cadetblue')};
+  color: white;
+  border-bottom-left-radius: 15px;
 `;

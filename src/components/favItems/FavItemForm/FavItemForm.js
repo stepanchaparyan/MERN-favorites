@@ -106,7 +106,7 @@ const FavItemForm = () => {
         />
         <Select value={category} name="category" onChange={onchange}>
           <DefaultOption value="Other">Select category</DefaultOption>
-          <Option value="Movie">Movie</Option>
+          <Option value="Film">Film</Option>
           <Option value="Music">Music</Option>
           <Option value="Books">Books</Option>
           <Option value="Other">Other</Option>
