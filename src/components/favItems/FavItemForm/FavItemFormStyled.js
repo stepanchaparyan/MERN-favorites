@@ -6,12 +6,13 @@ export const Container = styled.div`
   color: cadetblue;
   z-index: 1;
   position: absolute;
-  background-color: lightgray;
+  background-color: gray;
   left: 50%;
   top: 42%;
   transform: translate(-50%, -50%);
   border-radius: 4px;
-  min-width: 45%;
+  min-width: 40%;
+  min-height: 40%;
 `;
 
 export const Title = styled.div`
@@ -20,6 +21,7 @@ export const Title = styled.div`
   padding: 32px;
   font-weight: 600;
   font-size: 30px;
+  color: black;
 `;
 
 export const Form = styled.form`
@@ -30,7 +32,7 @@ export const Form = styled.form`
 
 export const Input = styled.input`
   border: 0px;
-  width: 50%;
+  width: 200px;
   padding: 8px 10px;
   margin: 4px;
   outline: none;
@@ -76,13 +78,14 @@ export const ErrorButton = styled.button`
 `;
 
 export const Select = styled.select`
-  width: 54%;
+  width: 220px;
   background: white;
   height: 32px;
   outline: none;
   border: none;
   border-radius: 4px;
   padding-left: 5px;
+  margin: 4px;
 `;
 
 export const Option = styled.option`

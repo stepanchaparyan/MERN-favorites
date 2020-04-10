@@ -51,7 +51,6 @@ const FavItemForm = () => {
     description: ''
   });
   const { author, title, category, description } = favItem;
-  console.log('author', favItem);
   const onchange = e => {
     setFavItem({
       ...favItem,

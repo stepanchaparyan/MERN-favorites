@@ -9,6 +9,7 @@ export const CardContainer = styled.div`
   display: flex;
   margin: 16px 0;
   flex-flow: wrap;
+  opacity: ${props => (props.opacity ? 0.2 : 1)};
 `;
 
 export const Button = styled.button`
