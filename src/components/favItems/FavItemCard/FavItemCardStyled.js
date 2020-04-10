@@ -10,6 +10,10 @@ export const Container = styled.div`
   color: black;
   font-size: 16px;
   margin: 5px;
+  &:hover {
+    border: 1px solid black;
+    background-color: #ebebeb;
+  }
 `;
 
 export const Info = styled.div`
