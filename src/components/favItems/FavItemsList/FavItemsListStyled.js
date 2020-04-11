@@ -9,7 +9,7 @@ export const CardContainer = styled.div`
   display: flex;
   margin: 16px 0;
   flex-flow: wrap;
-  opacity: ${props => (props.opacity ? 0.2 : 1)};
+  opacity: ${props => (props.myOpacity ? 0.2 : 1)};
 `;
 
 export const Button = styled.button`
@@ -17,7 +17,7 @@ export const Button = styled.button`
   border: 0px;
   padding: 10px;
   outline: none;
-  background-color: cadetblue;
+  background-color: ${props => props.theme.color};
   font-size: 16px;
   margin-top: 20px;
   cursor: pointer;

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: cadetblue;
+  background-color: ${props => props.theme.color};
   padding: 16px 32px;
   font-weight: 600;
   font-size: 20px;

@@ -38,7 +38,7 @@ const FavItemsList = () => {
       <Button onClick={toggleFormStatus}>Add new Item</Button>
 
       {!filterFavItems && !searchFavItem ? (
-        <CardContainer opacity={toggleForm}>
+        <CardContainer myOpacity={toggleForm}>
           {favItems.map(favItem => (
             <FavItemCard key={favItem._id} favItem={favItem} />
           ))}
