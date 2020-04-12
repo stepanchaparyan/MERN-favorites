@@ -2,23 +2,18 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import FavItemCard from '../FavItemCard';
 import FavItemState from '../../../../context/favItemContext/favItemState';
+import faker from 'faker';
 
 const favItem = {
-  _id: '123456789',
-  author: 'Stepan',
-  title: 'Dogvill',
+  _id: faker.random.uuid(),
+  author: faker.name.findName(),
+  title: faker.name.title(),
   category: 'Film',
-  description: 'Lars von Trier'
-};
-
-const Wrapper = () => {
-  return (
-    <FavItemState>
-      <FavItemCard favItem={favItem} />
-    </FavItemState>
-  );
+  description: faker.lorem.slug()
 };
 
 storiesOf('FavItemCard', module).add('should render component with default props', () => (
-  <Wrapper />
+  <FavItemState>
+    <FavItemCard favItem={favItem} />
+  </FavItemState>
 ));
