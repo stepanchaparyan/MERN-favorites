@@ -12,7 +12,7 @@ const favItem = {
   description: faker.lorem.slug()
 };
 
-storiesOf('FavItemCard', module).add('should render component with default props', () => (
+storiesOf('FavItemCard', module).add('default', () => (
   <FavItemState>
     <FavItemCard favItem={favItem} />
   </FavItemState>

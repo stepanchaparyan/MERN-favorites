@@ -1,14 +1,6 @@
 import React, { useContext } from 'react';
 import AuthContext from '../../../context/authContext/authContext';
-import {
-  Container,
-  LogoNameContainer,
-  Logo,
-  NavLinks,
-  LinkStyled,
-  UserName,
-  Logout
-} from './NavbarStyled';
+import { Container, Logo, NavLinks, LinkStyled, UserName, Logout } from './NavbarStyled';
 import logo from '../../../assets/logo';
 
 const Navbar = () => {
