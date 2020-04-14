@@ -1,7 +1,15 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import FavItemContext from '../../../context/favItemContext/favItemContext';
-import { Container, Info, InfoName, InfoData, Button, Label } from './FavItemCardStyled';
+import {
+  Container,
+  Info,
+  InfoName,
+  InfoData,
+  Button,
+  Label,
+  ReactTooltipStyled
+} from './FavItemCardStyled';
 
 const FavItemCard = ({ favItem }) => {
   const { removeFavItem, edit_FavItem, clearEdit, toggle_Form, toggleForm } = useContext(
@@ -43,22 +51,33 @@ const FavItemCard = ({ favItem }) => {
   return (
     <Container>
       <Info>
-        <InfoName>Author: </InfoName>
-        <InfoData>{author}</InfoData>
+        <InfoName>Author:</InfoName>
+        <InfoData data-tip={author} data-arrow-color="cadetblue" data-background-color="cadetblue">
+          {author}
+        </InfoData>
         <Label color={colorPicker()}>{category.charAt(0)}</Label>
       </Info>
       <Info>
-        <InfoName>Title: </InfoName>
-        <InfoData>{title}</InfoData>
+        <InfoName>Title:</InfoName>
+        <InfoData data-tip={title} data-arrow-color="cadetblue" data-background-color="cadetblue">
+          {title}
+        </InfoData>
       </Info>
       <Info>
-        <InfoName>Category: </InfoName>
+        <InfoName>Category:</InfoName>
         <InfoData>{category}</InfoData>
       </Info>
       <Info>
-        <InfoName>Description: </InfoName>
-        <InfoData>{description}</InfoData>
+        <InfoName>Description:</InfoName>
+        <InfoData
+          data-tip={description}
+          data-arrow-color="cadetblue"
+          data-background-color="cadetblue"
+        >
+          {description}
+        </InfoData>
       </Info>
+      <ReactTooltipStyled place="left" effect="solid" />
       <Button onClick={toggle}>Edit Card</Button>
       <Button onClick={handleRemove}>Remove Card</Button>
     </Container>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import ReactTooltip from 'react-tooltip';
 
 export const Container = styled.div`
   display: flex;
@@ -52,4 +53,9 @@ export const Label = styled.div`
   background-color: ${props => (props.color ? props.color : props.theme.color)};
   color: white;
   border-bottom-left-radius: 15px;
+`;
+
+export const ReactTooltipStyled = styled(ReactTooltip)`
+  padding: 4px 6px;
+  border-radius: 6px;
 `;
