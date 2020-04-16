@@ -63,15 +63,7 @@ const FavItemForm = () => {
       addFavItem(favItem);
     } else {
       update_FavItem(favItem);
-      // clearEdit();
-      // toggle_Form(!toggleForm);
     }
-    setFavItem({
-      author: '',
-      title: '',
-      category: '',
-      description: ''
-    });
   };
   const cancelEdit = () => {
     clearEdit();
@@ -86,7 +78,6 @@ const FavItemForm = () => {
   };
 
   const removeErrors = () => {
-    // toggle_Form(true);
     clearErrors();
   };
 

@@ -49,7 +49,8 @@ export default (state, { type, payload }) => {
     case TOGGLE_FORM:
       return {
         ...state,
-        toggleForm: payload
+        toggleForm: payload,
+        error: null
       };
     case UPDATE_FAVITEM:
       return {

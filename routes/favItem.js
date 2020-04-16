@@ -66,7 +66,7 @@ router.put(
     }
 
     const { author, title, category, description } = req.body;
-    // build Guest object
+
     const favItemFields = { author, title, category, description };
     try {
       let favItem = await FavItem.findById(req.params.id);

@@ -47,7 +47,7 @@ export const Input = styled.input`
     margin-top: 20px;
     border-radius: 5%;
     cursor: pointer;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 
   &[type='button'] {
@@ -58,7 +58,7 @@ export const Input = styled.input`
     font-size: 16px;
     border-radius: 5%;
     cursor: pointer;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 `;
 
@@ -66,7 +66,7 @@ export const Errors = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px;
+  margin: 0 10px 10px 10px;
 `;
 
 export const ErrorButton = styled.button`
