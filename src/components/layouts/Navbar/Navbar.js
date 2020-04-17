@@ -13,7 +13,11 @@ const Navbar = () => {
   };
   const authLinks = (
     <NavLinks>
-      {isAuthencated && <UserName>{user && user.name}</UserName>}
+      {isAuthencated && (
+        <LinkStyled to="/profilePage">
+          <UserName>{user && user.name}</UserName>
+        </LinkStyled>
+      )}
       <Logout onClick={onLogout}>Logout</Logout>
     </NavLinks>
   );

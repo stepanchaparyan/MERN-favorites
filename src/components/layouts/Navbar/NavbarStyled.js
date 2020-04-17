@@ -18,7 +18,7 @@ export const Logo = styled.img`
 
 export const UserName = styled.div`
   font-weight: 200;
-  padding-right: 32px;
+  padding-right: 16px;
 `;
 
 export const NavLinks = styled.div`
