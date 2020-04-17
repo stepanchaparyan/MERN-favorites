@@ -5,6 +5,8 @@ import Footer from './components/layouts/Footer/Footer';
 import Home from './components/pages/Home/Home';
 import Register from './components/pages/Register/Register';
 import Login from './components/pages/Login/Login';
+import Welcome from './components/pages/Welcome/Welcome';
+import NotFound from './components/pages/NotFound/NotFound';
 import AuthState from './context/authContext/AuthState';
 import FavItemState from './context/favItemContext/favItemState';
 import setAuthToken from './utils/setAuthToken';
@@ -25,10 +27,11 @@ const App = () => {
             <div>
               <Navbar />
               <Switch>
-                <PrivateRoute exact path="/" component={Home} />
+                <Route exact path="/" component={Welcome} />
+                <PrivateRoute exact path="/home" component={Home} />
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/login" component={Login} />
-                <Route exact path="*" component={Login} />
+                <Route exact path="*" component={NotFound} />
               </Switch>
               <Footer />
             </div>

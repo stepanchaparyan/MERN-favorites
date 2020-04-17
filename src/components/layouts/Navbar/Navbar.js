@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import AuthContext from '../../../context/authContext/authContext';
 import { Container, Logo, NavLinks, LinkStyled, UserName, Logout } from './NavbarStyled';
 import logo from '../../../assets/logo';
@@ -26,7 +27,9 @@ const Navbar = () => {
 
   return (
     <Container>
-      <Logo src={logo} alt="logo" />
+      <Link to="/">
+        <Logo src={logo} alt="logo" />
+      </Link>
       {isAuthencated ? authLinks : favItemLinks}
     </Container>
   );

@@ -8,11 +8,12 @@ export const Container = styled.div`
   padding: 16px 32px;
   font-weight: 600;
   font-size: 20px;
+  height: 23px;
 `;
 
 export const Logo = styled.img`
   width: 290px;
-  height: auto;
+  height: 23px;
 `;
 
 export const UserName = styled.div`
@@ -22,6 +23,7 @@ export const UserName = styled.div`
 
 export const NavLinks = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 export const LinkStyled = styled(Link)`
