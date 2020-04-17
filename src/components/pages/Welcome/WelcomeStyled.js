@@ -37,8 +37,8 @@ export const LinkStyled = styled(Link)`
 export const Logo = styled.img`
   height: 200px;
   position: absolute;
-  bottom: 150px;
-  right: 150px;
+  bottom: 120px;
+  right: 100px;
 `;
 
 export const Music = styled.span`

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import AuthContext from '../../../context/authContext/authContext';
-import { Container, Module, PageNotFoundText, LinkStyled, Logo } from './NotFoundStyled';
+import { Container, Module, PageNotFoundText, LinkStyled, Logo } from './PageNotFoundStyled';
 import Img from '../../../assets/elephant.png';
 
 const NotFound = () => {
