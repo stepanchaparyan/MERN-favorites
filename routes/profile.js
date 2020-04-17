@@ -40,9 +40,9 @@ router.post(
 );
 
 // REQUEST FIND PROFILE BY ID
-router.get('/:id', auth, async (req, res) => {
+router.get('/', auth, async (req, res) => {
   try {
-    const profile = await Profile.findById(req.params.id);
+    const profile = await Profile.find({ user: req.user.id });
     if (!profile) return res.status(404).json({ msg: 'Profile not found' });
     res.json(profile);
   } catch (err) {
@@ -52,7 +52,7 @@ router.get('/:id', auth, async (req, res) => {
 
 //REQUEST FIND PROFILE AND UPDATE
 router.put(
-  '/update/:id',
+  '/update/',
   [auth, [check('name', 'Please enter title at least 2 character long').isLength({ min: 2 })]],
   async (req, res) => {
     const errors = validationResult(req);
@@ -64,10 +64,10 @@ router.put(
 
     const profileFields = { name, surname, email, image, gender, birthDay, phone };
     try {
-      let profile = await Profile.findById(req.params.id);
+      let profile = await Profile.find({ user: req.user.id });
       if (!profile) return res.status(404).json({ msg: 'Profile not found' });
-      profile = await Profile.findByIdAndUpdate(
-        req.params.id,
+      profile = await Profile.findOneAndUpdate(
+        { user: req.user.id },
         { $set: profileFields },
         { new: true }
       );
@@ -80,11 +80,11 @@ router.put(
 );
 
 //REQUEST FIND PROFILE AND DELETE
-router.delete('/:id', auth, async (req, res) => {
+router.delete('/', auth, async (req, res) => {
   try {
-    let profile = await Profile.findById(req.params.id);
+    let profile = await Profile.find({ user: req.user.id });
     if (!profile) return res.status(404).json({ msg: 'Profile not found' });
-    await Profile.findByIdAndRemove(req.params.id);
+    await Profile.findOneAndRemove({ user: req.user.id });
     res.send('Profile Removed successfully');
   } catch (err) {
     console.errors(err.message).json('Server Error');
