@@ -12,6 +12,7 @@ app.use(express.json({ extended: true }));
 app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));
 app.use('/favItem', require('./routes/favItem'));
+app.use('/profile', require('./routes/profile'));
 
 // use static files
 app.use('/', express.static(path.join(__dirname, 'build')));
