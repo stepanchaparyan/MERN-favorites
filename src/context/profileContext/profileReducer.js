@@ -1,12 +1,12 @@
 import {
   // REMOVE_FAVITEM,
   // ADD_FAVITEM,
-  // EDIT_FAVITEM,
+  EDIT_PROFILE,
   // CLEAR_EDIT,
-  // UPDATE_FAVITEM,
+  UPDATE_PROFILE,
   GET_PROFILE,
-  PROFILE_ERROR
-  // TOGGLE_FORM,
+  PROFILE_ERROR,
+  TOGGLE_FORM
   // CLEAR_ERRORS,
   // FILTER_FAVITEM,
   // CLEAR_FILTER,
@@ -36,27 +36,28 @@ export default (state, { type, payload }) => {
     //     ...state,
     //     favItems: state.favItems.filter(favItem => favItem._id !== payload)
     //   };
-    // case EDIT_FAVITEM:
-    //   return {
-    //     ...state,
-    //     editFavItem: payload
-    //   };
+    case EDIT_PROFILE:
+      return {
+        ...state,
+        editProfile: payload,
+        loading: false
+      };
     // case CLEAR_EDIT:
     //   return {
     //     ...state,
     //     editFavItem: null
     //   };
-    // case TOGGLE_FORM:
-    //   return {
-    //     ...state,
-    //     toggleForm: payload,
-    //     error: null
-    //   };
-    // case UPDATE_FAVITEM:
-    //   return {
-    //     ...state,
-    //     favItems: state.favItems.map(favItem => (favItem._id === payload._id ? payload : favItem))
-    //   };
+    case TOGGLE_FORM:
+      return {
+        ...state,
+        toggleForm: payload,
+        error: null
+      };
+    case UPDATE_PROFILE:
+      return {
+        ...state,
+        profile: state.profile.map(profile => (profile._id === payload._id ? payload : profile))
+      };
     case PROFILE_ERROR:
       return {
         ...state,

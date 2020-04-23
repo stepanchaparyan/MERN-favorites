@@ -8,6 +8,8 @@ export const Container = styled.div`
   padding: 0 32px 50px 32px;
   font-weight: 600;
   font-size: 24px;
+  background-color: lightgray;
+  border-radius: 4px;
 `;
 
 export const Module = styled.div`
@@ -44,10 +46,9 @@ export const LoadingMessage = styled.h3`
 `;
 
 export const TextData = styled.div`
+  background: whiteSmoke;
+  border: 1px solid cadetBlue;
   width: 85%;
-  background-color: lightgray;
-  border-radius: 4px;
-  padding: 16px;
 `;
 
 export const ProfileData = styled.div`
@@ -74,15 +75,63 @@ export const ProfileImage = styled.img`
   height: 50px;
 `;
 
-export const Button = styled.button`
-  border: 0;
-  padding: 6px 0;
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const Input = styled.input`
+  border: 0px;
+  width: 200px;
+  padding: 8px 10px;
+  margin: 4px;
   outline: none;
-  background-color: cadetblue;
+  border-radius: 4px;
+
+  &[type='submit'] {
+    width: 50%;
+    border: 0;
+    background-color: ${props => props.theme.color};
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 20px;
+    border-radius: 5%;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
+  &[type='button'] {
+    width: 35%;
+    border: 0;
+    background-color: gray;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 5%;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+`;
+
+export const Select = styled.select`
+  width: 220px;
+  background: white;
+  height: 32px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  padding-left: 5px;
+  margin: 4px;
+`;
+
+export const Option = styled.option`
+  color: black;
+  height: 47px;
+  padding: 20px;
   font-size: 18px;
-  margin-top: 24px;
-  cursor: pointer;
-  width: 40%;
-  font-weight: 600;
-  border-radius: 4%;
+  color: ${props => props.theme.color};
+`;
+
+export const DefaultOption = styled.option`
+  display: none;
 `;
