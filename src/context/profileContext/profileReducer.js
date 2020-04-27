@@ -56,7 +56,8 @@ export default (state, { type, payload }) => {
     case UPDATE_PROFILE:
       return {
         ...state,
-        profile: state.profile.map(profile => (profile._id === payload._id ? payload : profile))
+        profile: state.profile.map(profile => (profile._id === payload._id ? payload : profile)),
+        loading: false
       };
     case PROFILE_ERROR:
       return {

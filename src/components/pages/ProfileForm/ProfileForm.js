@@ -8,7 +8,10 @@ import {
   Input,
   Select,
   Option,
-  DefaultOption
+  DefaultOption,
+  ProfileData,
+  Text,
+  DatePickerStyled
 } from './ProfileFormStyled';
 import Img from '../../../assets/elephant.png';
 
@@ -17,30 +20,34 @@ const ProfileForm = () => {
 
   const { updateProfile, editProfile, toggle_Form, toggleForm } = context;
 
+  const [newProfile, setProfile] = useState(editProfile);
+
   useEffect(() => {
     setProfile(editProfile);
   }, [context]);
 
-  const [profile, setProfile] = useState({
-    name: '',
-    surname: '',
-    gender: '',
-    birthDay: '',
-    phone: ''
-  });
+  const { name, surname, email, gender, birthDay, phone } = newProfile;
 
-  const { name, surname, gender, birthDay, phone } = profile;
+  const [birthDate, setBirthDate] = useState(Date.parse(birthDay));
+
+  const setNewDate = date => {
+    setBirthDate(date);
+    setProfile({
+      ...newProfile,
+      birthDay: date
+    });
+  };
 
   const onchange = e => {
     setProfile({
-      ...profile,
+      ...newProfile,
       [e.target.name]: e.target.value
     });
   };
 
   const onsubmit = e => {
     e.preventDefault();
-    updateProfile(profile);
+    updateProfile(newProfile);
     toggle_Form(!toggleForm);
   };
 
@@ -53,35 +60,61 @@ const ProfileForm = () => {
       <Module>
         <ProfileImage src={Img}></ProfileImage>
         <Form onSubmit={onsubmit}>
-          <Input type="text" placeholder="Name" name="name" value={name} onChange={onchange} />
-          <Input
-            type="text"
-            placeholder="Surname"
-            name="surname"
-            value={surname}
-            onChange={onchange}
-          />
-          <Select value={gender} name="gender" onChange={onchange}>
-            <DefaultOption value="Other">Select category</DefaultOption>
-            <Option value="male">Male</Option>
-            <Option value="female">Female</Option>
-            <Option value="other">Other</Option>
-          </Select>
-          <Input
-            type="text"
-            placeholder="BirthDay"
-            name="birthDay"
-            value={birthDay}
-            onChange={onchange}
-          />
-          <Input
-            type="tel"
-            placeholder="123-45-678"
-            // pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-            name="phone"
-            value={phone}
-            onChange={onchange}
-          />
+          <ProfileData>
+            <Text>Name:</Text>
+            <Input type="text" placeholder="Name" name="name" value={name} onChange={onchange} />
+          </ProfileData>
+          <ProfileData>
+            <Text>Surname:</Text>
+            <Input
+              type="text"
+              placeholder="Surname"
+              name="surname"
+              value={surname}
+              onChange={onchange}
+            />
+          </ProfileData>
+          <ProfileData>
+            <Text>Email:</Text>
+            <Input
+              type="email"
+              placeholder="Email"
+              name="email"
+              value={email}
+              onChange={onchange}
+            />
+          </ProfileData>
+          <ProfileData>
+            <Text>Gender:</Text>
+            <Select value={gender} name="gender" onChange={onchange}>
+              <DefaultOption value="Other">Select category</DefaultOption>
+              <Option value="male">Male</Option>
+              <Option value="female">Female</Option>
+              <Option value="other">Other</Option>
+            </Select>
+          </ProfileData>
+          <ProfileData>
+            <Text>BirthDay:</Text>
+            <DatePickerStyled
+              selected={birthDate}
+              onChange={date => setNewDate(date)}
+              peekNextMonth
+              showMonthDropdown
+              showYearDropdown
+              dropdownMode="select"
+            />
+          </ProfileData>
+          <ProfileData>
+            <Text>Phone:</Text>
+            <Input
+              type="tel"
+              placeholder="93123456"
+              pattern="[0-9]{8}"
+              name="phone"
+              value={phone}
+              onChange={onchange}
+            />
+          </ProfileData>
           <Input type="submit" value={'Update'} />
           <Input onClick={cancelEdit} type="button" value="Cancel" />
         </Form>

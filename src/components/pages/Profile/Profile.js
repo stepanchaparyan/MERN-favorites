@@ -15,7 +15,8 @@ import {
   Text,
   Data,
   ProfileImage,
-  Button
+  Button,
+  ReactTooltipStyled
 } from './ProfileStyled';
 import Img from '../../../assets/elephant.png';
 
@@ -60,6 +61,16 @@ const Profile = () => {
                 <Data>{profile.surname}</Data>
               </ProfileData>
               <ProfileData>
+                <Text>Email:</Text>
+                <Data
+                  data-tip={profile.email}
+                  data-arrow-color="cadetblue"
+                  data-background-color="cadetblue"
+                >
+                  {profile.email}
+                </Data>
+              </ProfileData>
+              <ProfileData>
                 <Text>Gender:</Text>
                 <Data>{profile.gender}</Data>
               </ProfileData>
@@ -72,6 +83,7 @@ const Profile = () => {
                 <Data>{profile.phone}</Data>
               </ProfileData>
             </TextData>
+            <ReactTooltipStyled place="right" effect="solid" />
             <Button onClick={toggle}>Edit Card</Button>
           </>
         )}

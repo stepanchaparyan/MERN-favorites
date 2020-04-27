@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export const Container = styled.div`
   display: flex;
@@ -56,11 +58,13 @@ export const ProfileData = styled.div`
   font-size: 20px;
   padding: 8px;
   width: 100%;
+  align-items: center;
 `;
 
 export const Text = styled.div`
   color: black;
-  width: 45%;
+  width: 40%;
+  font-size: 16px;
 `;
 
 export const Data = styled.div`
@@ -116,7 +120,7 @@ export const Input = styled.input`
 export const Select = styled.select`
   width: 220px;
   background: white;
-  height: 32px;
+  height: 30px;
   outline: none;
   border: none;
   border-radius: 4px;
@@ -134,4 +138,14 @@ export const Option = styled.option`
 
 export const DefaultOption = styled.option`
   display: none;
+`;
+
+export const DatePickerStyled = styled(DatePicker)`
+  width: 190px;
+  height: 30px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  padding-left: 8px;
+  margin: 4px;
 `;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import ReactTooltip from 'react-tooltip';
 
 export const Container = styled.div`
   display: flex;
@@ -85,4 +86,9 @@ export const Button = styled.button`
   width: 40%;
   font-weight: 600;
   border-radius: 4%;
+`;
+
+export const ReactTooltipStyled = styled(ReactTooltip)`
+  padding: 4px 6px;
+  border-radius: 6px;
 `;
