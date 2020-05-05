@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from 'react';
-import Message from './Message';
 import Progress from './Progress';
 import ProfileContext from '../../../context/profileContext/profileContext';
 import {
@@ -82,8 +81,6 @@ const FileUpload = () => {
 
   return (
     <Container>
-      {message ? <Message msg={message} /> : null}
-
       <form onSubmit={onSubmit}>
         <ProfileImage src={require(`../../../assets/${image}`)} />
         <LabelEdit htmlFor="file-edit">

@@ -3,6 +3,7 @@ import AuthContext from '../../../context/authContext/authContext';
 import ProfileContext from '../../../context/profileContext/profileContext';
 import ProfileForm from '../ProfileForm/ProfileForm';
 import FileUpload from '../ProfileForm/FileUpload';
+import Message from '../ProfileForm/Message';
 import moment from 'moment';
 import {
   Container,
@@ -25,7 +26,7 @@ import Img from '../../../assets/elephant.png';
 
 const Profile = () => {
   const { loadUser } = useContext(AuthContext);
-  let { loading, getProfile, profile, edit_Profile, toggle_Form, toggleForm } = useContext(
+  let { loading, getProfile, profile, edit_Profile, toggle_Form, toggleForm, message } = useContext(
     ProfileContext
   );
 
@@ -50,6 +51,7 @@ const Profile = () => {
   return (
     <Container>
       <Module>
+        {message ? <Message msg={message} /> : null}
         <WelcomeText>Profile page</WelcomeText>
         {!toggleForm && (
           <>

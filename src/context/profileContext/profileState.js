@@ -157,6 +157,7 @@ const ProfileState = props => {
         payload: res.data
       });
       set_message('File Uploaded');
+      setTimeout(() => set_message(null), 10000);
     } catch (err) {
       dispatch({
         type: FILE_ERROR,
