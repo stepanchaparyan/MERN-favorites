@@ -6,7 +6,11 @@ import {
   UPDATE_PROFILE,
   GET_PROFILE,
   PROFILE_ERROR,
-  TOGGLE_FORM
+  TOGGLE_FORM,
+  UPDATE_FILE,
+  FILE_ERROR,
+  SET_UPLOAD_PERSENTAGE,
+  SET_MESSAGE
   // CLEAR_ERRORS,
   // FILTER_FAVITEM,
   // CLEAR_FILTER,
@@ -63,6 +67,29 @@ export default (state, { type, payload }) => {
       return {
         ...state,
         error: payload
+      };
+
+    case UPDATE_FILE:
+      return {
+        ...state,
+        uploadedFile: payload
+      };
+    case FILE_ERROR:
+      return {
+        ...state,
+        error: payload
+      };
+
+    case SET_UPLOAD_PERSENTAGE:
+      return {
+        ...state,
+        uploadPercentage: payload
+      };
+
+    case SET_MESSAGE:
+      return {
+        ...state,
+        message: payload
       };
     // case CLEAR_ERRORS:
     //   return {

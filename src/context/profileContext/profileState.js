@@ -11,7 +11,11 @@ import {
   UPDATE_PROFILE,
   GET_PROFILE,
   PROFILE_ERROR,
-  TOGGLE_FORM
+  TOGGLE_FORM,
+  UPDATE_FILE,
+  FILE_ERROR,
+  SET_UPLOAD_PERSENTAGE,
+  SET_MESSAGE
   // CLEAR_ERRORS,
   // CLEAR_FILTER,
   // CLEAR_SEARCH_FILTER
@@ -23,7 +27,10 @@ const ProfileState = props => {
     loading: true,
     profile: [],
     error: null,
-    toggleForm: false
+    toggleForm: false,
+    uploadedFile: null,
+    uploadPercentage: 0,
+    message: null
   };
   const [state, dispatch] = useReducer(ProfileReducer, intialState);
 
@@ -116,6 +123,53 @@ const ProfileState = props => {
     });
   };
 
+  const set_uploadPercentage = progress => {
+    dispatch({
+      type: SET_UPLOAD_PERSENTAGE,
+      payload: progress
+    });
+  };
+
+  const set_message = message => {
+    dispatch({
+      type: SET_MESSAGE,
+      payload: message
+    });
+  };
+
+  const update_File = async formData => {
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
+      onUploadProgress: progressEvent => {
+        const progress = parseInt(Math.round((progressEvent.loaded * 100) / progressEvent.total));
+        set_uploadPercentage(progress);
+        if (progress === 100) {
+          setTimeout(() => set_uploadPercentage(0), 3000);
+        }
+      }
+    };
+    try {
+      const res = await axios.post('/upload', formData, config);
+      dispatch({
+        type: UPDATE_FILE,
+        payload: res.data
+      });
+      set_message('File Uploaded');
+    } catch (err) {
+      dispatch({
+        type: FILE_ERROR,
+        payload: err.response.data.errors
+      });
+      if (err.response.status === 500) {
+        set_message('There was a problem with the server');
+      } else {
+        set_message(err.response.data.msg);
+      }
+    }
+  };
+
   return (
     <ProfileContext.Provider
       value={{
@@ -124,13 +178,19 @@ const ProfileState = props => {
         loading: state.loading,
         editProfile: state.editProfile,
         toggleForm: state.toggleForm,
+        uploadedFile: state.uploadedFile,
+        uploadPercentage: state.uploadPercentage,
+        message: state.message,
         // addFavItem,
         // clearEdit,
         toggle_Form,
         edit_Profile,
         updateProfile,
         // clearErrors,
-        getProfile
+        getProfile,
+        update_File,
+        set_uploadPercentage,
+        set_message
       }}
     >
       {props.children}

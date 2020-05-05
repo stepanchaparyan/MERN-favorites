@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Message from './Message';
 import Progress from './Progress';
-import axios from 'axios';
 import ProfileContext from '../../../context/profileContext/profileContext';
 import {
   Container,
@@ -28,7 +27,14 @@ import Modal from 'react-modal';
 
 const FileUpload = () => {
   const context = useContext(ProfileContext);
-  const { updateProfile, editProfile } = context;
+  const {
+    updateProfile,
+    editProfile,
+    update_File,
+    uploadedFile,
+    uploadPercentage,
+    message
+  } = context;
   const [newProfile, setProfile] = useState(editProfile);
 
   useEffect(() => {
@@ -38,9 +44,6 @@ const FileUpload = () => {
   const { image } = newProfile;
   const [file, setFile] = useState('');
   const [filename, setFilename] = useState('');
-  const [uploadedFile, setUploadedFile] = useState(null);
-  const [message, setMessage] = useState('');
-  const [uploadPercentage, setUploadPercentage] = useState(0);
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const onChange = e => {
@@ -48,38 +51,11 @@ const FileUpload = () => {
     setFilename(e.target.files[0].name);
   };
 
-  const onSubmit = async e => {
+  const onSubmit = e => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('file', file);
-
-    try {
-      const res = await axios.post('/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        },
-        onUploadProgress: progressEvent => {
-          setUploadPercentage(
-            parseInt(Math.round((progressEvent.loaded * 100) / progressEvent.total))
-          );
-
-          // Clear percentage
-          setTimeout(() => setUploadPercentage(0), 10000);
-        }
-      });
-
-      const { fileName, filePath } = res.data;
-
-      setUploadedFile({ fileName, filePath });
-
-      setMessage('File Uploaded');
-    } catch (err) {
-      if (err.response.status === 500) {
-        setMessage('There was a problem with the server');
-      } else {
-        setMessage(err.response.data.msg);
-      }
-    }
+    update_File(formData);
   };
 
   const setImagePath = () => {
