@@ -16,7 +16,7 @@ export const Module = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 16px;
-  width: 50%;
+  width: 60%;
 `;
 
 export const WelcomeText = styled.div`
@@ -44,10 +44,16 @@ export const LoadingMessage = styled.h3`
   color: ${props => props.theme.color};
 `;
 
-export const TextData = styled.div`
-  width: 85%;
-  background-color: lightgray;
+export const Info = styled.div`
+  display: flex;
+  background-color: #f8f8f8;
   border-radius: 4px;
+  padding: 16px;
+  width: 100%;
+`;
+
+export const InfoData = styled.div`
+  width: 100%;
   padding: 16px;
 `;
 
@@ -55,7 +61,6 @@ export const ProfileData = styled.div`
   display: flex;
   font-size: 20px;
   padding: 8px;
-  width: 100%;
 `;
 
 export const Text = styled.div`
@@ -68,11 +73,15 @@ export const Data = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 200px;
-  width: 50%;
+  width: 55%;
 `;
 
 export const ProfileImage = styled.img`
-  height: 50px;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  align-self: center;
+  padding: 0 64px 0 56px;
 `;
 
 export const Button = styled.button`
@@ -91,4 +100,8 @@ export const Button = styled.button`
 export const ReactTooltipStyled = styled(ReactTooltip)`
   padding: 4px 6px;
   border-radius: 6px;
+`;
+
+export const Forms = styled.div`
+  display: flex;
 `;

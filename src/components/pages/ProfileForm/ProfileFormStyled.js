@@ -75,10 +75,6 @@ export const Data = styled.div`
   width: 50%;
 `;
 
-export const ProfileImage = styled.img`
-  height: 50px;
-`;
-
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -94,7 +90,7 @@ export const Input = styled.input`
   border-radius: 4px;
 
   &[type='submit'] {
-    width: 50%;
+    width: 90%;
     border: 0;
     background-color: ${props => props.theme.color};
     font-weight: 600;
@@ -106,7 +102,7 @@ export const Input = styled.input`
   }
 
   &[type='button'] {
-    width: 35%;
+    width: 90%;
     border: 0;
     background-color: gray;
     font-weight: 600;
