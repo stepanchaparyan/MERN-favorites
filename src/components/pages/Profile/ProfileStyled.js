@@ -88,7 +88,7 @@ export const Button = styled.button`
   border: 0;
   padding: 6px 0;
   outline: none;
-  background-color: cadetblue;
+  background-color: ${props => props.theme.color};
   font-size: 18px;
   margin-top: 24px;
   cursor: pointer;

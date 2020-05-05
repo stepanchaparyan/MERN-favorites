@@ -1,18 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Container, ProgressBar } from './ProgressStyled';
 
 const Progress = ({ percentage }) => {
-  console.log('percentage', percentage);
   return (
-    <div className="progress">
-      <div
-        className="progress-bar progress-bar-striped bg-success"
-        role="progressbar"
-        style={{ width: `${percentage}%` }}
-      >
-        {percentage}%
-      </div>
-    </div>
+    <Container>
+      <ProgressBar width={percentage}>{percentage}%</ProgressBar>
+    </Container>
   );
 };
 

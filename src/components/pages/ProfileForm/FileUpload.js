@@ -26,14 +26,7 @@ import Modal from 'react-modal';
 
 const FileUpload = () => {
   const context = useContext(ProfileContext);
-  const {
-    updateProfile,
-    editProfile,
-    update_File,
-    uploadedFile,
-    uploadPercentage,
-    message
-  } = context;
+  const { updateProfile, editProfile, update_File, uploadedFile, uploadPercentage } = context;
   const [newProfile, setProfile] = useState(editProfile);
 
   useEffect(() => {
@@ -89,7 +82,7 @@ const FileUpload = () => {
         <InputHidden id="file-edit" type="file" onChange={onChange} />
         <Filename>{filename}</Filename>
 
-        {filename && (
+        {filename && !uploadedFile && (
           <>
             <Progress percentage={uploadPercentage} />
             <LabelUpload htmlFor="file-upload">
