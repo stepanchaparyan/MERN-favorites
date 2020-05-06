@@ -26,7 +26,15 @@ import Modal from 'react-modal';
 
 const FileUpload = () => {
   const context = useContext(ProfileContext);
-  const { updateProfile, editProfile, update_File, uploadedFile, uploadPercentage } = context;
+  const {
+    updateProfile,
+    editProfile,
+    update_File,
+    uploadedFile,
+    remove_file,
+    uploadPercentage
+  } = context;
+
   const [newProfile, setProfile] = useState(editProfile);
 
   useEffect(() => {
@@ -34,8 +42,8 @@ const FileUpload = () => {
   }, []);
 
   const { image } = newProfile;
-  const [file, setFile] = useState('');
-  const [filename, setFilename] = useState('');
+  const [file, setFile] = useState(null);
+  const [filename, setFilename] = useState(null);
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const onChange = e => {
@@ -50,7 +58,7 @@ const FileUpload = () => {
     update_File(formData);
   };
 
-  const setImagePath = () => {
+  const setImage = () => {
     setProfile({
       ...newProfile,
       image: filename
@@ -58,9 +66,11 @@ const FileUpload = () => {
     openModal(true);
   };
 
-  const onChangePath = () => {
+  const onConfirm = () => {
     updateProfile(newProfile);
-    closeModal();
+    remove_file();
+    setFilename(null);
+    setIsOpen(false);
   };
 
   Modal.setAppElement('#root');
@@ -71,6 +81,11 @@ const FileUpload = () => {
 
   const closeModal = () => {
     setIsOpen(false);
+    setProfile({
+      ...newProfile,
+      image: editProfile.image
+    });
+    remove_file();
   };
 
   return (
@@ -93,7 +108,7 @@ const FileUpload = () => {
           </>
         )}
       </form>
-      {uploadedFile && <Input type="button" value="Update Image" onClick={setImagePath} />}
+      {uploadedFile && <Input type="button" value="Update Image" onClick={setImage} />}
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -107,7 +122,7 @@ const FileUpload = () => {
           </ModalTitleContainer>
           <ModalTextContainer>Please confirm, if you want to change your image</ModalTextContainer>
           <ModalButtonsContainer>
-            <ButtonConfirm onClick={onChangePath}>Confirm</ButtonConfirm>
+            <ButtonConfirm onClick={onConfirm}>Confirm</ButtonConfirm>
             <ButtonCancel onClick={closeModal}>Cancel</ButtonCancel>
           </ModalButtonsContainer>
         </ModalContainer>

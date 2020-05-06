@@ -13,6 +13,7 @@ import {
   PROFILE_ERROR,
   TOGGLE_FORM,
   UPDATE_FILE,
+  REMOVE_FILE,
   FILE_ERROR,
   SET_UPLOAD_PERSENTAGE,
   SET_MESSAGE
@@ -171,6 +172,12 @@ const ProfileState = props => {
     }
   };
 
+  const remove_file = () => {
+    dispatch({
+      type: REMOVE_FILE
+    });
+  };
+
   return (
     <ProfileContext.Provider
       value={{
@@ -190,6 +197,7 @@ const ProfileState = props => {
         // clearErrors,
         getProfile,
         update_File,
+        remove_file,
         set_uploadPercentage,
         set_message
       }}

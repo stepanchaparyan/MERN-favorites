@@ -10,7 +10,8 @@ import {
   UPDATE_FILE,
   FILE_ERROR,
   SET_UPLOAD_PERSENTAGE,
-  SET_MESSAGE
+  SET_MESSAGE,
+  REMOVE_FILE
   // CLEAR_ERRORS,
   // FILTER_FAVITEM,
   // CLEAR_FILTER,
@@ -78,6 +79,11 @@ export default (state, { type, payload }) => {
       return {
         ...state,
         error: payload
+      };
+    case REMOVE_FILE:
+      return {
+        ...state,
+        uploadedFile: null
       };
 
     case SET_UPLOAD_PERSENTAGE:
