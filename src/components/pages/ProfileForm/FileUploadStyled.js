@@ -73,11 +73,11 @@ export const LabelEdit = styled.label`
 export const LabelUpload = styled.label`
   cursor: pointer;
   color: black;
-  font-size: 21px;
+  font-size: 18px;
   border: 1px black;
   background-color: lightgrey;
-  border-radius: 3px;
-  padding: 3px 6px 0 6px;
+  border-radius: 2px;
+  padding: 6px 8px 2px 6px;
 `;
 
 export const Filename = styled.div`
@@ -97,7 +97,8 @@ export const customStyles = {
     flexDirection: 'column',
     padding: '0',
     width: '350px',
-    height: '200px'
+    height: '200px',
+    backgroundColor: '#f8f8f8'
   }
 };
 
@@ -120,6 +121,7 @@ export const ButtonClose = styled.button`
   border-radius: 5%;
   cursor: pointer;
   margin-right: 8px;
+  outline: none;
 `;
 
 export const ButtonCancel = styled.button`
@@ -135,7 +137,6 @@ export const ButtonCancel = styled.button`
 `;
 
 export const ModalContainer = styled.div`
-  background-color: #f8f8f8;
   display: flex;
   flex-direction: column;
 `;
@@ -155,6 +156,13 @@ export const ModalTitle = styled.div`
 export const ModalTextContainer = styled.div`
   display: flex;
   min-height: 80px;
+  justify-content: center;
+  color: ${props => props.theme.color};
+  font-size: 18px;
+  font-weight: bold;
+  align-items: center;
+  padding: 0 4%;
+  text-align: center;
 `;
 
 export const ModalButtonsContainer = styled.div`

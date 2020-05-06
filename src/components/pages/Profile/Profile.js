@@ -17,6 +17,7 @@ import {
   InfoData,
   Text,
   Data,
+  ImageContainer,
   ProfileImage,
   Button,
   ReactTooltipStyled,
@@ -56,7 +57,9 @@ const Profile = () => {
         {!toggleForm && (
           <>
             <Info>
-              <ProfileImage src={require(`../../../assets/${profile.image}`)} />
+              <ImageContainer>
+                <ProfileImage src={require(`../../../assets/${profile.image}`)} />
+              </ImageContainer>
               <InfoData>
                 <ProfileData>
                   <Text>Name:</Text>

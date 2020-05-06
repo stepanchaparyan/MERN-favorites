@@ -76,12 +76,16 @@ export const Data = styled.div`
   width: 55%;
 `;
 
+export const ImageContainer = styled.div`
+  align-self: center;
+`;
+
 export const ProfileImage = styled.img`
-  height: 120px;
   width: 120px;
+  height: 120px;
   border-radius: 50%;
   align-self: center;
-  padding: 0 64px 0 56px;
+  padding: 0 24px;
 `;
 
 export const Button = styled.button`
@@ -94,7 +98,7 @@ export const Button = styled.button`
   cursor: pointer;
   width: 40%;
   font-weight: 600;
-  border-radius: 4%;
+  border-radius: 3%;
 `;
 
 export const ReactTooltipStyled = styled(ReactTooltip)`

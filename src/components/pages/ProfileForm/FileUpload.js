@@ -60,6 +60,7 @@ const FileUpload = () => {
 
   const onChangePath = () => {
     updateProfile(newProfile);
+    closeModal();
   };
 
   Modal.setAppElement('#root');
@@ -104,7 +105,7 @@ const FileUpload = () => {
             <ModalTitle>Confirm</ModalTitle>
             <ButtonClose onClick={closeModal}>X</ButtonClose>
           </ModalTitleContainer>
-          <ModalTextContainer></ModalTextContainer>
+          <ModalTextContainer>Please confirm, if you want to change your image</ModalTextContainer>
           <ModalButtonsContainer>
             <ButtonConfirm onClick={onChangePath}>Confirm</ButtonConfirm>
             <ButtonCancel onClick={closeModal}>Cancel</ButtonCancel>

@@ -4,7 +4,6 @@ export const Container = styled.div`
   background-color: lightGray;
   height: 14px;
   width: 100px;
-  margin-left: 4px;
 `;
 
 export const ProgressBar = styled.div`
