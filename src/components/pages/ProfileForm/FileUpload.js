@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import Progress from './Progress';
+import Progress from '../../Progress/Progress';
 import ProfileContext from '../../../context/profileContext/profileContext';
 import {
   Container,
