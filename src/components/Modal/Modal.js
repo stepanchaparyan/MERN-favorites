@@ -19,8 +19,8 @@ const CustomModal = ({
   onConfirm,
   title,
   text,
-  buttonConfirm,
-  buttonCancel
+  buttonConfirmText,
+  buttonCancelText
 }) => {
   return (
     <Modal
@@ -36,8 +36,8 @@ const CustomModal = ({
         </ModalTitleContainer>
         <ModalTextContainer>{text}</ModalTextContainer>
         <ModalButtonsContainer>
-          <ButtonConfirm onClick={onConfirm}>{buttonConfirm}</ButtonConfirm>
-          <ButtonCancel onClick={closeModal}>{buttonCancel}</ButtonCancel>
+          <ButtonConfirm onClick={onConfirm}>{buttonConfirmText}</ButtonConfirm>
+          <ButtonCancel onClick={closeModal}>{buttonCancelText}</ButtonCancel>
         </ModalButtonsContainer>
       </ModalContainer>
     </Modal>
@@ -45,20 +45,20 @@ const CustomModal = ({
 };
 
 CustomModal.propTypes = {
-  modalIsOpen: PropTypes.func.isRequired,
+  modalIsOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired,
   title: PropTypes.string,
   text: PropTypes.string,
-  buttonConfirm: PropTypes.string,
-  buttonCancel: PropTypes.string
+  buttonConfirmText: PropTypes.string,
+  buttonCancelText: PropTypes.string
 };
 
 CustomModal.defaultProps = {
   title: 'Confirm',
   text: 'Please confirm, if you want to change your image',
-  buttonConfirm: 'Confirm',
-  buttonCancel: 'Cancel'
+  buttonConfirmText: 'Confirm',
+  buttonCancelText: 'Cancel'
 };
 
 export default CustomModal;
