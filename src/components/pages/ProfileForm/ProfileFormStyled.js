@@ -82,7 +82,7 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  border: 0px;
+  border: 0;
   width: 200px;
   padding: 8px 10px;
   margin: 4px;
@@ -91,23 +91,19 @@ export const Input = styled.input`
 
   &[type='submit'] {
     width: 90%;
-    border: 0;
     background-color: ${props => props.theme.color};
     font-weight: 600;
     font-size: 16px;
-    margin-top: 20px;
-    border-radius: 5%;
     cursor: pointer;
+    margin-top: 20px;
     margin-bottom: 10px;
   }
 
   &[type='button'] {
     width: 90%;
-    border: 0;
     background-color: gray;
     font-weight: 600;
     font-size: 16px;
-    border-radius: 5%;
     cursor: pointer;
     margin-bottom: 10px;
   }

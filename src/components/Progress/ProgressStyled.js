@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background-color: lightGray;
+  border-radius: 4px;
   height: 14px;
   width: 100px;
 `;

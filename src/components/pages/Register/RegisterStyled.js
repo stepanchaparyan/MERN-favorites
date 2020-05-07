@@ -36,7 +36,7 @@ export const Input = styled.input`
     font-weight: 600;
     font-size: 16px;
     margin-top: 20px;
-    border-radius: 3%;
+    border-radius: 4px;
     cursor: pointer;
   }
 `;

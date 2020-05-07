@@ -45,7 +45,6 @@ export const Input = styled.input`
     font-weight: 600;
     font-size: 16px;
     margin-top: 20px;
-    border-radius: 5%;
     cursor: pointer;
     margin-bottom: 10px;
   }
@@ -56,7 +55,6 @@ export const Input = styled.input`
     background-color: gray;
     font-weight: 600;
     font-size: 16px;
-    border-radius: 5%;
     cursor: pointer;
     margin-bottom: 10px;
   }

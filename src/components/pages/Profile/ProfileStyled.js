@@ -98,7 +98,7 @@ export const Button = styled.button`
   cursor: pointer;
   width: 40%;
   font-weight: 600;
-  border-radius: 3%;
+  border-radius: 4px;
 `;
 
 export const ReactTooltipStyled = styled(ReactTooltip)`

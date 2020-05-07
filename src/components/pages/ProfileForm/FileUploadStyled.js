@@ -10,33 +10,14 @@ export const Container = styled.div`
 
 export const Input = styled.input`
   border: 0px;
-  width: 200px;
   padding: 8px 10px;
-  margin: 4px;
   outline: none;
+  background-color: ${props => props.theme.color};
+  font-weight: 600;
+  font-size: 16px;
   border-radius: 4px;
-
-  &[type='submit'] {
-    width: 50%;
-    border: 0;
-    background-color: ${props => props.theme.color};
-    font-weight: 600;
-    font-size: 16px;
-    margin-top: 20px;
-    border-radius: 5%;
-    cursor: pointer;
-    margin-bottom: 10px;
-  }
-  &[type='button'] {
-    width: 70%;
-    border: 0;
-    background-color: ${props => props.theme.color};
-    font-weight: 600;
-    font-size: 16px;
-    border-radius: 5%;
-    cursor: pointer;
-    margin: 10px;
-  }
+  cursor: pointer;
+  margin: 10px;
 `;
 
 export const InputHidden = styled.input`
@@ -55,17 +36,6 @@ export const IconEdit = styled.img`
   padding: 16px 5px 0 0;
 `;
 
-export const Button = styled.button`
-  width: 35%;
-  border: 0;
-  background-color: gray;
-  font-weight: 600;
-  font-size: 16px;
-  border-radius: 5%;
-  cursor: pointer;
-  margin-bottom: 10px;
-`;
-
 export const LabelEdit = styled.label`
   cursor: pointer;
 `;
@@ -76,99 +46,11 @@ export const LabelUpload = styled.label`
   font-size: 18px;
   border: 1px black;
   background-color: lightgrey;
-  border-radius: 2px;
+  border-radius: 4px;
   padding: 6px 8px 2px 6px;
 `;
 
 export const Filename = styled.div`
   font-size: 12px;
   margin: 12px 0;
-`;
-
-export const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '0',
-    width: '350px',
-    height: '200px',
-    backgroundColor: '#f8f8f8'
-  }
-};
-
-export const ButtonConfirm = styled.button`
-  border: 0;
-  background-color: ${props => props.theme.color};
-  font-weight: 600;
-  font-size: 16px;
-  border-radius: 5%;
-  cursor: pointer;
-  margin: 12px;
-  padding: 8px;
-`;
-
-export const ButtonClose = styled.button`
-  background-color: ${props => props.theme.color};
-  border: 0;
-  font-weight: 600;
-  font-size: 16px;
-  border-radius: 5%;
-  cursor: pointer;
-  margin-right: 8px;
-  outline: none;
-`;
-
-export const ButtonCancel = styled.button`
-  width: 30%;
-  border: 0;
-  background-color: lightgrey;
-  font-weight: 600;
-  font-size: 16px;
-  border-radius: 5%;
-  cursor: pointer;
-  margin: 12px;
-  padding: 8px;
-`;
-
-export const ModalContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const ModalTitleContainer = styled.div`
-  background-color: ${props => props.theme.color};
-  display: flex;
-  justify-content: space-between;
-`;
-
-export const ModalTitle = styled.div`
-  font-size: 20px;
-  padding: 16px;
-  font-weight: bold;
-`;
-
-export const ModalTextContainer = styled.div`
-  display: flex;
-  min-height: 80px;
-  justify-content: center;
-  color: ${props => props.theme.color};
-  font-size: 18px;
-  font-weight: bold;
-  align-items: center;
-  padding: 0 4%;
-  text-align: center;
-`;
-
-export const ModalButtonsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  border-top: 1px solid lightGray;
-  width: 94%;
-  margin: 0 3%;
 `;

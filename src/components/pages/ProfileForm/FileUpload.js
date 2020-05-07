@@ -9,20 +9,12 @@ import {
   LabelEdit,
   LabelUpload,
   IconEdit,
-  Filename,
-  customStyles,
-  ButtonConfirm,
-  ButtonClose,
-  ButtonCancel,
-  ModalContainer,
-  ModalTitleContainer,
-  ModalTitle,
-  ModalTextContainer,
-  ModalButtonsContainer
+  Filename
 } from './FileUploadStyled';
 import EditIcon from '../../../assets/icon-edit.png';
 import UploadIcon from '../../../assets/icon-upload.png';
 import Modal from 'react-modal';
+import CustomModal from '../../Modal/Modal';
 
 const FileUpload = () => {
   const context = useContext(ProfileContext);
@@ -35,16 +27,16 @@ const FileUpload = () => {
     uploadPercentage
   } = context;
 
+  Modal.setAppElement('#root');
   const [newProfile, setProfile] = useState(editProfile);
-
-  useEffect(() => {
-    setProfile(editProfile);
-  }, []);
-
   const { image } = newProfile;
   const [file, setFile] = useState(null);
   const [filename, setFilename] = useState(null);
   const [modalIsOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    setProfile(editProfile);
+  }, []);
 
   const onChange = e => {
     setFile(e.target.files[0]);
@@ -72,8 +64,6 @@ const FileUpload = () => {
     setFilename(null);
     setIsOpen(false);
   };
-
-  Modal.setAppElement('#root');
 
   const openModal = () => {
     setIsOpen(true);
@@ -109,24 +99,11 @@ const FileUpload = () => {
         )}
       </form>
       {uploadedFile && <Input type="button" value="Update Image" onClick={setImage} />}
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Modal"
-      >
-        <ModalContainer>
-          <ModalTitleContainer>
-            <ModalTitle>Confirm</ModalTitle>
-            <ButtonClose onClick={closeModal}>X</ButtonClose>
-          </ModalTitleContainer>
-          <ModalTextContainer>Please confirm, if you want to change your image</ModalTextContainer>
-          <ModalButtonsContainer>
-            <ButtonConfirm onClick={onConfirm}>Confirm</ButtonConfirm>
-            <ButtonCancel onClick={closeModal}>Cancel</ButtonCancel>
-          </ModalButtonsContainer>
-        </ModalContainer>
-      </Modal>
+      <CustomModal
+        closeModal={closeModal}
+        onConfirm={onConfirm}
+        modalIsOpen={modalIsOpen}
+      ></CustomModal>
     </Container>
   );
 };

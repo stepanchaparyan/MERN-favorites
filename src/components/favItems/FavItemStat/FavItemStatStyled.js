@@ -10,6 +10,7 @@ export const Container = styled.div`
   cursor: pointer;
   background-color: WhiteSmoke;
   position: relative;
+  border-radius: 4px;
 `;
 
 export const Title = styled.div`
