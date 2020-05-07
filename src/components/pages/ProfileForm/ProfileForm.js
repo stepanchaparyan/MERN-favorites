@@ -3,7 +3,6 @@ import ProfileContext from '../../../context/profileContext/profileContext';
 import {
   Container,
   Module,
-  ProfileImage,
   Form,
   Input,
   Select,
@@ -13,7 +12,6 @@ import {
   Text,
   DatePickerStyled
 } from './ProfileFormStyled';
-import Img from '../../../assets/elephant.png';
 
 const ProfileForm = () => {
   const context = useContext(ProfileContext);
@@ -58,7 +56,6 @@ const ProfileForm = () => {
   return (
     <Container>
       <Module>
-        <ProfileImage src={Img}></ProfileImage>
         <Form onSubmit={onsubmit}>
           <ProfileData>
             <Text>Name:</Text>

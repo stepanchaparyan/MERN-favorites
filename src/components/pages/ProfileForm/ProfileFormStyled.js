@@ -75,10 +75,6 @@ export const Data = styled.div`
   width: 50%;
 `;
 
-export const ProfileImage = styled.img`
-  height: 50px;
-`;
-
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -86,7 +82,7 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  border: 0px;
+  border: 0;
   width: 200px;
   padding: 8px 10px;
   margin: 4px;
@@ -94,24 +90,20 @@ export const Input = styled.input`
   border-radius: 4px;
 
   &[type='submit'] {
-    width: 50%;
-    border: 0;
+    width: 90%;
     background-color: ${props => props.theme.color};
     font-weight: 600;
     font-size: 16px;
-    margin-top: 20px;
-    border-radius: 5%;
     cursor: pointer;
+    margin-top: 20px;
     margin-bottom: 10px;
   }
 
   &[type='button'] {
-    width: 35%;
-    border: 0;
+    width: 90%;
     background-color: gray;
     font-weight: 600;
     font-size: 16px;
-    border-radius: 5%;
     cursor: pointer;
     margin-bottom: 10px;
   }
