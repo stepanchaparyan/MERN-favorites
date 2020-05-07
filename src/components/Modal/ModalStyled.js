@@ -29,7 +29,7 @@ export const ButtonConfirm = styled.button`
 `;
 
 export const ButtonClose = styled.button`
-  background-color: ${props => props.theme.color};
+  background-color: ${props => (props.bgColor ? props.bgColor : props.theme.color)};
   border: 0;
   font-weight: 600;
   font-size: 16px;
@@ -42,7 +42,7 @@ export const ButtonClose = styled.button`
 export const ButtonCancel = styled.button`
   width: 30%;
   border: 0;
-  background-color: lightgrey;
+  background-color: ${props => (props.color ? props.color : 'lightgrey')};
   font-weight: 600;
   font-size: 16px;
   border-radius: 4px;
@@ -57,7 +57,7 @@ export const ModalContainer = styled.div`
 `;
 
 export const ModalTitleContainer = styled.div`
-  background-color: ${props => props.theme.color};
+  background-color: ${props => (props.bgColor ? props.bgColor : props.theme.color)};
   display: flex;
   justify-content: space-between;
 `;

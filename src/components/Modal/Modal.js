@@ -20,7 +20,9 @@ const CustomModal = ({
   title,
   text,
   buttonConfirmText,
-  buttonCancelText
+  buttonCancelText,
+  titleBgColor,
+  cancelButtonColor
 }) => {
   return (
     <Modal
@@ -30,14 +32,20 @@ const CustomModal = ({
       contentLabel="Modal"
     >
       <ModalContainer>
-        <ModalTitleContainer>
+        <ModalTitleContainer bgColor={titleBgColor}>
           <ModalTitle>{title}</ModalTitle>
-          <ButtonClose onClick={closeModal}>X</ButtonClose>
+          <ButtonClose onClick={closeModal} bgColor={titleBgColor}>
+            X
+          </ButtonClose>
         </ModalTitleContainer>
         <ModalTextContainer>{text}</ModalTextContainer>
         <ModalButtonsContainer>
-          <ButtonConfirm onClick={onConfirm}>{buttonConfirmText}</ButtonConfirm>
-          <ButtonCancel onClick={closeModal}>{buttonCancelText}</ButtonCancel>
+          {buttonConfirmText && (
+            <ButtonConfirm onClick={onConfirm}>{buttonConfirmText}</ButtonConfirm>
+          )}
+          <ButtonCancel onClick={closeModal} color={cancelButtonColor}>
+            {buttonCancelText}
+          </ButtonCancel>
         </ModalButtonsContainer>
       </ModalContainer>
     </Modal>
@@ -47,16 +55,19 @@ const CustomModal = ({
 CustomModal.propTypes = {
   modalIsOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
-  onConfirm: PropTypes.func.isRequired,
+  onConfirm: PropTypes.func,
   title: PropTypes.string,
   text: PropTypes.string,
   buttonConfirmText: PropTypes.string,
-  buttonCancelText: PropTypes.string
+  buttonCancelText: PropTypes.string,
+  titleBgColor: PropTypes.string,
+  cancelButtonColor: PropTypes.string
 };
 
 CustomModal.defaultProps = {
-  title: 'Confirm',
-  text: 'Please confirm, if you want to change your image',
+  onConfirm: () => {},
+  title: 'Modal',
+  text: 'Please confirm',
   buttonConfirmText: 'Confirm',
   buttonCancelText: 'Cancel'
 };

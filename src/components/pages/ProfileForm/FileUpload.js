@@ -31,6 +31,7 @@ const FileUpload = () => {
   const [newProfile, setProfile] = useState(editProfile);
   const { image } = newProfile;
   const [file, setFile] = useState(null);
+  const [modalType, setModalType] = useState(null);
   const [filename, setFilename] = useState(null);
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -39,8 +40,13 @@ const FileUpload = () => {
   }, []);
 
   const onChange = e => {
-    setFile(e.target.files[0]);
-    setFilename(e.target.files[0].name);
+    if (e.target.files[0].type === 'image/jpeg' || e.target.files[0] === 'image/png') {
+      setFile(e.target.files[0]);
+      setFilename(e.target.files[0].name);
+    } else {
+      setIsOpen(true);
+      setModalType('fileType');
+    }
   };
 
   const onSubmit = e => {
@@ -55,7 +61,8 @@ const FileUpload = () => {
       ...newProfile,
       image: filename
     });
-    openModal(true);
+    setIsOpen(true);
+    setModalType('confirm');
   };
 
   const onConfirm = () => {
@@ -63,10 +70,6 @@ const FileUpload = () => {
     remove_file();
     setFilename(null);
     setIsOpen(false);
-  };
-
-  const openModal = () => {
-    setIsOpen(true);
   };
 
   const closeModal = () => {
@@ -78,6 +81,11 @@ const FileUpload = () => {
     remove_file();
   };
 
+  const closeFileTypeModal = () => {
+    setIsOpen(false);
+    remove_file();
+  };
+
   return (
     <Container>
       <form onSubmit={onSubmit}>
@@ -86,6 +94,18 @@ const FileUpload = () => {
           <IconEdit src={EditIcon}></IconEdit>
         </LabelEdit>
         <InputHidden id="file-edit" type="file" onChange={onChange} />
+        {modalType === 'fileType' && (
+          <CustomModal
+            closeModal={closeFileTypeModal}
+            modalIsOpen={modalIsOpen}
+            buttonConfirmText={null}
+            buttonCancelText="OK"
+            title="Wrong extension"
+            text="Wrong extension of uploading file, please choose .jpg or .png format"
+            titleBgColor="indianred"
+            cancelButtonColor="cadetblue"
+          ></CustomModal>
+        )}
         <Filename>{filename}</Filename>
 
         {filename && !uploadedFile && (
@@ -99,11 +119,15 @@ const FileUpload = () => {
         )}
       </form>
       {uploadedFile && <Input type="button" value="Update Image" onClick={setImage} />}
-      <CustomModal
-        closeModal={closeModal}
-        onConfirm={onConfirm}
-        modalIsOpen={modalIsOpen}
-      ></CustomModal>
+      {modalType === 'confirm' && (
+        <CustomModal
+          closeModal={closeModal}
+          onConfirm={onConfirm}
+          modalIsOpen={modalIsOpen}
+          title="Confirm"
+          text="Please, confirm if you want to change your image"
+        ></CustomModal>
+      )}
     </Container>
   );
 };
