@@ -14,20 +14,24 @@ const profileSchema = new mongoose.Schema({
     required: true
   },
   surname: {
-    type: String
+    type: String,
+    default: 'Surname'
   },
   image: {
-    type: String
+    type: String,
+    default: 'avatar.jpg'
   },
   gender: {
-    type: String
+    type: String,
+    default: ''
   },
   birthDay: {
-    type: Date
+    type: Date,
+    default: new Date()
   },
-  phone: {
-    type: Number,
-    unique: true
+  phoneNumber: {
+    type: String,
+    default: '12345678'
   }
 });
 

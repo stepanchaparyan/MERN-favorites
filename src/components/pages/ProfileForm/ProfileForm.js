@@ -24,7 +24,7 @@ const ProfileForm = () => {
     setProfile(editProfile);
   }, [context]);
 
-  const { name, surname, email, gender, birthDay, phone } = newProfile;
+  const { name, surname, email, gender, birthDay, phoneNumber } = newProfile;
 
   const [birthDate, setBirthDate] = useState(Date.parse(birthDay));
 
@@ -107,8 +107,8 @@ const ProfileForm = () => {
               type="tel"
               placeholder="93123456"
               pattern="[0-9]{8}"
-              name="phone"
-              value={phone}
+              name="phoneNumber"
+              value={phoneNumber}
               onChange={onchange}
             />
           </ProfileData>

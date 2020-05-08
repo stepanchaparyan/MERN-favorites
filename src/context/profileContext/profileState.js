@@ -4,10 +4,8 @@ import axios from 'axios';
 import ProfileContext from './profileContext';
 import ProfileReducer from './profileReducer';
 import {
-  // REMOVE_FAVITEM,
-  // ADD_FAVITEM,
+  ADD_PROFILE,
   EDIT_PROFILE,
-  // CLEAR_EDIT,
   UPDATE_PROFILE,
   GET_PROFILE,
   PROFILE_ERROR,
@@ -17,9 +15,6 @@ import {
   FILE_ERROR,
   SET_UPLOAD_PERSENTAGE,
   SET_MESSAGE
-  // CLEAR_ERRORS,
-  // CLEAR_FILTER,
-  // CLEAR_SEARCH_FILTER
 } from '../types';
 
 const ProfileState = props => {
@@ -35,7 +30,7 @@ const ProfileState = props => {
   };
   const [state, dispatch] = useReducer(ProfileReducer, intialState);
 
-  // get favItems
+  // get profile
   const getProfile = async () => {
     try {
       const res = await axios.get('/profile');
@@ -51,31 +46,24 @@ const ProfileState = props => {
     }
   };
 
-  // Add FavItem
-  // const addFavItem = async favItem => {
-  //   const config = {
-  //     'Content-Type': 'application/json'
-  //   };
-  //   try {
-  //     const res = await axios.post('/favItem/add', favItem, config);
-  //     dispatch({
-  //       type: ADD_FAVITEM,
-  //       payload: res.data
-  //     });
-  //     dispatch({
-  //       type: TOGGLE_FORM,
-  //       payload: !state.toggleForm
-  //     });
-  //     dispatch({
-  //       type: CLEAR_ERRORS
-  //     });
-  //   } catch (err) {
-  //     dispatch({
-  //       type: FAVITEM_ERROR,
-  //       payload: err.response.data.errors
-  //     });
-  //   }
-  // };
+  // Add Profile
+  const addProfile = async profile => {
+    const config = {
+      'Content-Type': 'application/json'
+    };
+    try {
+      const res = await axios.post('/profile/add', profile, config);
+      dispatch({
+        type: ADD_PROFILE,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: err.response.data.errors
+      });
+    }
+  };
 
   // Update profile
   const updateProfile = async profile => {
@@ -105,17 +93,6 @@ const ProfileState = props => {
       payload: profile
     });
   };
-
-  // const clearEdit = () => {
-  //   dispatch({
-  //     type: CLEAR_EDIT
-  //   });
-  // };
-  // const clearErrors = () => {
-  //   dispatch({
-  //     type: CLEAR_ERRORS
-  //   });
-  // };
 
   const toggle_Form = () => {
     dispatch({
@@ -189,12 +166,10 @@ const ProfileState = props => {
         uploadedFile: state.uploadedFile,
         uploadPercentage: state.uploadPercentage,
         message: state.message,
-        // addFavItem,
-        // clearEdit,
+        addProfile,
         toggle_Form,
         edit_Profile,
         updateProfile,
-        // clearErrors,
         getProfile,
         update_File,
         remove_file,

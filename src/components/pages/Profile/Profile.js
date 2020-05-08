@@ -26,20 +26,29 @@ import {
 import Img from '../../../assets/elephant.png';
 
 const Profile = () => {
-  const { loadUser } = useContext(AuthContext);
-  let { loading, getProfile, profile, edit_Profile, toggle_Form, toggleForm, message } = useContext(
-    ProfileContext
-  );
+  const { loadUser, user } = useContext(AuthContext);
+  let {
+    loading,
+    getProfile,
+    addProfile,
+    profile,
+    edit_Profile,
+    toggle_Form,
+    toggleForm,
+    message
+  } = useContext(ProfileContext);
 
   useEffect(() => {
     loadUser();
     getProfile();
   }, []);
 
+  const add = () => {
+    addProfile({ name: user.name, email: user.email });
+  };
+
   if (profile === null || profile.length === 0 || profile === undefined) {
-    return (
-      <LoadingMessage>{loading ? 'Loading profile...' : 'Please add a profile'}</LoadingMessage>
-    );
+    return <>{loading ? <LoadingMessage>Loading profile...</LoadingMessage> : <>{add()}</>}</>;
   }
 
   profile = profile[0];
@@ -89,7 +98,7 @@ const Profile = () => {
                 </ProfileData>
                 <ProfileData>
                   <Text>Phone:</Text>
-                  <Data>{profile.phone}</Data>
+                  <Data>{profile.phoneNumber}</Data>
                 </ProfileData>
               </InfoData>
             </Info>

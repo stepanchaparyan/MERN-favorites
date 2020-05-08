@@ -29,3 +29,4 @@ export const FILE_ERROR = 'FILE_ERROR';
 export const SET_UPLOAD_PERSENTAGE = 'SET_UPLOAD_PERSENTAGE';
 export const SET_MESSAGE = 'SET_MESSAGE';
 export const REMOVE_FILE = 'REMOVE_FILE';
+export const ADD_PROFILE = 'ADD_PROFILE';

@@ -27,16 +27,10 @@ const FavItemsList = () => {
     toggle_Form(!toggleForm);
   };
 
-  if (favItems === null || favItems.length === 0) {
-    return (
-      <LoadingMessage>{loading ? 'Loading favItems...' : 'Please add a favItem'}</LoadingMessage>
-    );
-  }
-
   return (
     <Container>
+      {loading && <LoadingMessage>Loading favItems...</LoadingMessage>}
       <Button onClick={toggleFormStatus}>Add new Item</Button>
-
       {!filterFavItems && !searchFavItem ? (
         <CardContainer myOpacity={toggleForm}>
           {favItems.map(favItem => (
