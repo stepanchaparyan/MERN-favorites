@@ -13,8 +13,11 @@ import {
   Other
 } from './WelcomeStyled';
 import Img from '../../../assets/elephant.png';
+import { useIntl } from 'react-intl';
+import localization from './localization';
 
 const Welcome = () => {
+  const intl = useIntl();
   const { loadUser, isAuthencated } = useContext(AuthContext);
 
   useEffect(() => {
@@ -24,7 +27,7 @@ const Welcome = () => {
   return (
     <Container>
       <Module>
-        <WelcomeText>Welcome to our page</WelcomeText>
+        <WelcomeText>{intl.formatMessage(localization.welcomeText)}</WelcomeText>
         <LongText>Here you can add and save cards about your favorite</LongText>
         <LongText>
           <Music>Music</Music>
@@ -38,4 +41,5 @@ const Welcome = () => {
     </Container>
   );
 };
+
 export default Welcome;
