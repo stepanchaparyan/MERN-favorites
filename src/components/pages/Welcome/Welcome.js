@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { useIntl } from 'react-intl';
 import AuthContext from '../../../context/authContext/authContext';
 import {
   Container,
@@ -13,11 +14,10 @@ import {
   Other
 } from './WelcomeStyled';
 import Img from '../../../assets/elephant.png';
-import { useIntl } from 'react-intl';
 import localization from './localization';
 
 const Welcome = () => {
-  const intl = useIntl();
+  const { formatMessage } = useIntl();
   const { loadUser, isAuthencated } = useContext(AuthContext);
 
   useEffect(() => {
@@ -27,15 +27,17 @@ const Welcome = () => {
   return (
     <Container>
       <Module>
-        <WelcomeText>{intl.formatMessage(localization.welcomeText)}</WelcomeText>
-        <LongText>Here you can add and save cards about your favorite</LongText>
+        <WelcomeText>{formatMessage(localization.welcomeText)}</WelcomeText>
+        <LongText>{formatMessage(localization.longText)}</LongText>
         <LongText>
-          <Music>Music</Music>
-          <Films>Films</Films>
-          <Books>Books</Books>
-          <Other>Other</Other>
+          <Music>{formatMessage(localization.music)}</Music>
+          <Films>{formatMessage(localization.films)}</Films>
+          <Books>{formatMessage(localization.books)}</Books>
+          <Other>{formatMessage(localization.other)}</Other>
         </LongText>
-        {isAuthencated && <LinkStyled to="/home">Create your cards</LinkStyled>}
+        {isAuthencated && (
+          <LinkStyled to="/home">{formatMessage(localization.createYourCard)}</LinkStyled>
+        )}
         <Logo src={Img}></Logo>
       </Module>
     </Container>

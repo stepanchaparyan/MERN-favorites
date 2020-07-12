@@ -1,5 +1,6 @@
 import React, { useContext, useState, useRef } from 'react';
 import Select from 'react-select';
+import { useIntl } from 'react-intl';
 import FavItemContext from '../../../context/favItemContext/favItemContext';
 import {
   SelectContainer,
@@ -7,6 +8,7 @@ import {
   InputContainer,
   Input
 } from '../FilterAndSearch/FilterAndSearchStyled';
+import localization from './localization';
 
 const FilterAndSearch = () => {
   const {
@@ -20,6 +22,7 @@ const FilterAndSearch = () => {
   } = useContext(FavItemContext);
 
   const searchInput = useRef('');
+  const { formatMessage } = useIntl();
 
   const options = [
     { value: 'Film', label: 'Film' },
@@ -76,7 +79,7 @@ const FilterAndSearch = () => {
           ref={searchInput}
           onChange={searchByInput}
           type="text"
-          placeholder="Search card by name..."
+          placeholder={formatMessage(localization.searchCardByName)}
         />
       </InputContainer>
 
@@ -86,7 +89,7 @@ const FilterAndSearch = () => {
           onChange={filterByCategory}
           options={options}
           styles={customStyles}
-          placeholder="Filter your cards"
+          placeholder={formatMessage(localization.filterYourCards)}
         />
       </SelectContainer>
     </>

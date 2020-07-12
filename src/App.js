@@ -28,7 +28,7 @@ let locale =
   'en-US';
 locale = locale.split(/[-_]/)[0]; // language without region code
 
-locale = 'hy';
+// locale = 'hy';
 
 const App = () => {
   return (

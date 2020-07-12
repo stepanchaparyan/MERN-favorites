@@ -1,4 +1,10 @@
 {
   "pageNotFound": "Էջը չի գտնվել",
-  "welcomeText": "Բարի գալուստ մեր էջ"
+  "welcomeText": "Բարի գալուստ մեր էջ",
+  "welcomePage.longText": "Այստեղ դուք կարող եք ավելացնել և պահպանել քարտեր Ձեր նախընտրելիների մասին",
+  "welcomePage.music": "Երաժշտություն",
+  "welcomePage.films": "Ֆիլմեր",
+  "welcomePage.books": "Գրքեր",
+  "welcomePage.other": "Այլ",
+  "welcomePage.createYourCard": "Սրեղծիր քո քարտը"
 }

@@ -1,9 +1,12 @@
 import React, { useContext, useState } from 'react';
+import { useIntl } from 'react-intl';
 import FavItemContext from '../../../context/favItemContext/favItemContext';
 import { Container, Title, DataContainer, Category, Name, Count } from './FavItemStatStyled';
+import localization from './localization';
 
 const FavItemStat = () => {
   const { favItems } = useContext(FavItemContext);
+  const { formatMessage } = useIntl();
 
   const categories = favItems => {
     // get all categories
@@ -21,7 +24,7 @@ const FavItemStat = () => {
 
   return (
     <Container>
-      <Title onClick={onClickHandler}>Count by Category</Title>
+      <Title onClick={onClickHandler}>{formatMessage(localization.countByCategory)}</Title>
       <DataContainer>
         {open &&
           favItems &&
