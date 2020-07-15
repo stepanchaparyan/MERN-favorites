@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { ThemeProvider } from 'styled-components';
@@ -28,18 +28,21 @@ let locale =
   'en-US';
 locale = locale.split(/[-_]/)[0]; // language without region code
 
-// locale = 'hy';
-
 const App = () => {
+  const [myLocale, setLocale] = useState(locale);
+  const changeLocale = lang => {
+    setLocale(lang);
+  };
+
   return (
-    <IntlProvider locale={locale} messages={messages[locale]}>
+    <IntlProvider locale={myLocale} messages={messages[myLocale]}>
       <ThemeProvider theme={theme}>
         <AuthState>
           <FavItemState>
             <ProfileState>
               <Router>
                 <div>
-                  <Navbar />
+                  <Navbar changeLocale={changeLocale} />
                   <Routes />
                   <Footer />
                 </div>
