@@ -28,9 +28,9 @@ export const NavLinks = styled.div`
 
 export const LinkStyled = styled(Link)`
   display: flex;
-  padding: 0 10px;
   text-decoration: none;
   color: black;
+  margin-left: 16px;
   &:hover {
     color: white;
   }
@@ -41,5 +41,16 @@ export const Logout = styled.div`
   color: black;
   &:hover {
     color: white;
+  }
+`;
+
+export const Img = styled.img`
+  width: 20px;
+  height: 16px;
+  margin-top: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.5;
   }
 `;

@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from 'react';
+import { useIntl } from 'react-intl';
 import FavItemContext from '../../../context/favItemContext/favItemContext';
 import FavItemCard from '../FavItemCard/FavItemCard';
 import FavItemForm from '../FavItemForm/FavItemForm';
 import { Container, CardContainer, Button, LoadingMessage } from './FavItemsListStyled';
+import localization from './localization';
 
 const FavItemsList = () => {
   const context = useContext(FavItemContext);
@@ -17,6 +19,7 @@ const FavItemsList = () => {
     searchFavItem,
     searchFilterFavItems
   } = context;
+  const { formatMessage } = useIntl();
 
   useEffect(() => {
     getFavItems();
@@ -29,8 +32,8 @@ const FavItemsList = () => {
 
   return (
     <Container>
-      {loading && <LoadingMessage>Loading favItems...</LoadingMessage>}
-      <Button onClick={toggleFormStatus}>Add new Item</Button>
+      {loading && <LoadingMessage>{formatMessage(localization.loadingFavItems)}</LoadingMessage>}
+      <Button onClick={toggleFormStatus}>{formatMessage(localization.addNewItem)}</Button>
       {!filterFavItems && !searchFavItem ? (
         <CardContainer myOpacity={toggleForm}>
           {favItems.map(favItem => (

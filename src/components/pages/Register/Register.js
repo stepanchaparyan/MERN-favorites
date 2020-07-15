@@ -1,11 +1,15 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AuthContext from '../../../context/authContext/authContext';
 import { Container, Title, Form, Input, Errors, QuestionText, ErrorButton } from './RegisterStyled';
+import localization from './localization';
 
 const Register = props => {
   const { register, isAuthencated, error, clearErrors, setError } = useContext(AuthContext);
+  const { formatMessage } = useIntl();
+
   useEffect(() => {
     if (isAuthencated) {
       props.history.push('/');
@@ -39,12 +43,12 @@ const Register = props => {
   };
   return (
     <Container>
-      <Title>Sign Up</Title>
+      <Title>{formatMessage(localization.signup)}</Title>
       <Form onSubmit={onsubmit}>
         <Input
           type="text"
           name="name"
-          placeholder="Name"
+          placeholder={formatMessage(localization.name)}
           value={name}
           onChange={onchange}
           required
@@ -52,7 +56,7 @@ const Register = props => {
         <Input
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder={formatMessage(localization.email)}
           value={email}
           onChange={onchange}
           required
@@ -60,7 +64,7 @@ const Register = props => {
         <Input
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder={formatMessage(localization.password)}
           value={password}
           onChange={onchange}
           required
@@ -68,12 +72,12 @@ const Register = props => {
         <Input
           type="password"
           name="password2"
-          placeholder="Confirm Password"
+          placeholder={formatMessage(localization.confirmPassword)}
           value={password2}
           onChange={onchange}
           required
         />
-        <Input type="submit" value="Sing Up" />
+        <Input type="submit" value={formatMessage(localization.signup)} />
       </Form>
       {error !== null && (
         <Errors>
@@ -91,7 +95,8 @@ const Register = props => {
         </Errors>
       )}
       <QuestionText>
-        Already have an accout? &nbsp;<Link to="/login">Sign In</Link>
+        {formatMessage(localization.alreadyHaveAnAccout)} &nbsp;
+        <Link to="/login">{formatMessage(localization.signin)}</Link>
       </QuestionText>
     </Container>
   );

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { useIntl } from 'react-intl';
 import AuthContext from '../../../context/authContext/authContext';
 import ProfileContext from '../../../context/profileContext/profileContext';
 import ProfileForm from '../ProfileForm/ProfileForm';
@@ -24,6 +25,7 @@ import {
   Forms
 } from './ProfileStyled';
 import Img from '../../../assets/elephant.png';
+import localization from './localization';
 
 const Profile = () => {
   const { loadUser, user } = useContext(AuthContext);
@@ -37,6 +39,7 @@ const Profile = () => {
     toggleForm,
     message
   } = useContext(ProfileContext);
+  const { formatMessage } = useIntl();
 
   useEffect(() => {
     loadUser();
@@ -48,7 +51,15 @@ const Profile = () => {
   };
 
   if (profile === null || profile.length === 0 || profile === undefined) {
-    return <>{loading ? <LoadingMessage>Loading profile...</LoadingMessage> : <>{add()}</>}</>;
+    return (
+      <>
+        {loading ? (
+          <LoadingMessage>{formatMessage(localization.loadingProfile)}</LoadingMessage>
+        ) : (
+          <>{add()}</>
+        )}
+      </>
+    );
   }
 
   profile = profile[0];
@@ -62,7 +73,7 @@ const Profile = () => {
     <Container>
       <Module>
         {message ? <Message msg={message} /> : null}
-        <WelcomeText>Profile page</WelcomeText>
+        <WelcomeText>{formatMessage(localization.profilePage)}</WelcomeText>
         {!toggleForm && (
           <>
             <Info>
@@ -71,15 +82,15 @@ const Profile = () => {
               </ImageContainer>
               <InfoData>
                 <ProfileData>
-                  <Text>Name:</Text>
+                  <Text>{formatMessage(localization.name)}:</Text>
                   <Data>{profile.name}</Data>
                 </ProfileData>
                 <ProfileData>
-                  <Text>Surname:</Text>
+                  <Text>{formatMessage(localization.surname)}:</Text>
                   <Data>{profile.surname}</Data>
                 </ProfileData>
                 <ProfileData>
-                  <Text>Email:</Text>
+                  <Text>{formatMessage(localization.email)}:</Text>
                   <Data
                     data-tip={profile.email}
                     data-arrow-color="cadetblue"
@@ -89,28 +100,28 @@ const Profile = () => {
                   </Data>
                 </ProfileData>
                 <ProfileData>
-                  <Text>Gender:</Text>
+                  <Text>{formatMessage(localization.gender)}:</Text>
                   <Data>{profile.gender}</Data>
                 </ProfileData>
                 <ProfileData>
-                  <Text>BirthDay:</Text>
+                  <Text>{formatMessage(localization.birthday)}:</Text>
                   <Data>{moment(profile.birthDay).format('ll')}</Data>
                 </ProfileData>
                 <ProfileData>
-                  <Text>Phone:</Text>
+                  <Text>{formatMessage(localization.phone)}:</Text>
                   <Data>{profile.phoneNumber}</Data>
                 </ProfileData>
               </InfoData>
             </Info>
             <ReactTooltipStyled place="right" effect="solid" />
-            <Button onClick={toggle}>Edit Card</Button>
+            <Button onClick={toggle}>{formatMessage(localization.editCard)}</Button>
           </>
         )}
         <Forms>
           {toggleForm && <FileUpload />}
           {toggleForm && <ProfileForm />}
         </Forms>
-        <LinkStyled to="/">Go home page</LinkStyled>
+        <LinkStyled to="/">{formatMessage(localization.goHomePage)}</LinkStyled>
         <Logo src={Img}></Logo>
       </Module>
     </Container>

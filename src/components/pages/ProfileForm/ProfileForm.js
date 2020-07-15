@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { useIntl } from 'react-intl';
 import ProfileContext from '../../../context/profileContext/profileContext';
 import {
   Container,
@@ -12,9 +13,11 @@ import {
   Text,
   DatePickerStyled
 } from './ProfileFormStyled';
+import localization from './localization';
 
 const ProfileForm = () => {
   const context = useContext(ProfileContext);
+  const { formatMessage } = useIntl();
 
   const { updateProfile, editProfile, toggle_Form, toggleForm } = context;
 
@@ -58,40 +61,48 @@ const ProfileForm = () => {
       <Module>
         <Form onSubmit={onsubmit}>
           <ProfileData>
-            <Text>Name:</Text>
-            <Input type="text" placeholder="Name" name="name" value={name} onChange={onchange} />
-          </ProfileData>
-          <ProfileData>
-            <Text>Surname:</Text>
+            <Text>{formatMessage(localization.name)}:</Text>
             <Input
               type="text"
-              placeholder="Surname"
+              placeholder={formatMessage(localization.name)}
+              name="name"
+              value={name}
+              onChange={onchange}
+            />
+          </ProfileData>
+          <ProfileData>
+            <Text>{formatMessage(localization.surname)}:</Text>
+            <Input
+              type="text"
+              placeholder={formatMessage(localization.surname)}
               name="surname"
               value={surname}
               onChange={onchange}
             />
           </ProfileData>
           <ProfileData>
-            <Text>Email:</Text>
+            <Text>{formatMessage(localization.email)}:</Text>
             <Input
               type="email"
-              placeholder="Email"
+              placeholder={formatMessage(localization.email)}
               name="email"
               value={email}
               onChange={onchange}
             />
           </ProfileData>
           <ProfileData>
-            <Text>Gender:</Text>
+            <Text>{formatMessage(localization.gender)}:</Text>
             <Select value={gender} name="gender" onChange={onchange}>
-              <DefaultOption value="Other">Select category</DefaultOption>
-              <Option value="male">Male</Option>
-              <Option value="female">Female</Option>
-              <Option value="other">Other</Option>
+              <DefaultOption value="Other">
+                {formatMessage(localization.selectCategory)}
+              </DefaultOption>
+              <Option value="male">{formatMessage(localization.male)}</Option>
+              <Option value="female">{formatMessage(localization.female)}</Option>
+              <Option value="other">{formatMessage(localization.other)}</Option>
             </Select>
           </ProfileData>
           <ProfileData>
-            <Text>BirthDay:</Text>
+            <Text>{formatMessage(localization.birthday)}:</Text>
             <DatePickerStyled
               selected={birthDate}
               onChange={date => setNewDate(date)}
@@ -102,7 +113,7 @@ const ProfileForm = () => {
             />
           </ProfileData>
           <ProfileData>
-            <Text>Phone:</Text>
+            <Text>{formatMessage(localization.phone)}:</Text>
             <Input
               type="tel"
               placeholder="93123456"
@@ -112,8 +123,8 @@ const ProfileForm = () => {
               onChange={onchange}
             />
           </ProfileData>
-          <Input type="submit" value={'Update'} />
-          <Input onClick={cancelEdit} type="button" value="Cancel" />
+          <Input type="submit" value={formatMessage(localization.update)} />
+          <Input onClick={cancelEdit} type="button" value={formatMessage(localization.cancel)} />
         </Form>
       </Module>
     </Container>

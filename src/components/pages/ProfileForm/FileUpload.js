@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { useIntl } from 'react-intl';
 import Progress from '../../Progress/Progress';
 import ProfileContext from '../../../context/profileContext/profileContext';
 import {
@@ -15,6 +16,7 @@ import EditIcon from '../../../assets/icon-edit.png';
 import UploadIcon from '../../../assets/icon-upload.png';
 import Modal from 'react-modal';
 import CustomModal from '../../Modal/Modal';
+import localization from './localization';
 
 const FileUpload = () => {
   const context = useContext(ProfileContext);
@@ -26,6 +28,7 @@ const FileUpload = () => {
     remove_file,
     uploadPercentage
   } = context;
+  const { formatMessage } = useIntl();
 
   Modal.setAppElement('#root');
   const [newProfile, setProfile] = useState(editProfile);
@@ -100,8 +103,8 @@ const FileUpload = () => {
             modalIsOpen={modalIsOpen}
             buttonConfirmText={null}
             buttonCancelText="OK"
-            title="Wrong extension"
-            text="Wrong extension of uploading file, please choose .jpg or .png format"
+            title={formatMessage(localization.wrongExtension)}
+            text={formatMessage(localization.wrongExtensionText)}
             titleBgColor="indianred"
             cancelButtonColor="cadetblue"
           ></CustomModal>
@@ -112,20 +115,23 @@ const FileUpload = () => {
           <>
             <Progress percentage={uploadPercentage} />
             <LabelUpload htmlFor="file-upload">
-              <IconEdit src={UploadIcon}></IconEdit>Upload
+              <IconEdit src={UploadIcon}></IconEdit>
+              {formatMessage(localization.upload)}
             </LabelUpload>
             <InputHidden id="file-upload" type="submit" />
           </>
         )}
       </form>
-      {uploadedFile && <Input type="button" value="Update Image" onClick={setImage} />}
+      {uploadedFile && (
+        <Input type="button" value={formatMessage(localization.updateImage)} onClick={setImage} />
+      )}
       {modalType === 'confirm' && (
         <CustomModal
           closeModal={closeModal}
           onConfirm={onConfirm}
           modalIsOpen={modalIsOpen}
-          title="Confirm"
-          text="Please, confirm if you want to change your image"
+          title={formatMessage(localization.confirm)}
+          text={formatMessage(localization.confirmText)}
         ></CustomModal>
       )}
     </Container>

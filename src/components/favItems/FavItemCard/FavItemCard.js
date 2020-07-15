@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { useIntl } from 'react-intl';
 import FavItemContext from '../../../context/favItemContext/favItemContext';
 import {
   Container,
@@ -10,12 +11,14 @@ import {
   Label,
   ReactTooltipStyled
 } from './FavItemCardStyled';
+import localization from './localization';
 
 const FavItemCard = ({ favItem }) => {
   const { removeFavItem, edit_FavItem, clearEdit, toggle_Form, toggleForm } = useContext(
     FavItemContext
   );
   const { _id, author, title, category, description } = favItem;
+  const { formatMessage } = useIntl();
 
   const handleRemove = () => {
     removeFavItem(_id);
@@ -51,24 +54,24 @@ const FavItemCard = ({ favItem }) => {
   return (
     <Container>
       <Info>
-        <InfoName>Author:</InfoName>
+        <InfoName>{formatMessage(localization.author)}:</InfoName>
         <InfoData data-tip={author} data-arrow-color="cadetblue" data-background-color="cadetblue">
           {author}
         </InfoData>
         <Label color={colorPicker()}>{category.charAt(0)}</Label>
       </Info>
       <Info>
-        <InfoName>Title:</InfoName>
+        <InfoName>{formatMessage(localization.title)}:</InfoName>
         <InfoData data-tip={title} data-arrow-color="cadetblue" data-background-color="cadetblue">
           {title}
         </InfoData>
       </Info>
       <Info>
-        <InfoName>Category:</InfoName>
+        <InfoName>{formatMessage(localization.category)}:</InfoName>
         <InfoData>{category}</InfoData>
       </Info>
       <Info>
-        <InfoName>Description:</InfoName>
+        <InfoName>{formatMessage(localization.description)}:</InfoName>
         <InfoData
           data-tip={description}
           data-arrow-color="cadetblue"
@@ -78,8 +81,8 @@ const FavItemCard = ({ favItem }) => {
         </InfoData>
       </Info>
       <ReactTooltipStyled place="left" effect="solid" />
-      <Button onClick={toggle}>Edit Card</Button>
-      <Button onClick={handleRemove}>Remove Card</Button>
+      <Button onClick={toggle}>{formatMessage(localization.editCard)}</Button>
+      <Button onClick={handleRemove}>{formatMessage(localization.removeCard)}</Button>
     </Container>
   );
 };

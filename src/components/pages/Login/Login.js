@@ -1,11 +1,15 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AuthContext from '../../../context/authContext/authContext';
 import { Container, Title, Form, Input, Errors, QuestionText, ErrorButton } from './LoginStyled';
+import localization from './localization';
 
 const Login = props => {
   const { login, isAuthencated, error, clearErrors } = useContext(AuthContext);
+  const { formatMessage } = useIntl();
+
   useEffect(() => {
     if (isAuthencated) {
       props.history.push('/');
@@ -41,12 +45,12 @@ const Login = props => {
 
   return (
     <Container>
-      <Title>Login</Title>
+      <Title>{formatMessage(localization.login)}</Title>
       <Form onSubmit={onsubmit}>
         <Input
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder={formatMessage(localization.email)}
           value={email}
           onChange={onchange}
           required
@@ -54,12 +58,12 @@ const Login = props => {
         <Input
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder={formatMessage(localization.password)}
           value={password}
           onChange={onchange}
           required
         />
-        <Input type="submit" value="Login" />
+        <Input type="submit" value={formatMessage(localization.login)} />
       </Form>
       {error !== null && (
         <Errors>
@@ -77,7 +81,8 @@ const Login = props => {
         </Errors>
       )}
       <QuestionText>
-        Dont have an accout? &nbsp;<Link to="/register">Sign Up</Link>
+        {formatMessage(localization.dontHaveAnAccout)} &nbsp;
+        <Link to="/register">{formatMessage(localization.signup)}</Link>
       </QuestionText>
     </Container>
   );

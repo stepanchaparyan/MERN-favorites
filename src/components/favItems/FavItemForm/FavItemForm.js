@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
+import { useIntl } from 'react-intl';
 import FavItemContext from '../../../context/favItemContext/favItemContext';
 import {
   Container,
@@ -11,6 +12,7 @@ import {
   Option,
   DefaultOption
 } from './FavItemFormStyled';
+import localization from './localization';
 
 const FavItemForm = () => {
   const context = useContext(FavItemContext);
@@ -25,6 +27,7 @@ const FavItemForm = () => {
     clearErrors
   } = context;
 
+  const { formatMessage } = useIntl();
   const container = useRef();
 
   useEffect(() => {
@@ -83,33 +86,52 @@ const FavItemForm = () => {
 
   return (
     <Container ref={container}>
-      <Title>{editFavItem !== null ? 'Edit FavItem' : 'Add new favorite item'}</Title>
+      <Title>
+        {editFavItem !== null
+          ? formatMessage(localization.editFavItem)
+          : formatMessage(localization.addNewFavItem)}
+      </Title>
       <Form onSubmit={onsubmit}>
-        <Input type="text" placeholder="Author" name="author" value={author} onChange={onchange} />
         <Input
           type="text"
-          placeholder="Title"
+          placeholder={formatMessage(localization.author)}
+          name="author"
+          value={author}
+          onChange={onchange}
+        />
+        <Input
+          type="text"
+          placeholder={formatMessage(localization.title)}
           name="title"
           value={title}
           onChange={onchange}
           required
         />
         <Select value={category} name="category" onChange={onchange}>
-          <DefaultOption value="Other">Select category</DefaultOption>
-          <Option value="Film">Film</Option>
-          <Option value="Music">Music</Option>
-          <Option value="Books">Books</Option>
-          <Option value="Other">Other</Option>
+          <DefaultOption value="Other">{formatMessage(localization.selectCategory)}</DefaultOption>
+          <Option value="Film">{formatMessage(localization.films)}</Option>
+          <Option value="Music">{formatMessage(localization.music)}</Option>
+          <Option value="Books">{formatMessage(localization.books)}</Option>
+          <Option value="Other">{formatMessage(localization.other)}</Option>
         </Select>
         <Input
           type="text"
-          placeholder="Description"
+          placeholder={formatMessage(localization.description)}
           name="description"
           value={description}
           onChange={onchange}
         />
-        <Input type="submit" value={editFavItem !== null ? 'Update' : 'Add'} />
-        {editFavItem && <Input onClick={cancelEdit} type="button" value="Cancel" />}
+        <Input
+          type="submit"
+          value={
+            editFavItem !== null
+              ? formatMessage(localization.update)
+              : formatMessage(localization.add)
+          }
+        />
+        {editFavItem && (
+          <Input onClick={cancelEdit} type="button" value={formatMessage(localization.cancel)} />
+        )}
       </Form>
       {error && (
         <Errors>
