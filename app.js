@@ -2,6 +2,7 @@ const express = require('express');
 const fileUpload = require('express-fileupload');
 const app = express();
 const path = require('path');
+const auth = require('./middleware/auth');
 
 //connet to mongoDB
 const connectDB = require('./mongoConfig/mongoDB');
@@ -13,8 +14,8 @@ app.use(express.json({ extended: true }));
 // API routes
 app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));
-app.use('/favItem', require('./routes/favItem'));
-app.use('/profile', require('./routes/profile'));
+app.use('/favItem', auth, require('./routes/favItem'));
+app.use('/profile', auth, require('./routes/profile'));
 app.use('/upload', require('./routes/upload'));
 
 // use static files

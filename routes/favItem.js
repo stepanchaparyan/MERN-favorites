@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
 const FavItem = require('../models/FavItem');
 
 //REQUEST GET ALL FAVITEMS
-router.get('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const favItems = await FavItem.find({ user: req.user.id });
     res.json(favItems);
@@ -18,7 +17,7 @@ router.get('/', auth, async (req, res) => {
 //REQUEST ADD NEW FAVITEM
 router.post(
   '/add',
-  [auth, [check('title', 'Please enter title at least 2 character long').isLength({ min: 2 })]],
+  [[check('title', 'Please enter title at least 2 character long').isLength({ min: 2 })]],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -45,7 +44,7 @@ router.post(
 );
 
 //REQUEST FIND FAVITEM BY ID
-router.get('/:id', auth, async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const favItem = await FavItem.findById(req.params.id);
     if (!favItem) return res.status(404).json({ msg: 'FavItem not found' });
@@ -58,7 +57,7 @@ router.get('/:id', auth, async (req, res) => {
 //REQUEST FIND FAVITEM AND UPDATE
 router.put(
   '/update/:id',
-  [auth, [check('title', 'Please enter title at least 2 character long').isLength({ min: 2 })]],
+  [[check('title', 'Please enter title at least 2 character long').isLength({ min: 2 })]],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -85,7 +84,7 @@ router.put(
 );
 
 //REQUEST FIND FAVITEM AND DELETE
-router.delete('/:id', auth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     let favItem = await FavItem.findById(req.params.id);
     if (!favItem) return res.status(404).json({ msg: 'FavItem not found' });
