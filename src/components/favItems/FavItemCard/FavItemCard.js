@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
+import { colorPicker } from '../../../utils/colorPicker';
 import FavItemContext from '../../../context/favItemContext/favItemContext';
 import {
   Container,
@@ -30,27 +31,6 @@ const FavItemCard = ({ favItem }) => {
     toggle_Form(!toggleForm);
   };
 
-  const colorPicker = () => {
-    let color;
-    switch (category) {
-      case 'Film':
-        color = 'red';
-        break;
-      case 'Music':
-        color = 'blue';
-        break;
-      case 'Books':
-        color = 'limeGreen';
-        break;
-      case 'Other':
-        color = 'orange';
-        break;
-      default:
-        color = 'black';
-    }
-    return color;
-  };
-
   return (
     <Container>
       <Info>
@@ -58,7 +38,7 @@ const FavItemCard = ({ favItem }) => {
         <InfoData data-tip={author} data-arrow-color="cadetblue" data-background-color="cadetblue">
           {author}
         </InfoData>
-        <Label color={colorPicker()}>{category.charAt(0)}</Label>
+        <Label color={colorPicker(category)}>{category.charAt(0)}</Label>
       </Info>
       <Info>
         <InfoName>{formatMessage(localization.title)}:</InfoName>
