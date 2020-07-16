@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { HEADER_CONFIG } from '../../constants/headers';
 import FavItemContext from './favItemContext';
 import favItemReducer from './favItemReducer';
 import {
@@ -52,11 +53,12 @@ const FavItemState = props => {
 
   // Add FavItem
   const addFavItem = async favItem => {
-    const config = {
-      'Content-Type': 'application/json'
-    };
     try {
-      const res = await axios.post('/favItem/add', favItem, config);
+      const res = await axios.post(
+        '/favItem/add',
+        favItem,
+        HEADER_CONFIG.CONTENT_TYPE_APPLICATION_JSON
+      );
       dispatch({
         type: ADD_FAVITEM,
         payload: res.data
@@ -94,13 +96,12 @@ const FavItemState = props => {
 
   // update favItem
   const update_FavItem = async favItem => {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
     try {
-      const res = await axios.put(`/favItem/update/${favItem._id}`, favItem, config);
+      const res = await axios.put(
+        `/favItem/update/${favItem._id}`,
+        favItem,
+        HEADER_CONFIG.CONTENT_TYPE_APPLICATION_JSON
+      );
       dispatch({
         type: UPDATE_FAVITEM,
         payload: res.data

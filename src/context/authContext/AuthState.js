@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { HEADER_CONFIG } from '../../constants/headers';
 import authReducer from './authReducer';
 import AuthContext from './authContext';
 import setAuthToken from '../../utils/setAuthToken';
@@ -46,13 +47,12 @@ const AuthState = props => {
 
   //Register User
   const register = async formData => {
-    const config = {
-      header: {
-        'Content-Type': 'application/json'
-      }
-    };
     try {
-      const res = await axios.post('/register', formData, config);
+      const res = await axios.post(
+        '/register',
+        formData,
+        HEADER_CONFIG.CONTENT_TYPE_APPLICATION_JSON
+      );
       dispatch({
         type: REGISTER_SUCCESS,
         payload: res.data
@@ -69,13 +69,8 @@ const AuthState = props => {
   //login user
 
   const login = async formData => {
-    const config = {
-      header: {
-        'Content-Type': 'application/json'
-      }
-    };
     try {
-      const res = await axios.post('/auth', formData, config);
+      const res = await axios.post('/auth', formData, HEADER_CONFIG.CONTENT_TYPE_APPLICATION_JSON);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data

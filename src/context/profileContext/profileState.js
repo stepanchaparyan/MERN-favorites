@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { HEADER_CONFIG } from '../../constants/headers';
 import ProfileContext from './profileContext';
 import ProfileReducer from './profileReducer';
 import {
@@ -48,11 +49,12 @@ const ProfileState = props => {
 
   // Add Profile
   const addProfile = async profile => {
-    const config = {
-      'Content-Type': 'application/json'
-    };
     try {
-      const res = await axios.post('/profile/add', profile, config);
+      const res = await axios.post(
+        '/profile/add',
+        profile,
+        HEADER_CONFIG.CONTENT_TYPE_APPLICATION_JSON
+      );
       dispatch({
         type: ADD_PROFILE,
         payload: res.data
@@ -67,13 +69,12 @@ const ProfileState = props => {
 
   // Update profile
   const updateProfile = async profile => {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
     try {
-      const res = await axios.put('/profile/update', profile, config);
+      const res = await axios.put(
+        '/profile/update',
+        profile,
+        HEADER_CONFIG.CONTENT_TYPE_APPLICATION_JSON
+      );
       dispatch({
         type: UPDATE_PROFILE,
         payload: res.data
@@ -117,9 +118,7 @@ const ProfileState = props => {
 
   const update_File = async formData => {
     const config = {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      },
+      headers: HEADER_CONFIG.CONTENT_TYPE_MULTIPART_FORM_DATA,
       onUploadProgress: progressEvent => {
         const progress = parseInt(Math.round((progressEvent.loaded * 100) / progressEvent.total));
         set_uploadPercentage(progress);
