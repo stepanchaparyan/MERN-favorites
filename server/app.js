@@ -19,9 +19,9 @@ app.use('/profile', auth, require('./routes/profile'));
 app.use('/upload', require('./routes/upload'));
 
 // use static files
-app.use('/', express.static(path.join(__dirname, 'build')));
+app.use('/', express.static(path.join('..', 'client', 'build')));
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+  res.sendFile(path.resolve('..', 'client', 'build', 'index.html'));
 });
 
 const PORT = process.env.PORT || 5000;
