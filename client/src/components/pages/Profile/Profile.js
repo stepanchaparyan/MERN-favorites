@@ -64,7 +64,7 @@ const Profile = () => {
 
   profile = profile[0];
 
-  const toggle = () => {
+  const handleEdit = () => {
     edit_Profile(profile);
     toggle_Form(!toggleForm);
   };
@@ -114,7 +114,7 @@ const Profile = () => {
               </InfoData>
             </Info>
             <ReactTooltipStyled place="right" effect="solid" />
-            <Button onClick={toggle}>{formatMessage(localization.editCard)}</Button>
+            <Button onClick={handleEdit}>{formatMessage(localization.editCard)}</Button>
           </>
         )}
         <Forms>

@@ -26,7 +26,7 @@ const FavItemCard = ({ favItem }) => {
     clearEdit();
   };
 
-  const toggle = () => {
+  const handleEdit = () => {
     edit_FavItem(favItem);
     toggle_Form(!toggleForm);
   };
@@ -61,7 +61,7 @@ const FavItemCard = ({ favItem }) => {
         </InfoData>
       </Info>
       <ReactTooltipStyled place="left" effect="solid" />
-      <Button onClick={toggle}>{formatMessage(localization.editCard)}</Button>
+      <Button onClick={handleEdit}>{formatMessage(localization.editCard)}</Button>
       <Button onClick={handleRemove}>{formatMessage(localization.removeCard)}</Button>
     </Container>
   );
