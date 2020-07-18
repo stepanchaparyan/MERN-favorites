@@ -13,8 +13,11 @@ import {
   ReactTooltipStyled
 } from './FavItemCardStyled';
 import localization from './localization';
+import theme from '../../../styles/theme';
 
 const FavItemCard = ({ favItem }) => {
+  const cadetblue = theme.color;
+
   const { removeFavItem, edit_FavItem, clearEdit, toggle_Form, toggleForm } = useContext(
     FavItemContext
   );
@@ -35,14 +38,14 @@ const FavItemCard = ({ favItem }) => {
     <Container>
       <Info>
         <InfoName>{formatMessage(localization.author)}:</InfoName>
-        <InfoData data-tip={author} data-arrow-color="cadetblue" data-background-color="cadetblue">
+        <InfoData data-tip={author} data-arrow-color={cadetblue} data-background-color={cadetblue}>
           {author}
         </InfoData>
         <Label color={colorPicker(category)}>{category.charAt(0)}</Label>
       </Info>
       <Info>
         <InfoName>{formatMessage(localization.title)}:</InfoName>
-        <InfoData data-tip={title} data-arrow-color="cadetblue" data-background-color="cadetblue">
+        <InfoData data-tip={title} data-arrow-color={cadetblue} data-background-color={cadetblue}>
           {title}
         </InfoData>
       </Info>
@@ -54,8 +57,8 @@ const FavItemCard = ({ favItem }) => {
         <InfoName>{formatMessage(localization.description)}:</InfoName>
         <InfoData
           data-tip={description}
-          data-arrow-color="cadetblue"
-          data-background-color="cadetblue"
+          data-arrow-color={cadetblue}
+          data-background-color={cadetblue}
         >
           {description}
         </InfoData>
