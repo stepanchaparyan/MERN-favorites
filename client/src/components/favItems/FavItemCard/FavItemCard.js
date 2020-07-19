@@ -14,9 +14,10 @@ import {
 } from './FavItemCardStyled';
 import localization from './localization';
 import theme from '../../../styles/theme';
+import { REACT_TOOLTIP_STYLED } from '../../../constants/reactTooltipStyled';
 
 const FavItemCard = ({ favItem }) => {
-  const cadetblue = theme.cadetblue;
+  const { cadetblue } = theme;
 
   const { removeFavItem, edit_FavItem, clearEdit, toggle_Form, toggleForm } = useContext(
     FavItemContext
@@ -63,7 +64,10 @@ const FavItemCard = ({ favItem }) => {
           {description}
         </InfoData>
       </Info>
-      <ReactTooltipStyled place="left" effect="solid" />
+      <ReactTooltipStyled
+        place={REACT_TOOLTIP_STYLED.PLACE.LEFT}
+        effect={REACT_TOOLTIP_STYLED.EFFECT.SOLID}
+      />
       <Button onClick={handleEdit}>{formatMessage(localization.editCard)}</Button>
       <Button onClick={handleRemove}>{formatMessage(localization.removeCard)}</Button>
     </Container>
