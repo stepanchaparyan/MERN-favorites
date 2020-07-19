@@ -16,7 +16,7 @@ import localization from './localization';
 import theme from '../../../styles/theme';
 
 const FavItemCard = ({ favItem }) => {
-  const cadetblue = theme.color;
+  const cadetblue = theme.cadetblue;
 
   const { removeFavItem, edit_FavItem, clearEdit, toggle_Form, toggleForm } = useContext(
     FavItemContext

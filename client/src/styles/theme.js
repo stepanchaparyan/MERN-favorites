@@ -1,5 +1,5 @@
 const theme = {
-  color: 'cadetblue'
+  cadetblue: 'cadetblue'
 };
 
 export default theme;

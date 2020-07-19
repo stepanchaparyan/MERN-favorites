@@ -5,7 +5,7 @@ import ReactTooltip from 'react-tooltip';
 export const Container = styled.div`
   display: flex;
   justify-content: center;
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.cadetblue};
   padding: 0 32px 50px 32px;
   font-weight: 600;
   font-size: 24px;
@@ -25,7 +25,7 @@ export const WelcomeText = styled.div`
 `;
 
 export const LinkStyled = styled(Link)`
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.cadetblue};
   margin: 32px;
   text-decoration: none;
   font-size: 32px;
@@ -41,7 +41,7 @@ export const Logo = styled.img`
 export const LoadingMessage = styled.h3`
   display: flex;
   justify-content: center;
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.cadetblue};
 `;
 
 export const Info = styled.div`
@@ -92,7 +92,7 @@ export const Button = styled.button`
   border: 0;
   padding: 6px 0;
   outline: none;
-  background-color: ${props => props.theme.color};
+  background-color: ${props => props.theme.cadetblue};
   font-size: 18px;
   margin-top: 24px;
   cursor: pointer;

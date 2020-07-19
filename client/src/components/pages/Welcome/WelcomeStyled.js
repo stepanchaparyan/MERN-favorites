@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const Container = styled.div`
   display: flex;
   justify-content: center;
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.cadetblue};
   padding: 0 32px 50px 32px;
   font-weight: 600;
   font-size: 24px;
@@ -28,7 +28,7 @@ export const LongText = styled.div`
 `;
 
 export const LinkStyled = styled(Link)`
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.cadetblue};
   margin: 32px;
   text-decoration: none;
   font-size: 32px;

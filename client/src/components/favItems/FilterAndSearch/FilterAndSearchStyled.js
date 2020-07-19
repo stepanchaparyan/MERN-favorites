@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SelectContainer = styled.div`
   & div {
-    color: ${props => props.theme.color};
+    color: ${props => props.theme.cadetblue};
     font-size: 18px;
   }
 `;
@@ -13,7 +13,7 @@ export const InputContainer = styled.div`
 
 export const Input = styled.input`
   outline: none;
-  border: 1px solid ${props => props.theme.color};
+  border: 1px solid ${props => props.theme.cadetblue};
   padding-left: 2px;
 `;
 

@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   width: 250px;
   min-width: 250px;
-  border: 1px solid ${props => props.theme.color};
+  border: 1px solid ${props => props.theme.cadetblue};
   background-color: WhiteSmoke;
   color: black;
   font-size: 16px;
@@ -29,7 +29,7 @@ export const InfoName = styled.div`
 
 export const InfoData = styled.div`
   padding: 10px 0;
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.cadetblue};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -41,7 +41,7 @@ export const Button = styled.button`
   border: 0px;
   padding: 4px 0;
   outline: none;
-  background-color: ${props => props.theme.color};
+  background-color: ${props => props.theme.cadetblue};
   font-size: 16px;
   margin-top: 5px;
   cursor: pointer;
@@ -50,7 +50,7 @@ export const Button = styled.button`
 export const Label = styled.div`
   padding: 8px 0 0 8px;
   width: 8%;
-  background-color: ${props => (props.color ? props.color : props.theme.color)};
+  background-color: ${props => (props.color ? props.color : props.theme.cadetblue)};
   color: white;
   border-bottom-left-radius: 15px;
 `;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.cadetblue};
   z-index: 1;
   position: absolute;
   background-color: gray;
@@ -41,7 +41,7 @@ export const Input = styled.input`
   &[type='submit'] {
     width: 20%;
     border: 0;
-    background-color: ${props => props.theme.color};
+    background-color: ${props => props.theme.cadetblue};
     font-weight: 600;
     font-size: 16px;
     margin-top: 20px;
@@ -91,7 +91,7 @@ export const Option = styled.option`
   height: 47px;
   padding: 20px;
   font-size: 18px;
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.cadetblue};
 `;
 
 export const DefaultOption = styled.option`

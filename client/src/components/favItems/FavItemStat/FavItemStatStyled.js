@@ -14,7 +14,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.div`
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.cadetblue};
   font-weight: bold;
   font-size: 18px;
 `;
@@ -39,6 +39,6 @@ export const Name = styled.div`
 `;
 
 export const Count = styled.div`
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.cadetblue};
   font-weight: bold;
 `;

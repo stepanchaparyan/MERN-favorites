@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.cadetblue};
 `;
 
 export const Title = styled.div`
@@ -23,7 +23,7 @@ export const Form = styled.form`
 
 export const Input = styled.input`
   border: 0px;
-  border-bottom: 1px solid ${props => props.theme.color};
+  border-bottom: 1px solid ${props => props.theme.cadetblue};
   width: 30%;
   padding: 7px 10px;
   margin: 2px;
@@ -32,7 +32,7 @@ export const Input = styled.input`
   &[type='submit'] {
     width: 20%;
     border: 0;
-    background-color: ${props => props.theme.color};
+    background-color: ${props => props.theme.cadetblue};
     font-weight: 600;
     font-size: 16px;
     margin-top: 20px;

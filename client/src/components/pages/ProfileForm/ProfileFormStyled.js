@@ -6,7 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 export const Container = styled.div`
   display: flex;
   justify-content: center;
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.cadetblue};
   padding: 0 32px 50px 32px;
   font-weight: 600;
   font-size: 24px;
@@ -28,7 +28,7 @@ export const WelcomeText = styled.div`
 `;
 
 export const LinkStyled = styled(Link)`
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.cadetblue};
   margin: 32px;
   text-decoration: none;
   font-size: 32px;
@@ -44,7 +44,7 @@ export const Logo = styled.img`
 export const LoadingMessage = styled.h3`
   display: flex;
   justify-content: center;
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.cadetblue};
 `;
 
 export const TextData = styled.div`
@@ -91,7 +91,7 @@ export const Input = styled.input`
 
   &[type='submit'] {
     width: 90%;
-    background-color: ${props => props.theme.color};
+    background-color: ${props => props.theme.cadetblue};
     font-weight: 600;
     font-size: 16px;
     cursor: pointer;
@@ -125,7 +125,7 @@ export const Option = styled.option`
   height: 47px;
   padding: 20px;
   font-size: 18px;
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.cadetblue};
 `;
 
 export const DefaultOption = styled.option`

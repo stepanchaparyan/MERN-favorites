@@ -20,7 +20,7 @@ export const customStyles = {
 export const ButtonConfirm = styled.button`
   border: 0;
   border-radius: 4px;
-  background-color: ${props => props.theme.color};
+  background-color: ${props => props.theme.cadetblue};
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;
@@ -29,7 +29,7 @@ export const ButtonConfirm = styled.button`
 `;
 
 export const ButtonClose = styled.button`
-  background-color: ${props => (props.bgColor ? props.bgColor : props.theme.color)};
+  background-color: ${props => (props.bgColor ? props.bgColor : props.theme.cadetblue)};
   border: 0;
   font-weight: 600;
   font-size: 16px;
@@ -57,7 +57,7 @@ export const ModalContainer = styled.div`
 `;
 
 export const ModalTitleContainer = styled.div`
-  background-color: ${props => (props.bgColor ? props.bgColor : props.theme.color)};
+  background-color: ${props => (props.bgColor ? props.bgColor : props.theme.cadetblue)};
   display: flex;
   justify-content: space-between;
 `;
@@ -72,7 +72,7 @@ export const ModalTextContainer = styled.div`
   display: flex;
   min-height: 80px;
   justify-content: center;
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.cadetblue};
   font-size: 18px;
   font-weight: bold;
   align-items: center;

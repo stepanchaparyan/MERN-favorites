@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const ProgressBar = styled.div`
-  background-color: ${props => props.theme.color};
+  background-color: ${props => props.theme.cadetblue};
   color: black;
   width: ${props => `${props.width}px`};
   font-size: 12px;
