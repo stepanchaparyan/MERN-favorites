@@ -8,10 +8,12 @@ import logo from '../../../assets/logo';
 import localization from './localization';
 import armFlag from '../../../assets/arm.png';
 import usaFlag from '../../../assets/usa.png';
+import { LINK, LANGUAGES } from '../../../constants';
 
 const Navbar = ({ changeLocale }) => {
   const { user, logout, isAuthencated, clearErrors } = useContext(AuthContext);
   const { formatMessage } = useIntl();
+  const alt = 'logo';
 
   const onLogout = () => {
     logout();
@@ -20,13 +22,13 @@ const Navbar = ({ changeLocale }) => {
   const authLinks = (
     <NavLinks>
       {isAuthencated && (
-        <LinkStyled to="/profilePage">
+        <LinkStyled to={LINK.TO.PROFILE_PAGE}>
           <UserName>{user && user.name}</UserName>
         </LinkStyled>
       )}
       <div>
-        <Img src={armFlag} onClick={() => changeLocale('hy')}></Img>
-        <Img src={usaFlag} onClick={() => changeLocale('en')}></Img>
+        <Img src={armFlag} onClick={() => changeLocale(LANGUAGES.ARMENIAN)}></Img>
+        <Img src={usaFlag} onClick={() => changeLocale(LANGUAGES.ENGLISH)}></Img>
       </div>
       <Logout onClick={onLogout}>{formatMessage(localization.logout)}</Logout>
     </NavLinks>
@@ -35,18 +37,18 @@ const Navbar = ({ changeLocale }) => {
   const favItemLinks = (
     <NavLinks>
       <div>
-        <Img src={armFlag} onClick={() => changeLocale('hy')}></Img>
-        <Img src={usaFlag} onClick={() => changeLocale('en')}></Img>
+        <Img src={armFlag} onClick={() => changeLocale(LANGUAGES.ARMENIAN)}></Img>
+        <Img src={usaFlag} onClick={() => changeLocale(LANGUAGES.ENGLISH)}></Img>
       </div>
-      <LinkStyled to="/register">{formatMessage(localization.signUp)}</LinkStyled>
-      <LinkStyled to="/login">{formatMessage(localization.logIn)}</LinkStyled>
+      <LinkStyled to={LINK.TO.REGISTER}>{formatMessage(localization.signUp)}</LinkStyled>
+      <LinkStyled to={LINK.TO.LOGIN}>{formatMessage(localization.logIn)}</LinkStyled>
     </NavLinks>
   );
 
   return (
     <Container>
-      <Link to="/">
-        <Logo src={logo} alt="logo" />
+      <Link to={LINK.TO.HOME}>
+        <Logo src={logo} alt={alt} />
       </Link>
       {isAuthencated ? authLinks : favItemLinks}
     </Container>
