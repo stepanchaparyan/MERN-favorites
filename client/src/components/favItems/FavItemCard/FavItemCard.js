@@ -14,7 +14,7 @@ import {
 } from './FavItemCardStyled';
 import localization from './localization';
 import theme from '../../../styles/theme';
-import { REACT_TOOLTIP_STYLED } from '../../../constants/reactTooltipStyled';
+import { REACT_TOOLTIP_STYLED } from '../../../constants';
 
 const FavItemCard = ({ favItem }) => {
   const { cadetblue } = theme;

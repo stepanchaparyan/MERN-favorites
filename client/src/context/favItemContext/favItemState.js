@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { HEADER_CONFIG } from '../../constants/headers';
+import { HEADER_CONFIG } from '../../constants';
 import FavItemContext from './favItemContext';
 import favItemReducer from './favItemReducer';
 import {

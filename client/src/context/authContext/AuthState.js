@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { HEADER_CONFIG } from '../../constants/headers';
+import { HEADER_CONFIG } from '../../constants';
 import authReducer from './authReducer';
 import AuthContext from './authContext';
 import setAuthToken from '../../utils/setAuthToken';

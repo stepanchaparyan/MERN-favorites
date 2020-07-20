@@ -2,6 +2,7 @@ import React, { useContext, useState, useRef } from 'react';
 import Select from 'react-select';
 import { useIntl } from 'react-intl';
 import FavItemContext from '../../../context/favItemContext/favItemContext';
+import { FORM } from '../../../constants';
 import {
   SelectContainer,
   customStyles,
@@ -25,18 +26,18 @@ const FilterAndSearch = () => {
   const { formatMessage } = useIntl();
 
   const options = [
-    { value: 'Film', label: 'Film' },
-    { value: 'Music', label: 'Music' },
-    { value: 'Books', label: 'Books' },
-    { value: 'Other', label: 'Other' },
-    { value: 'All', label: 'All cards' }
+    { value: FORM.SELECT.OPTIONS.FILM, label: FORM.SELECT.LABELS.FILM },
+    { value: FORM.SELECT.OPTIONS.MUSIC, label: FORM.SELECT.LABELS.MUSIC },
+    { value: FORM.SELECT.OPTIONS.BOOKS, label: FORM.SELECT.LABELS.BOOKS },
+    { value: FORM.SELECT.OPTIONS.OTHER, label: FORM.SELECT.LABELS.OTHER },
+    { value: FORM.SELECT.OPTIONS.ALL, label: FORM.SELECT.LABELS.ALL_CARDS }
   ];
 
   const [selectedOption, setSelectedOption] = useState(null);
 
   const filterByCategory = selectedOption => {
     if (searchInput.current.value === '') {
-      if (selectedOption.value === 'All') {
+      if (selectedOption.value === FORM.SELECT.OPTIONS.ALL) {
         setSelectedOption(selectedOption);
         clearFilter();
         clearSearchFilter();
@@ -46,7 +47,7 @@ const FilterAndSearch = () => {
         filter_FavItem(selectedOption.value);
       }
     } else {
-      if (selectedOption.value === 'All') {
+      if (selectedOption.value === FORM.SELECT.OPTIONS.ALL) {
         setSelectedOption(selectedOption);
         clearFilter();
         clearSearchFilter();
@@ -78,7 +79,7 @@ const FilterAndSearch = () => {
         <Input
           ref={searchInput}
           onChange={searchByInput}
-          type="text"
+          type={FORM.INPUT.TYPE.TEXT}
           placeholder={formatMessage(localization.searchCardByName)}
         />
       </InputContainer>

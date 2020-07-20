@@ -12,6 +12,7 @@ import {
   Option,
   DefaultOption
 } from './FavItemFormStyled';
+import { FAVITEM, FORM, EVENTS } from '../../../constants';
 import localization from './localization';
 
 const FavItemForm = () => {
@@ -35,15 +36,15 @@ const FavItemForm = () => {
       setFavItem(editFavItem);
     } else {
       setFavItem({
-        author: 'Unknown',
-        title: '',
-        category: 'Other',
-        description: 'Description'
+        author: FAVITEM.DEFAULT_VALUES.AUTHOR,
+        title: FAVITEM.DEFAULT_VALUES.TITLE,
+        category: FAVITEM.DEFAULT_VALUES.CATEGORY,
+        description: FAVITEM.DEFAULT_VALUES.DESCRIPTION
       });
     }
-    document.addEventListener('click', handleClick);
+    document.addEventListener(EVENTS.CLICK, handleClick);
     return () => {
-      document.removeEventListener('click', handleClick);
+      document.removeEventListener(EVENTS.CLICK, handleClick);
     };
   }, [editFavItem, context]);
 
@@ -93,36 +94,38 @@ const FavItemForm = () => {
       </Title>
       <Form onSubmit={onsubmit}>
         <Input
-          type="text"
+          type={FORM.INPUT.TYPE.TEXT}
           placeholder={formatMessage(localization.author)}
-          name="author"
+          name={FORM.INPUT.NAME.AUTHOR}
           value={author}
           onChange={onchange}
         />
         <Input
-          type="text"
+          type={FORM.INPUT.TYPE.TEXT}
           placeholder={formatMessage(localization.title)}
-          name="title"
+          name={FORM.INPUT.NAME.TITLE}
           value={title}
           onChange={onchange}
           required
         />
-        <Select value={category} name="category" onChange={onchange}>
-          <DefaultOption value="Other">{formatMessage(localization.selectCategory)}</DefaultOption>
-          <Option value="Film">{formatMessage(localization.films)}</Option>
-          <Option value="Music">{formatMessage(localization.music)}</Option>
-          <Option value="Books">{formatMessage(localization.books)}</Option>
-          <Option value="Other">{formatMessage(localization.other)}</Option>
+        <Select value={category} name={FORM.INPUT.NAME.CATEGORY} onChange={onchange}>
+          <DefaultOption value={FORM.SELECT.VALUES.OTHER}>
+            {formatMessage(localization.selectCategory)}
+          </DefaultOption>
+          <Option value={FORM.SELECT.VALUES.FILM}>{formatMessage(localization.films)}</Option>
+          <Option value={FORM.SELECT.VALUES.MUSIC}>{formatMessage(localization.music)}</Option>
+          <Option value={FORM.SELECT.VALUES.BOOKS}>{formatMessage(localization.books)}</Option>
+          <Option value={FORM.SELECT.VALUES.OTHER}>{formatMessage(localization.other)}</Option>
         </Select>
         <Input
-          type="text"
+          type={FORM.INPUT.TYPE.TEXT}
           placeholder={formatMessage(localization.description)}
-          name="description"
+          name={FORM.INPUT.NAME.DESRIPTION}
           value={description}
           onChange={onchange}
         />
         <Input
-          type="submit"
+          type={FORM.INPUT.TYPE.SUBMIT}
           value={
             editFavItem !== null
               ? formatMessage(localization.update)
@@ -130,18 +133,22 @@ const FavItemForm = () => {
           }
         />
         {editFavItem && (
-          <Input onClick={cancelEdit} type="button" value={formatMessage(localization.cancel)} />
+          <Input
+            onClick={cancelEdit}
+            type={FORM.INPUT.TYPE.BUTTON}
+            value={formatMessage(localization.cancel)}
+          />
         )}
       </Form>
       {error && (
         <Errors>
           {!Array.isArray(error) ? (
-            <ErrorButton type="button" onClick={removeErrors}>
+            <ErrorButton type={FORM.INPUT.TYPE.BUTTON} onClick={removeErrors}>
               {error}
             </ErrorButton>
           ) : (
             error.map(err => (
-              <ErrorButton key={err.msg} type="button" onClick={removeErrors}>
+              <ErrorButton key={err.msg} type={FORM.INPUT.TYPE.BUTTON} onClick={removeErrors}>
                 {err.msg}
               </ErrorButton>
             ))
