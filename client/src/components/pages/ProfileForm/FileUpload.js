@@ -17,6 +17,13 @@ import UploadIcon from '../../../assets/icon-upload.png';
 import Modal from 'react-modal';
 import CustomModal from '../../Modal/Modal';
 import localization from './localization';
+import theme from '../../../styles/theme';
+import { FORM, FILE_UPLOAD, MODAL } from '../../../constants';
+
+const { cadetblue, indianred } = theme;
+const { FILE_TYPE, MODAL_TYPE, HTML_FOR } = FILE_UPLOAD;
+const { INPUT } = FORM;
+const { OK } = MODAL;
 
 const FileUpload = () => {
   const context = useContext(ProfileContext);
@@ -43,12 +50,15 @@ const FileUpload = () => {
   }, []);
 
   const onChange = e => {
-    if (e.target.files[0].type === 'image/jpeg' || e.target.files[0] === 'image/png') {
+    if (
+      e.target.files[0].type === FILE_TYPE.IMAGE_JPEG ||
+      e.target.files[0] === FILE_TYPE.IMAGE_PNG
+    ) {
       setFile(e.target.files[0]);
       setFilename(e.target.files[0].name);
     } else {
       setIsOpen(true);
-      setModalType('fileType');
+      setModalType(MODAL_TYPE.FILE_TYPE);
     }
   };
 
@@ -65,7 +75,7 @@ const FileUpload = () => {
       image: filename
     });
     setIsOpen(true);
-    setModalType('confirm');
+    setModalType(MODAL_TYPE.CONFIRM);
   };
 
   const onConfirm = () => {
@@ -93,20 +103,20 @@ const FileUpload = () => {
     <Container>
       <form onSubmit={onSubmit}>
         <ProfileImage src={require(`../../../assets/${image}`)} />
-        <LabelEdit htmlFor="file-edit">
+        <LabelEdit htmlFor={HTML_FOR.FILE_EDIT}>
           <IconEdit src={EditIcon}></IconEdit>
         </LabelEdit>
-        <InputHidden id="file-edit" type="file" onChange={onChange} />
-        {modalType === 'fileType' && (
+        <InputHidden id={HTML_FOR.FILE_EDIT} type={INPUT.TYPE.FILE} onChange={onChange} />
+        {modalType === MODAL_TYPE.FILE_TYPE && (
           <CustomModal
             closeModal={closeFileTypeModal}
             modalIsOpen={modalIsOpen}
             buttonConfirmText={null}
-            buttonCancelText="OK"
+            buttonCancelText={OK}
             title={formatMessage(localization.wrongExtension)}
             text={formatMessage(localization.wrongExtensionText)}
-            titleBgColor="indianred"
-            cancelButtonColor="cadetblue"
+            titleBgColor={indianred}
+            cancelButtonColor={cadetblue}
           ></CustomModal>
         )}
         <Filename>{filename}</Filename>
@@ -114,18 +124,22 @@ const FileUpload = () => {
         {filename && !uploadedFile && (
           <>
             <Progress percentage={uploadPercentage} />
-            <LabelUpload htmlFor="file-upload">
+            <LabelUpload htmlFor={HTML_FOR.FILE_UPLOAD}>
               <IconEdit src={UploadIcon}></IconEdit>
               {formatMessage(localization.upload)}
             </LabelUpload>
-            <InputHidden id="file-upload" type="submit" />
+            <InputHidden id={HTML_FOR.FILE_UPLOAD} type={INPUT.TYPE.SUBMIT} />
           </>
         )}
       </form>
       {uploadedFile && (
-        <Input type="button" value={formatMessage(localization.updateImage)} onClick={setImage} />
+        <Input
+          type={INPUT.TYPE.BUTTON}
+          value={formatMessage(localization.updateImage)}
+          onClick={setImage}
+        />
       )}
-      {modalType === 'confirm' && (
+      {modalType === MODAL_TYPE.CONFIRM && (
         <CustomModal
           closeModal={closeModal}
           onConfirm={onConfirm}

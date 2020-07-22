@@ -10,6 +10,8 @@ import armFlag from '../../../assets/arm.png';
 import usaFlag from '../../../assets/usa.png';
 import { LINK, LANGUAGES } from '../../../constants';
 
+const { ARMENIAN, ENGLISH } = LANGUAGES;
+
 const Navbar = ({ changeLocale }) => {
   const { user, logout, isAuthencated, clearErrors } = useContext(AuthContext);
   const { formatMessage } = useIntl();
@@ -27,8 +29,8 @@ const Navbar = ({ changeLocale }) => {
         </LinkStyled>
       )}
       <div>
-        <Img src={armFlag} onClick={() => changeLocale(LANGUAGES.ARMENIAN)}></Img>
-        <Img src={usaFlag} onClick={() => changeLocale(LANGUAGES.ENGLISH)}></Img>
+        <Img src={armFlag} onClick={() => changeLocale(ARMENIAN)}></Img>
+        <Img src={usaFlag} onClick={() => changeLocale(ENGLISH)}></Img>
       </div>
       <Logout onClick={onLogout}>{formatMessage(localization.logout)}</Logout>
     </NavLinks>
@@ -47,7 +49,7 @@ const Navbar = ({ changeLocale }) => {
 
   return (
     <Container>
-      <Link to={LINK.TO.HOME}>
+      <Link to={LINK.TO.WELCOME}>
         <Logo src={logo} alt={alt} />
       </Link>
       {isAuthencated ? authLinks : favItemLinks}

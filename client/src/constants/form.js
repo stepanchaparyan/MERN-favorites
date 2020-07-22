@@ -4,13 +4,22 @@ export const FORM = {
       TEXT: 'text',
       EMAIL: 'email',
       SUBMIT: 'submit',
-      BUTTON: 'button'
+      BUTTON: 'button',
+      PASSWORD: 'password',
+      FILE: 'file',
+      TEL: 'tel'
     },
     NAME: {
       AUTHOR: 'author',
       TITLE: 'title',
       CATEGORY: 'category',
-      DESCRIPTION: 'description'
+      DESCRIPTION: 'description',
+      EMAIL: 'email',
+      PASSWORD: 'password',
+      PASSWORD_2: 'password2',
+      NAME: 'name',
+      SURNAME: 'surname',
+      PHONE_NUMBER: 'phoneNumber'
     }
   },
   SELECT: {
@@ -18,7 +27,9 @@ export const FORM = {
       FILM: 'Film',
       MUSIC: 'Music',
       BOOKS: 'Books',
-      OTHER: 'Other'
+      OTHER: 'Other',
+      MALE: 'male',
+      FEMALE: 'female'
     },
     OPTIONS: {
       FILM: 'Film',
@@ -33,6 +44,11 @@ export const FORM = {
       BOOKS: 'Books',
       OTHER: 'Other',
       ALL_CARDS: 'All cards'
+    },
+    NAME: {
+      GENDER: 'gender'
     }
-  }
+  },
+  TEL_PLACEHOLDER: '93123456',
+  TEL_PATTERN: '[0-9]{8}'
 };

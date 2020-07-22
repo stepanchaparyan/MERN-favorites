@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 import AuthContext from '../../../context/authContext/authContext';
 import { Container, Title, Form, Input, Errors, QuestionText, ErrorButton } from './LoginStyled';
 import localization from './localization';
+import { FORM, LINK } from '../../../constants';
+
+const { INPUT } = FORM;
 
 const Login = props => {
   const { login, isAuthencated, error, clearErrors } = useContext(AuthContext);
@@ -12,7 +15,7 @@ const Login = props => {
 
   useEffect(() => {
     if (isAuthencated) {
-      props.history.push('/');
+      props.history.push(LINK.TO.WELCOME);
       clearErrors();
     } else {
       clearErrors();
@@ -48,32 +51,32 @@ const Login = props => {
       <Title>{formatMessage(localization.login)}</Title>
       <Form onSubmit={onsubmit}>
         <Input
-          type="email"
-          name="email"
+          type={INPUT.TYPE.EMAIL}
+          name={INPUT.NAME.EMAIL}
           placeholder={formatMessage(localization.email)}
           value={email}
           onChange={onchange}
           required
         />
         <Input
-          type="password"
-          name="password"
+          type={INPUT.TYPE.PASSWORD}
+          name={INPUT.NAME.PASSWORD}
           placeholder={formatMessage(localization.password)}
           value={password}
           onChange={onchange}
           required
         />
-        <Input type="submit" value={formatMessage(localization.login)} />
+        <Input type={INPUT.TYPE.SUBMIT} value={formatMessage(localization.login)} />
       </Form>
       {error !== null && (
         <Errors>
           {!Array.isArray(error) ? (
-            <ErrorButton type="button" onClick={() => clearErrors()}>
+            <ErrorButton type={INPUT.TYPE.BUTTON} onClick={() => clearErrors()}>
               {error}
             </ErrorButton>
           ) : (
             error.map(err => (
-              <ErrorButton key={err.msg} type="button" onClick={() => clearErrors()}>
+              <ErrorButton key={err.msg} type={INPUT.TYPE.BUTTON} onClick={() => clearErrors()}>
                 {err.msg}
               </ErrorButton>
             ))
@@ -82,7 +85,7 @@ const Login = props => {
       )}
       <QuestionText>
         {formatMessage(localization.dontHaveAnAccout)} &nbsp;
-        <Link to="/register">{formatMessage(localization.signup)}</Link>
+        <Link to={LINK.TO.REGISTER}>{formatMessage(localization.signup)}</Link>
       </QuestionText>
     </Container>
   );

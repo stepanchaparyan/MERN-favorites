@@ -26,8 +26,13 @@ import {
 } from './ProfileStyled';
 import Img from '../../../assets/elephant.png';
 import localization from './localization';
+import { LINK, REACT_TOOLTIP_STYLED } from '../../../constants';
+import theme from '../../../styles/theme';
+
+const { PLACE, EFFECT } = REACT_TOOLTIP_STYLED;
 
 const Profile = () => {
+  const { cadetblue } = theme;
   const { loadUser, user } = useContext(AuthContext);
   let {
     loading,
@@ -93,8 +98,8 @@ const Profile = () => {
                   <Text>{formatMessage(localization.email)}:</Text>
                   <Data
                     data-tip={profile.email}
-                    data-arrow-color="cadetblue"
-                    data-background-color="cadetblue"
+                    data-arrow-color={cadetblue}
+                    data-background-color={cadetblue}
                   >
                     {profile.email}
                   </Data>
@@ -113,7 +118,7 @@ const Profile = () => {
                 </ProfileData>
               </InfoData>
             </Info>
-            <ReactTooltipStyled place="right" effect="solid" />
+            <ReactTooltipStyled place={PLACE.RIGHT} effect={EFFECT.SOLID} />
             <Button onClick={handleEdit}>{formatMessage(localization.editCard)}</Button>
           </>
         )}
@@ -121,7 +126,7 @@ const Profile = () => {
           {toggleForm && <FileUpload />}
           {toggleForm && <ProfileForm />}
         </Forms>
-        <LinkStyled to="/">{formatMessage(localization.goHomePage)}</LinkStyled>
+        <LinkStyled to={LINK.TO.WELCOME}>{formatMessage(localization.goHomePage)}</LinkStyled>
         <Logo src={Img}></Logo>
       </Module>
     </Container>

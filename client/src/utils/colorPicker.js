@@ -1,20 +1,26 @@
+import theme from '../styles/theme';
+import { FAVITEM } from '../constants';
+
+const { red, blue, limeGreen, orange, black } = theme;
+const { TYPE } = FAVITEM;
+
 export const colorPicker = category => {
   let color;
   switch (category) {
-    case 'Film':
-      color = 'red';
+    case TYPE.FILM:
+      color = red;
       break;
-    case 'Music':
-      color = 'blue';
+    case TYPE.MUSIC:
+      color = blue;
       break;
-    case 'Books':
-      color = 'limeGreen';
+    case TYPE.BOOKS:
+      color = limeGreen;
       break;
-    case 'Other':
-      color = 'orange';
+    case TYPE.OTHER:
+      color = orange;
       break;
     default:
-      color = 'black';
+      color = black;
   }
   return color;
 };

@@ -11,6 +11,8 @@ import {
 } from '../FilterAndSearch/FilterAndSearchStyled';
 import localization from './localization';
 
+const { SELECT, INPUT } = FORM;
+
 const FilterAndSearch = () => {
   const {
     filter_FavItem,
@@ -26,18 +28,18 @@ const FilterAndSearch = () => {
   const { formatMessage } = useIntl();
 
   const options = [
-    { value: FORM.SELECT.OPTIONS.FILM, label: FORM.SELECT.LABELS.FILM },
-    { value: FORM.SELECT.OPTIONS.MUSIC, label: FORM.SELECT.LABELS.MUSIC },
-    { value: FORM.SELECT.OPTIONS.BOOKS, label: FORM.SELECT.LABELS.BOOKS },
-    { value: FORM.SELECT.OPTIONS.OTHER, label: FORM.SELECT.LABELS.OTHER },
-    { value: FORM.SELECT.OPTIONS.ALL, label: FORM.SELECT.LABELS.ALL_CARDS }
+    { value: SELECT.OPTIONS.FILM, label: SELECT.LABELS.FILM },
+    { value: SELECT.OPTIONS.MUSIC, label: SELECT.LABELS.MUSIC },
+    { value: SELECT.OPTIONS.BOOKS, label: SELECT.LABELS.BOOKS },
+    { value: SELECT.OPTIONS.OTHER, label: SELECT.LABELS.OTHER },
+    { value: SELECT.OPTIONS.ALL, label: SELECT.LABELS.ALL_CARDS }
   ];
 
   const [selectedOption, setSelectedOption] = useState(null);
 
   const filterByCategory = selectedOption => {
     if (searchInput.current.value === '') {
-      if (selectedOption.value === FORM.SELECT.OPTIONS.ALL) {
+      if (selectedOption.value === SELECT.OPTIONS.ALL) {
         setSelectedOption(selectedOption);
         clearFilter();
         clearSearchFilter();
@@ -47,7 +49,7 @@ const FilterAndSearch = () => {
         filter_FavItem(selectedOption.value);
       }
     } else {
-      if (selectedOption.value === FORM.SELECT.OPTIONS.ALL) {
+      if (selectedOption.value === SELECT.OPTIONS.ALL) {
         setSelectedOption(selectedOption);
         clearFilter();
         clearSearchFilter();
@@ -79,7 +81,7 @@ const FilterAndSearch = () => {
         <Input
           ref={searchInput}
           onChange={searchByInput}
-          type={FORM.INPUT.TYPE.TEXT}
+          type={INPUT.TYPE.TEXT}
           placeholder={formatMessage(localization.searchCardByName)}
         />
       </InputContainer>

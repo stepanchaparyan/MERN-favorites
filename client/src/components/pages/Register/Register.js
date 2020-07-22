@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 import AuthContext from '../../../context/authContext/authContext';
 import { Container, Title, Form, Input, Errors, QuestionText, ErrorButton } from './RegisterStyled';
 import localization from './localization';
+import { FORM, LINK, ERRORS } from '../../../constants';
+
+const { INPUT } = FORM;
 
 const Register = props => {
   const { register, isAuthencated, error, clearErrors, setError } = useContext(AuthContext);
@@ -32,7 +35,7 @@ const Register = props => {
   const onsubmit = e => {
     e.preventDefault();
     if (password !== password2) {
-      setError('Password does not match');
+      setError(ERRORS.TEXT.PASSWORD_MATCH);
     } else {
       register({
         name,
@@ -46,48 +49,48 @@ const Register = props => {
       <Title>{formatMessage(localization.signup)}</Title>
       <Form onSubmit={onsubmit}>
         <Input
-          type="text"
-          name="name"
+          type={INPUT.TYPE.TEXT}
+          name={INPUT.NAME.NAME}
           placeholder={formatMessage(localization.name)}
           value={name}
           onChange={onchange}
           required
         />
         <Input
-          type="email"
-          name="email"
+          type={INPUT.TYPE.EMAIL}
+          name={INPUT.NAME.EMAIL}
           placeholder={formatMessage(localization.email)}
           value={email}
           onChange={onchange}
           required
         />
         <Input
-          type="password"
-          name="password"
+          type={INPUT.TYPE.PASSWORD}
+          name={INPUT.NAME.PASSWORD}
           placeholder={formatMessage(localization.password)}
           value={password}
           onChange={onchange}
           required
         />
         <Input
-          type="password"
-          name="password2"
+          type={INPUT.TYPE.PASSWORD}
+          name={INPUT.NAME.PASSWORD_2}
           placeholder={formatMessage(localization.confirmPassword)}
           value={password2}
           onChange={onchange}
           required
         />
-        <Input type="submit" value={formatMessage(localization.signup)} />
+        <Input type={INPUT.TYPE.SUBMIT} value={formatMessage(localization.signup)} />
       </Form>
       {error !== null && (
         <Errors>
           {!Array.isArray(error) ? (
-            <ErrorButton type="button" onClick={() => clearErrors()}>
+            <ErrorButton type={INPUT.TYPE.BUTTON} onClick={() => clearErrors()}>
               {error}
             </ErrorButton>
           ) : (
             error.map(err => (
-              <ErrorButton key={err.msg} type="button" onClick={() => clearErrors()}>
+              <ErrorButton key={err.msg} type={INPUT.TYPE.BUTTON} onClick={() => clearErrors()}>
                 {err.msg}
               </ErrorButton>
             ))
@@ -96,7 +99,7 @@ const Register = props => {
       )}
       <QuestionText>
         {formatMessage(localization.alreadyHaveAnAccout)} &nbsp;
-        <Link to="/login">{formatMessage(localization.signin)}</Link>
+        <Link to={LINK.TO.LOGIN}>{formatMessage(localization.signin)}</Link>
       </QuestionText>
     </Container>
   );

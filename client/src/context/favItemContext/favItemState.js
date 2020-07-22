@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { HEADER_CONFIG } from '../../constants';
+import { HEADER_CONFIG, URL } from '../../constants';
 import FavItemContext from './favItemContext';
 import favItemReducer from './favItemReducer';
 import {
@@ -22,6 +22,8 @@ import {
   CLEAR_SEARCH_FILTER
 } from '../types';
 
+const { FAVITEM, FAVITEM_ADD, FAVITEM_UPDATE } = URL;
+
 const FavItemState = props => {
   const intialState = {
     editFavItem: null,
@@ -38,7 +40,7 @@ const FavItemState = props => {
   // get favItems
   const getFavItems = async () => {
     try {
-      const res = await axios.get('/favItem');
+      const res = await axios.get(FAVITEM);
       dispatch({
         type: GET_FAVITEMS,
         payload: res.data
@@ -55,7 +57,7 @@ const FavItemState = props => {
   const addFavItem = async favItem => {
     try {
       const res = await axios.post(
-        '/favItem/add',
+        FAVITEM_ADD,
         favItem,
         HEADER_CONFIG.CONTENT_TYPE_APPLICATION_JSON
       );
@@ -81,7 +83,7 @@ const FavItemState = props => {
   // remove favItem
   const removeFavItem = async id => {
     try {
-      await axios.delete(`/favItem/${id}`);
+      await axios.delete(`${FAVITEM}/${id}`);
       dispatch({
         type: REMOVE_FAVITEM,
         payload: id
@@ -98,7 +100,7 @@ const FavItemState = props => {
   const update_FavItem = async favItem => {
     try {
       const res = await axios.put(
-        `/favItem/update/${favItem._id}`,
+        `${FAVITEM_UPDATE}/${favItem._id}`,
         favItem,
         HEADER_CONFIG.CONTENT_TYPE_APPLICATION_JSON
       );

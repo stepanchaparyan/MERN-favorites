@@ -12,6 +12,9 @@ import {
   ModalButtonsContainer
 } from './ModalStyled';
 import Modal from 'react-modal';
+import { MODAL } from '../../constants';
+
+const { CONTENT_LABEL, X, DEFAULT_PROPS, NOOP } = MODAL;
 
 const CustomModal = ({
   modalIsOpen,
@@ -29,13 +32,13 @@ const CustomModal = ({
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
       style={customStyles}
-      contentLabel="Modal"
+      contentLabel={CONTENT_LABEL}
     >
       <ModalContainer>
         <ModalTitleContainer bgColor={titleBgColor}>
           <ModalTitle>{title}</ModalTitle>
           <ButtonClose onClick={closeModal} bgColor={titleBgColor}>
-            X
+            {X}
           </ButtonClose>
         </ModalTitleContainer>
         <ModalTextContainer>{text}</ModalTextContainer>
@@ -65,11 +68,11 @@ CustomModal.propTypes = {
 };
 
 CustomModal.defaultProps = {
-  onConfirm: () => {},
-  title: 'Modal',
-  text: 'Please confirm',
-  buttonConfirmText: 'Confirm',
-  buttonCancelText: 'Cancel'
+  onConfirm: NOOP,
+  title: DEFAULT_PROPS.TITLE,
+  text: DEFAULT_PROPS.PLEASE_CONFIRM,
+  buttonConfirmText: DEFAULT_PROPS.CONFIRM,
+  buttonCancelText: DEFAULT_PROPS.CANCEL
 };
 
 export default CustomModal;

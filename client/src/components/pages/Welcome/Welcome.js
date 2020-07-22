@@ -15,6 +15,7 @@ import {
 } from './WelcomeStyled';
 import Img from '../../../assets/elephant.png';
 import localization from './localization';
+import { LINK } from '../../../constants';
 
 const Welcome = () => {
   const { formatMessage } = useIntl();
@@ -36,7 +37,7 @@ const Welcome = () => {
           <Other>{formatMessage(localization.other)}</Other>
         </LongText>
         {isAuthencated && (
-          <LinkStyled to="/home">{formatMessage(localization.createYourCard)}</LinkStyled>
+          <LinkStyled to={LINK.TO.HOME}>{formatMessage(localization.createYourCard)}</LinkStyled>
         )}
         <Logo src={Img}></Logo>
       </Module>

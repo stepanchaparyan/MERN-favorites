@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { HEADER_CONFIG } from '../../constants';
+import { HEADER_CONFIG, URL, ERRORS, COMMON } from '../../constants';
 import ProfileContext from './profileContext';
 import ProfileReducer from './profileReducer';
 import {
@@ -17,6 +17,9 @@ import {
   SET_UPLOAD_PERSENTAGE,
   SET_MESSAGE
 } from '../types';
+
+const { PROFILE, PROFILE_ADD, PROFILE_UPDATE, UPLOAD } = URL;
+const { TEXT } = COMMON;
 
 const ProfileState = props => {
   const intialState = {
@@ -34,7 +37,7 @@ const ProfileState = props => {
   // get profile
   const getProfile = async () => {
     try {
-      const res = await axios.get('/profile');
+      const res = await axios.get(PROFILE);
       dispatch({
         type: GET_PROFILE,
         payload: res.data
@@ -51,7 +54,7 @@ const ProfileState = props => {
   const addProfile = async profile => {
     try {
       const res = await axios.post(
-        '/profile/add',
+        PROFILE_ADD,
         profile,
         HEADER_CONFIG.CONTENT_TYPE_APPLICATION_JSON
       );
@@ -71,7 +74,7 @@ const ProfileState = props => {
   const updateProfile = async profile => {
     try {
       const res = await axios.put(
-        '/profile/update',
+        PROFILE_UPDATE,
         profile,
         HEADER_CONFIG.CONTENT_TYPE_APPLICATION_JSON
       );
@@ -128,12 +131,12 @@ const ProfileState = props => {
       }
     };
     try {
-      const res = await axios.post('/upload', formData, config);
+      const res = await axios.post(UPLOAD, formData, config);
       dispatch({
         type: UPDATE_FILE,
         payload: res.data
       });
-      set_message('File Uploaded');
+      set_message(TEXT.FILE_UPLOADED);
       setTimeout(() => set_message(null), 10000);
     } catch (err) {
       dispatch({
@@ -141,7 +144,7 @@ const ProfileState = props => {
         payload: err.response.data.errors
       });
       if (err.response.status === 500) {
-        set_message('There was a problem with the server');
+        set_message(ERRORS.TEXT_500);
       } else {
         set_message(err.response.data.msg);
       }

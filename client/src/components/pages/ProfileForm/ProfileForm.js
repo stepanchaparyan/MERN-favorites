@@ -14,6 +14,9 @@ import {
   DatePickerStyled
 } from './ProfileFormStyled';
 import localization from './localization';
+import { FORM } from '../../../constants';
+
+const { INPUT, SELECT, TEL_PLACEHOLDER, TEL_PATTERN } = FORM;
 
 const ProfileForm = () => {
   const context = useContext(ProfileContext);
@@ -63,9 +66,9 @@ const ProfileForm = () => {
           <ProfileData>
             <Text>{formatMessage(localization.name)}:</Text>
             <Input
-              type="text"
+              type={INPUT.TYPE.TEXT}
               placeholder={formatMessage(localization.name)}
-              name="name"
+              name={INPUT.NAME.NAME}
               value={name}
               onChange={onchange}
             />
@@ -73,9 +76,9 @@ const ProfileForm = () => {
           <ProfileData>
             <Text>{formatMessage(localization.surname)}:</Text>
             <Input
-              type="text"
+              type={INPUT.TYPE.TEXT}
               placeholder={formatMessage(localization.surname)}
-              name="surname"
+              name={INPUT.NAME.SURNAME}
               value={surname}
               onChange={onchange}
             />
@@ -83,22 +86,22 @@ const ProfileForm = () => {
           <ProfileData>
             <Text>{formatMessage(localization.email)}:</Text>
             <Input
-              type="email"
+              type={INPUT.TYPE.EMAIL}
               placeholder={formatMessage(localization.email)}
-              name="email"
+              name={INPUT.NAME.EMAIL}
               value={email}
               onChange={onchange}
             />
           </ProfileData>
           <ProfileData>
             <Text>{formatMessage(localization.gender)}:</Text>
-            <Select value={gender} name="gender" onChange={onchange}>
-              <DefaultOption value="Other">
+            <Select value={gender} name={SELECT.NAME.GENDER} onChange={onchange}>
+              <DefaultOption value={SELECT.VALUES.OTHER}>
                 {formatMessage(localization.selectCategory)}
               </DefaultOption>
-              <Option value="male">{formatMessage(localization.male)}</Option>
-              <Option value="female">{formatMessage(localization.female)}</Option>
-              <Option value="other">{formatMessage(localization.other)}</Option>
+              <Option value={SELECT.VALUES.MALE}>{formatMessage(localization.male)}</Option>
+              <Option value={SELECT.VALUES.FEMALE}>{formatMessage(localization.female)}</Option>
+              <Option value={SELECT.VALUES.OTHER}>{formatMessage(localization.other)}</Option>
             </Select>
           </ProfileData>
           <ProfileData>
@@ -115,16 +118,20 @@ const ProfileForm = () => {
           <ProfileData>
             <Text>{formatMessage(localization.phone)}:</Text>
             <Input
-              type="tel"
-              placeholder="93123456"
-              pattern="[0-9]{8}"
-              name="phoneNumber"
+              type={INPUT.TYPE.TEL}
+              placeholder={TEL_PLACEHOLDER}
+              pattern={TEL_PATTERN}
+              name={INPUT.NAME.PHONE_NUMBER}
               value={phoneNumber}
               onChange={onchange}
             />
           </ProfileData>
-          <Input type="submit" value={formatMessage(localization.update)} />
-          <Input onClick={cancelEdit} type="button" value={formatMessage(localization.cancel)} />
+          <Input type={INPUT.TYPE.SUBMIT} value={formatMessage(localization.update)} />
+          <Input
+            onClick={cancelEdit}
+            type={INPUT.TYPE.BUTTON}
+            value={formatMessage(localization.cancel)}
+          />
         </Form>
       </Module>
     </Container>

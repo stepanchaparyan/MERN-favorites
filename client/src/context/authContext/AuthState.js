@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { HEADER_CONFIG } from '../../constants';
+import { HEADER_CONFIG, URL } from '../../constants';
 import authReducer from './authReducer';
 import AuthContext from './authContext';
 import setAuthToken from '../../utils/setAuthToken';
@@ -15,6 +15,8 @@ import {
   LOGOUT,
   CLEAR_ERRORS
 } from '../types';
+
+const { AUTH, REGISTER } = URL;
 
 const AuthState = props => {
   const intialState = {
@@ -33,7 +35,7 @@ const AuthState = props => {
       setAuthToken(localStorage.token);
     }
     try {
-      const res = await axios.get('/auth');
+      const res = await axios.get(AUTH);
       dispatch({
         type: USER_LOADED,
         payload: res.data
@@ -48,11 +50,7 @@ const AuthState = props => {
   //Register User
   const register = async formData => {
     try {
-      const res = await axios.post(
-        '/register',
-        formData,
-        HEADER_CONFIG.CONTENT_TYPE_APPLICATION_JSON
-      );
+      const res = await axios.post(REGISTER, formData, HEADER_CONFIG.CONTENT_TYPE_APPLICATION_JSON);
       dispatch({
         type: REGISTER_SUCCESS,
         payload: res.data
@@ -70,7 +68,7 @@ const AuthState = props => {
 
   const login = async formData => {
     try {
-      const res = await axios.post('/auth', formData, HEADER_CONFIG.CONTENT_TYPE_APPLICATION_JSON);
+      const res = await axios.post(AUTH, formData, HEADER_CONFIG.CONTENT_TYPE_APPLICATION_JSON);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data

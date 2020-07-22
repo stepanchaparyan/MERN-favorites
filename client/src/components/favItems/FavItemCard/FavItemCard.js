@@ -18,6 +18,7 @@ import { REACT_TOOLTIP_STYLED } from '../../../constants';
 
 const FavItemCard = ({ favItem }) => {
   const { cadetblue } = theme;
+  const { PLACE, EFFECT } = REACT_TOOLTIP_STYLED;
 
   const { removeFavItem, edit_FavItem, clearEdit, toggle_Form, toggleForm } = useContext(
     FavItemContext
@@ -64,10 +65,7 @@ const FavItemCard = ({ favItem }) => {
           {description}
         </InfoData>
       </Info>
-      <ReactTooltipStyled
-        place={REACT_TOOLTIP_STYLED.PLACE.LEFT}
-        effect={REACT_TOOLTIP_STYLED.EFFECT.SOLID}
-      />
+      <ReactTooltipStyled place={PLACE.LEFT} effect={EFFECT.SOLID} />
       <Button onClick={handleEdit}>{formatMessage(localization.editCard)}</Button>
       <Button onClick={handleRemove}>{formatMessage(localization.removeCard)}</Button>
     </Container>
