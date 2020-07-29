@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { mobile, tablet, desktop } from '../../../styles/mediaQueries/mixins';
 
 export const Container = styled.div`
   display: flex;
@@ -18,8 +19,18 @@ export const Module = styled.div`
 `;
 
 export const WelcomeText = styled.div`
-  font-size: 50px;
+  font-size: 30px;
   padding: 32px;
+
+  ${mobile`
+    font-size: 30px;
+  `};
+  ${tablet`
+    font-size: 40px;
+  `};
+  ${desktop`
+    font-size: 50px;
+  `};
 `;
 
 export const LongText = styled.div`
