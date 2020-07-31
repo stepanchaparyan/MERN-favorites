@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { mobileUp, tabletUp, desktopUp } from '../../../styles/mediaQueries/mixins';
+import { tabletUp, desktopUp } from '../../../styles/mediaQueries/mixins';
 
 export const Container = styled.div`
   display: flex;

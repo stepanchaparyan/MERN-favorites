@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
@@ -19,6 +19,7 @@ import localization from './localization';
 import armFlag from '../../../assets/arm.png';
 import usaFlag from '../../../assets/usa.png';
 import { LINK, LANGUAGES } from '../../../constants';
+import { useOnClickOutside } from '../../hooks/clickOutSide';
 
 const { ARMENIAN, ENGLISH } = LANGUAGES;
 
@@ -27,6 +28,9 @@ const Navbar = ({ changeLocale }) => {
   const [open, setOpen] = useState(false);
   const { formatMessage } = useIntl();
   const alt = 'logo';
+  const node = useRef();
+
+  useOnClickOutside(node, () => setOpen(false));
 
   const toggle = () => {
     setOpen(!open);
@@ -63,7 +67,7 @@ const Navbar = ({ changeLocale }) => {
   );
 
   return (
-    <Container>
+    <Container ref={node}>
       <Link to={LINK.TO.WELCOME}>
         <Logo src={logo} alt={alt} />
       </Link>

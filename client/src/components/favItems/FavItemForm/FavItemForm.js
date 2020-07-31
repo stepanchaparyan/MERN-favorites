@@ -14,10 +14,10 @@ import {
 } from './FavItemFormStyled';
 import { FAVITEM, FORM, EVENTS } from '../../../constants';
 import localization from './localization';
+import { useOnClickOutside } from '../../hooks/clickOutSide';
 
 const { INPUT, SELECT } = FORM;
 const { DEFAULT_VALUES } = FAVITEM;
-const { CLICK } = EVENTS;
 
 const FavItemForm = () => {
   const context = useContext(FavItemContext);
@@ -34,6 +34,7 @@ const FavItemForm = () => {
 
   const { formatMessage } = useIntl();
   const container = useRef();
+  useOnClickOutside(container, () => toggle_Form(false));
 
   useEffect(() => {
     if (editFavItem !== null) {
@@ -46,10 +47,6 @@ const FavItemForm = () => {
         description: DEFAULT_VALUES.DESCRIPTION
       });
     }
-    document.addEventListener(CLICK, handleClick);
-    return () => {
-      document.removeEventListener(CLICK, handleClick);
-    };
   }, [editFavItem, context]);
 
   const [favItem, setFavItem] = useState({
@@ -76,13 +73,6 @@ const FavItemForm = () => {
   const cancelEdit = () => {
     clearEdit();
     toggle_Form(!toggleForm);
-  };
-
-  const handleClick = e => {
-    if (!container.current.contains(e.target)) {
-      toggle_Form(false);
-      return;
-    }
   };
 
   const removeErrors = () => {
