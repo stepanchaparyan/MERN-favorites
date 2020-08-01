@@ -20,7 +20,7 @@ export const Module = styled.div`
 `;
 
 export const WelcomeText = styled.div`
-  font-size: 40px;
+  font-size: 30px;
   padding: 32px;
   ${tabletUp`
     font-size: 50px;
@@ -36,7 +36,10 @@ export const LinkStyled = styled(Link)`
   color: ${props => props.theme.cadetblue};
   margin: 32px;
   text-decoration: none;
-  font-size: 32px;
+  font-size: 26px;
+  ${tabletUp`
+    font-size: 32px;
+  `};
 `;
 
 export const Logo = styled.img`

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { tabletUp, desktopUp, desktopLargeUp } from '../../../styles/mediaQueries/mixins';
 
 export const Container = styled.div`
   display: flex;
@@ -8,11 +9,27 @@ export const Container = styled.div`
   position: absolute;
   background-color: gray;
   left: 50%;
-  top: 42%;
+  top: 24%;
   transform: translate(-50%, -50%);
   border-radius: 4px;
-  min-width: 40%;
-  min-height: 40%;
+  min-width: 66%;
+  min-height: 20%;
+  text-align: center;
+  ${tabletUp`
+    top: 36%;
+    min-width: 50%;
+    min-height: 30%;
+  `};
+  ${desktopUp`
+    top: 36%;
+    min-width: 40%;
+    min-height: 32%;
+  `};
+  ${desktopLargeUp`
+    top: 50%;
+    min-width: 36%;
+    min-height: 48%;
+  `};
 `;
 
 export const Title = styled.div`
@@ -20,8 +37,17 @@ export const Title = styled.div`
   justify-content: center;
   padding: 32px;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 22px;
   color: black;
+  ${tabletUp`
+    font-size: 24px;
+  `};
+  ${desktopUp`
+    font-size: 26px;
+  `};
+  ${desktopLargeUp`
+    font-size: 30px;
+  `};
 `;
 
 export const Form = styled.form`

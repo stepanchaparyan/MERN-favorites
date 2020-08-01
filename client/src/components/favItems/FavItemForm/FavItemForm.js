@@ -12,7 +12,7 @@ import {
   Option,
   DefaultOption
 } from './FavItemFormStyled';
-import { FAVITEM, FORM, EVENTS } from '../../../constants';
+import { FAVITEM, FORM } from '../../../constants';
 import localization from './localization';
 import { useOnClickOutside } from '../../hooks/clickOutSide';
 

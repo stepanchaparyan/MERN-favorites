@@ -9,7 +9,7 @@ export const Container = styled.div`
   font-size: 20px;
   height: 24px;
   justify-content: center;
-  padding: 16px 50px 16px 32px;
+  padding: 16px 50px 16px 6px;
   ${tabletUp`
     padding: 16px 32px;
     justify-content: space-between;
