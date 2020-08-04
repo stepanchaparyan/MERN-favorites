@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
+import { tabletUp } from '../../../styles/mediaQueries/mixins';
 
 export const Container = styled.div`
   display: flex;
@@ -20,15 +21,22 @@ export const Module = styled.div`
 `;
 
 export const WelcomeText = styled.div`
-  font-size: 40px;
+  font-size: 20px;
   padding: 16px;
+  ${tabletUp`
+    font-size: 40px;
+  `};
 `;
 
 export const LinkStyled = styled(Link)`
   color: ${props => props.theme.cadetblue};
-  margin: 32px;
+  margin: 32px 0 16px 0;
   text-decoration: none;
-  font-size: 32px;
+  font-size: 20px;
+  ${tabletUp`
+    font-size: 32px;
+    margin: 32px 0;
+  `};
 `;
 
 export const Logo = styled.img`
@@ -36,6 +44,10 @@ export const Logo = styled.img`
   position: absolute;
   bottom: 80px;
   right: 60px;
+  display: none;
+  ${tabletUp`
+    display: block;
+  `};
 `;
 
 export const LoadingMessage = styled.h3`
@@ -50,17 +62,27 @@ export const Info = styled.div`
   border-radius: 4px;
   padding: 16px;
   width: 100%;
+  flex-direction: column;
+  ${tabletUp`
+    flex-direction: row;
+  `};
 `;
 
 export const InfoData = styled.div`
   width: 100%;
-  padding: 16px;
+  padding: 16px 0;
+  ${tabletUp`
+    padding: 16px;
+  `};
 `;
 
 export const ProfileData = styled.div`
   display: flex;
-  font-size: 20px;
+  font-size: 12px;
   padding: 8px;
+  ${tabletUp`
+    font-size: 20px;
+  `};
 `;
 
 export const Text = styled.div`
@@ -96,9 +118,12 @@ export const Button = styled.button`
   font-size: 18px;
   margin-top: 24px;
   cursor: pointer;
-  width: 40%;
+  width: 80%;
   font-weight: 600;
   border-radius: 4px;
+  ${tabletUp`
+    width: 40%;
+  `};
 `;
 
 export const ReactTooltipStyled = styled(ReactTooltip)`
@@ -108,4 +133,8 @@ export const ReactTooltipStyled = styled(ReactTooltip)`
 
 export const Forms = styled.div`
   display: flex;
+  flex-direction: column;
+  ${tabletUp`
+    flex-direction: row;
+  `};
 `;

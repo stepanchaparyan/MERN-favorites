@@ -2,16 +2,23 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { tabletUp } from '../../../styles/mediaQueries/mixins';
 
 export const Container = styled.div`
   display: flex;
   justify-content: center;
   color: ${props => props.theme.cadetblue};
-  padding: 0 32px 50px 32px;
+  padding: 0 22px 16px 22px;
   font-weight: 600;
   font-size: 24px;
-  background-color: lightgray;
+  background-color: ${props => props.theme.lightGray};
   border-radius: 4px;
+  ${tabletUp`
+    padding: 0 32px 50px 32px;
+  `};
+  .react-datepicker-popper {
+    left: -48px !important;
+  }
 `;
 
 export const Module = styled.div`
@@ -63,8 +70,12 @@ export const ProfileData = styled.div`
 
 export const Text = styled.div`
   color: black;
-  width: 40%;
-  font-size: 16px;
+  width: 30%;
+  font-size: 14px;
+  ${tabletUp`
+    width: 40%;
+    font-size: 16px;
+  `};
 `;
 
 export const Data = styled.div`
@@ -83,45 +94,60 @@ export const Form = styled.form`
 
 export const Input = styled.input`
   border: 0;
-  width: 200px;
-  padding: 8px 10px;
-  margin: 4px;
+  width: 150px;
+  padding: 4px 8px;
+  margin: 0;
   outline: none;
   border-radius: 4px;
+  ${tabletUp`
+    width: 200px;
+    padding: 8px 10px;
+    margin: 4px;
+  `};
 
   &[type='submit'] {
-    width: 90%;
+    width: 70%;
     background-color: ${props => props.theme.cadetblue};
     font-weight: 600;
     font-size: 16px;
     cursor: pointer;
     margin-top: 20px;
     margin-bottom: 10px;
+    ${tabletUp`
+      width: 90%;
+    `};
   }
 
   &[type='button'] {
-    width: 90%;
+    width: 70%;
     background-color: gray;
     font-weight: 600;
     font-size: 16px;
     cursor: pointer;
     margin-bottom: 10px;
+    ${tabletUp`
+      width: 90%;
+    `};
   }
 `;
 
 export const Select = styled.select`
-  width: 220px;
+  width: 166px;
   background: white;
-  height: 30px;
+  height: 22px;
   outline: none;
   border: none;
   border-radius: 4px;
-  padding-left: 5px;
-  margin: 4px;
+  padding-left: 6px;
+  margin: 0;
+  ${tabletUp`
+    width: 220px;
+    height: 30px;
+    margin: 4px;
+  `};
 `;
 
 export const Option = styled.option`
-  color: black;
   height: 47px;
   padding: 20px;
   font-size: 18px;
@@ -133,11 +159,16 @@ export const DefaultOption = styled.option`
 `;
 
 export const DatePickerStyled = styled(DatePicker)`
-  width: 190px;
-  height: 30px;
+  width: 155px;
+  height: 22px;
   border-radius: 4px;
   outline: none;
   border: none;
   padding-left: 8px;
-  margin: 4px;
+  margin: 0;
+  ${tabletUp`
+    width: 190px;
+    height: 30px;
+    margin: 4px;
+  `};
 `;

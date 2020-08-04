@@ -7,7 +7,8 @@ const theme = {
   orange: 'orange',
   black: 'black',
   white: 'white',
-  lightGray: '#F5F5F5'
+  lightGray: '#F5F5F5',
+  veryLightGray: '#f8f8f8'
 };
 
 export default theme;
