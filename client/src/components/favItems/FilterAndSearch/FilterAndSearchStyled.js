@@ -1,9 +1,14 @@
 import styled from 'styled-components';
+import { tabletUp } from '../../../styles/mediaQueries/mixins';
 
 export const SelectContainer = styled.div`
   & div {
     color: ${props => props.theme.cadetblue};
-    font-size: 18px;
+    font-size: 12px;
+    width: auto;
+    ${tabletUp`
+      font-size: 17px;
+    `};
   }
 `;
 
@@ -15,6 +20,12 @@ export const Input = styled.input`
   outline: none;
   border: 1px solid ${props => props.theme.cadetblue};
   padding-left: 2px;
+  width: 100px;
+  font-size: 10px;
+  ${tabletUp`
+    width: auto;
+    font-size: 14px;
+  `};
 `;
 
 export const customStyles = {

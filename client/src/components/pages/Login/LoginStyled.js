@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { tabletUp } from '../../../styles/mediaQueries/mixins';
 
 export const Container = styled.div`
   display: flex;
@@ -24,13 +25,16 @@ export const Form = styled.form`
 export const Input = styled.input`
   border: 0px;
   border-bottom: 1px solid ${props => props.theme.cadetblue};
-  width: 30%;
+  width: 50%;
   padding: 7px 10px;
   margin: 2px;
   outline: none;
+  ${tabletUp`
+    width: 30%;
+  `};
 
   &[type='submit'] {
-    width: 20%;
+    width: 40%;
     border: 0;
     background-color: ${props => props.theme.cadetblue};
     font-weight: 600;
@@ -38,6 +42,9 @@ export const Input = styled.input`
     margin-top: 20px;
     border-radius: 3%;
     cursor: pointer;
+    ${tabletUp`
+      width: 20%;
+    `};
   }
 `;
 

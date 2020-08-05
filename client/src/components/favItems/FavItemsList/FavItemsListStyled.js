@@ -1,8 +1,20 @@
 import styled from 'styled-components';
+import { tabletUp, desktopUp, desktopLargeUp } from '../../../styles/mediaQueries/mixins';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-self: center;
+  width: 270px;
+  ${tabletUp`
+    width: 544px;
+  `};
+  ${desktopUp`
+    width: 816px;
+  `};
+  ${desktopLargeUp`
+    width: 1088px;
+  `};
 `;
 
 export const CardContainer = styled.div`
@@ -10,6 +22,7 @@ export const CardContainer = styled.div`
   margin: 16px 0;
   flex-flow: wrap;
   opacity: ${props => (props.myOpacity ? 0.2 : 1)};
+  justify-content: left;
 `;
 
 export const Button = styled.button`

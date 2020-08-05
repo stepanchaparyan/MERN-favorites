@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { tabletUp } from '../../../styles/mediaQueries/mixins';
 
 export const Container = styled.div`
   display: flex;
@@ -8,6 +9,7 @@ export const Container = styled.div`
   padding: 0 32px 50px 32px;
   font-weight: 600;
   font-size: 24px;
+  text-align: center;
 `;
 
 export const Module = styled.div`
@@ -18,8 +20,11 @@ export const Module = styled.div`
 `;
 
 export const WelcomeText = styled.div`
-  font-size: 50px;
+  font-size: 30px;
   padding: 32px;
+  ${tabletUp`
+    font-size: 50px;
+  `};
 `;
 
 export const LongText = styled.div`
@@ -31,7 +36,10 @@ export const LinkStyled = styled(Link)`
   color: ${props => props.theme.cadetblue};
   margin: 32px;
   text-decoration: none;
-  font-size: 32px;
+  font-size: 26px;
+  ${tabletUp`
+    font-size: 32px;
+  `};
 `;
 
 export const Logo = styled.img`
@@ -39,6 +47,10 @@ export const Logo = styled.img`
   position: absolute;
   bottom: 120px;
   right: 100px;
+  display: none;
+  ${tabletUp`
+    display: block;
+  `};
 `;
 
 export const Music = styled.span`

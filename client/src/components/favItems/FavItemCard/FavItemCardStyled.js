@@ -10,7 +10,7 @@ export const Container = styled.div`
   background-color: WhiteSmoke;
   color: black;
   font-size: 16px;
-  margin: 5px;
+  margin: 10px;
   &:hover {
     border: 1px solid black;
     background-color: #ebebeb;
