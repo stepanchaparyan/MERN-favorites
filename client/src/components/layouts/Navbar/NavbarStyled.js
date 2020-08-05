@@ -29,7 +29,10 @@ export const Logo = styled.img`
 
 export const UserName = styled.div`
   font-weight: 200;
-  padding-right: 16px;
+  margin-top: 8px;
+  ${tabletUp`
+    margin-top: 0;
+  `};
 `;
 
 export const NavLinks = styled.div`
@@ -40,7 +43,7 @@ export const NavLinks = styled.div`
   position: absolute;
   right: 0px;
   top: 56px;
-  height: 100px;
+  height: 120px;
   ${tabletUp`
     display: flex;
     flex-direction: row;
@@ -69,27 +72,47 @@ export const LinkStyled = styled(Link)`
   display: flex;
   text-decoration: none;
   color: black;
-  margin-left: 16px;
+  margin: 10px 20px;
+  align-self: center;
   &:hover {
     color: white;
   }
+  ${tabletUp`
+    margin: 0 16px 0 0;
+    align-self: auto;
+  `};
 `;
 
 export const Logout = styled.div`
   cursor: pointer;
   color: black;
+  text-align: center;
+  margin-top: 8px;
   &:hover {
     color: white;
   }
+  ${tabletUp`
+    margin-top: 0;
+  `};
 `;
 
-export const Img = styled.img`
+export const Flag = styled.img`
   width: 20px;
   height: 16px;
-  margin-top: 4px;
-  margin-right: 10px;
+  margin: 4px 10px 0 0;
   cursor: pointer;
   &:hover {
     opacity: 0.5;
   }
+  ${tabletUp`
+    margin: 4px 10px 0 10px;
+  `};
+`;
+
+export const FlagContainer = styled.div`
+  text-align: center;
+  margin-top: 8px;
+  ${tabletUp`
+    margin: 0 8px 0 0;
+  `};
 `;

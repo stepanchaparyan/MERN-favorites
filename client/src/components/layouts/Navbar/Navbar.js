@@ -10,8 +10,9 @@ import {
   LinkStyled,
   UserName,
   Logout,
-  Img,
-  Hamburger
+  Flag,
+  Hamburger,
+  FlagContainer
 } from './NavbarStyled';
 import logo from '../../../assets/logo';
 import hamburger from '../../../assets/hamburger';
@@ -47,20 +48,20 @@ const Navbar = ({ changeLocale }) => {
           <UserName>{user && user.name}</UserName>
         </LinkStyled>
       )}
-      <div>
-        <Img src={armFlag} onClick={() => changeLocale(ARMENIAN)}></Img>
-        <Img src={usaFlag} onClick={() => changeLocale(ENGLISH)}></Img>
-      </div>
+      <FlagContainer>
+        <Flag src={armFlag} onClick={() => changeLocale(ARMENIAN)}></Flag>
+        <Flag src={usaFlag} onClick={() => changeLocale(ENGLISH)}></Flag>
+      </FlagContainer>
       <Logout onClick={onLogout}>{formatMessage(localization.logout)}</Logout>
     </NavLinks>
   );
 
   const favItemLinks = (
     <NavLinks open={open}>
-      <div>
-        <Img src={armFlag} onClick={() => changeLocale(LANGUAGES.ARMENIAN)}></Img>
-        <Img src={usaFlag} onClick={() => changeLocale(LANGUAGES.ENGLISH)}></Img>
-      </div>
+      <FlagContainer>
+        <Flag src={armFlag} onClick={() => changeLocale(LANGUAGES.ARMENIAN)}></Flag>
+        <Flag src={usaFlag} onClick={() => changeLocale(LANGUAGES.ENGLISH)}></Flag>
+      </FlagContainer>
       <LinkStyled to={LINK.TO.REGISTER}>{formatMessage(localization.signUp)}</LinkStyled>
       <LinkStyled to={LINK.TO.LOGIN}>{formatMessage(localization.logIn)}</LinkStyled>
     </NavLinks>
