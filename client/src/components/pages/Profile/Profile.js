@@ -33,7 +33,7 @@ const { PLACE, EFFECT } = REACT_TOOLTIP_STYLED;
 
 const Profile = () => {
   const { cadetblue } = theme;
-  const { loadUser, user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   let {
     loading,
     getProfile,
@@ -47,7 +47,6 @@ const Profile = () => {
   const { formatMessage } = useIntl();
 
   useEffect(() => {
-    loadUser();
     getProfile();
   }, []);
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from './components/pages/Home/Home';
 import Register from './components/pages/Register/Register';
@@ -7,8 +7,15 @@ import PageNotFound from './components/pages/PageNotFound/PageNotFound';
 import Welcome from './components/pages/Welcome/Welcome';
 import Profile from './components/pages/Profile/Profile';
 import PrivateRoute from './components/routing/PrivateRoute';
+import AuthContext from './context/authContext/authContext';
 
 const App = () => {
+  const { loadUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    loadUser();
+  }, []);
+
   return (
     <Switch>
       <Route exact path="/" component={Welcome} />

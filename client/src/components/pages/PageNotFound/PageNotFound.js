@@ -7,12 +7,7 @@ import localization from './localization';
 import { LINK } from '../../../constants';
 
 const NotFound = () => {
-  const { loadUser } = useContext(AuthContext);
   const { formatMessage } = useIntl();
-
-  useEffect(() => {
-    loadUser();
-  }, []);
 
   return (
     <Container>
