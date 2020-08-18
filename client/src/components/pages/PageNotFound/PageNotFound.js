@@ -1,6 +1,5 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { useIntl } from 'react-intl';
-import AuthContext from '../../../context/authContext/authContext';
 import { Container, Module, PageNotFoundText, LinkStyled, Logo } from './PageNotFoundStyled';
 import Img from '../../../assets/elephant.png';
 import localization from './localization';

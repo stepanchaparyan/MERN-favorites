@@ -3,7 +3,16 @@ import { useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AuthContext from '../../../context/authContext/authContext';
-import { Container, Title, Form, Input, Errors, QuestionText, ErrorButton } from './RegisterStyled';
+import {
+  Container,
+  Title,
+  Form,
+  Input,
+  Errors,
+  QuestionText,
+  ErrorButton,
+  RegisterButton
+} from './RegisterStyled';
 import localization from './localization';
 import { FORM, LINK, ERRORS } from '../../../constants';
 
@@ -80,7 +89,7 @@ const Register = props => {
           onChange={onchange}
           required
         />
-        <Input type={INPUT.TYPE.SUBMIT} value={formatMessage(localization.signup)} />
+        <RegisterButton>{formatMessage(localization.signup)}</RegisterButton>
       </Form>
       {error !== null && (
         <Errors>

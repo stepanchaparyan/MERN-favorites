@@ -11,7 +11,9 @@ import {
   DefaultOption,
   ProfileData,
   Text,
-  DatePickerStyled
+  DatePickerStyled,
+  UpdateButton,
+  CancelButton
 } from './ProfileFormStyled';
 import localization from './localization';
 import { FORM } from '../../../constants';
@@ -126,12 +128,8 @@ const ProfileForm = () => {
               onChange={onchange}
             />
           </ProfileData>
-          <Input type={INPUT.TYPE.SUBMIT} value={formatMessage(localization.update)} />
-          <Input
-            onClick={cancelEdit}
-            type={INPUT.TYPE.BUTTON}
-            value={formatMessage(localization.cancel)}
-          />
+          <UpdateButton> {formatMessage(localization.update)}</UpdateButton>
+          <CancelButton onClick={cancelEdit}>{formatMessage(localization.cancel)}</CancelButton>
         </Form>
       </Module>
     </Container>

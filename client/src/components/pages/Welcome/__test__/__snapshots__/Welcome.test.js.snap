@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Welcome component test with Enzyme renders correct snapshot 1`] = `
+exports[`Welcome component test with Enzyme renders snapshot 1`] = `
 <styled.div>
   <styled.div>
     <styled.div>

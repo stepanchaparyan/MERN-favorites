@@ -1,5 +1,4 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import { renderSnapshot } from '../../../../utils/tests';
 import NotFound from '../PageNotFound.js';
 
 jest.mock('react-intl', () => ({
@@ -8,8 +7,7 @@ jest.mock('react-intl', () => ({
 }));
 
 describe('NotFound component test with Enzyme', () => {
-  test('renders without crashing', () => {
-    const wrapper = shallow(<NotFound />);
-    expect(wrapper).toMatchSnapshot();
+  test('renders snapshot', () => {
+    renderSnapshot(NotFound);
   });
 });

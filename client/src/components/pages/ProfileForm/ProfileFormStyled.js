@@ -104,31 +104,45 @@ export const Input = styled.input`
     padding: 8px 10px;
     margin: 4px;
   `};
+`;
 
-  &[type='submit'] {
-    width: 70%;
-    background-color: ${props => props.theme.cadetblue};
-    font-weight: 600;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    ${tabletUp`
-      width: 90%;
-    `};
-  }
+export const UpdateButton = styled.button`
+  border: 0;
+  padding: 4px 8px;
+  margin: 0;
+  outline: none;
+  border-radius: 4px;
+  width: 70%;
+  background-color: ${props => props.theme.cadetblue};
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  ${tabletUp`
+    width: 90%;
+    padding: 8px 10px;
+    margin: 4px;
+  `};
+`;
 
-  &[type='button'] {
-    width: 70%;
-    background-color: gray;
-    font-weight: 600;
-    font-size: 16px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    ${tabletUp`
-      width: 90%;
-    `};
-  }
+export const CancelButton = styled.button`
+  border: 0;
+  padding: 4px 8px;
+  margin: 0;
+  outline: none;
+  border-radius: 4px;
+  width: 70%;
+  background-color: gray;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  ${tabletUp`
+    width: 90%;
+    padding: 8px 10px;
+    margin: 4px;
+  `};
 `;
 
 export const Select = styled.select`

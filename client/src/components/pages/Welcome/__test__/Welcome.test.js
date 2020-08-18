@@ -1,4 +1,5 @@
 import React from 'react';
+import { renderSnapshot } from '../../../../utils/tests';
 import { shallow } from 'enzyme';
 import 'jest-styled-components';
 import Welcome from '../Welcome.js';
@@ -31,9 +32,8 @@ jest.mock('react', () => {
 });
 
 describe('Welcome component test with Enzyme', () => {
-  test('renders correct snapshot', () => {
-    const wrapper = shallow(<Welcome />);
-    expect(wrapper).toMatchSnapshot();
+  test('renders snapshot', () => {
+    renderSnapshot(Welcome);
   });
 
   // create unit test of components without snapshot
