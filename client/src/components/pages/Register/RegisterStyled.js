@@ -32,20 +32,24 @@ export const Input = styled.input`
   ${tabletUp`
     width: 30%;
   `};
+`;
 
-  &[type='submit'] {
-    width: 40%;
-    border: 0;
-    background-color: ${props => props.theme.cadetblue};
-    font-weight: 600;
-    font-size: 16px;
-    margin-top: 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    ${tabletUp`
-      width: 20%;
-    `};
-  }
+export const RegisterButton = styled.button`
+  border-bottom: 1px solid ${props => props.theme.cadetblue};
+  padding: 7px 10px;
+  margin: 2px;
+  outline: none;
+  width: 40%;
+  border: 0;
+  background-color: ${props => props.theme.cadetblue};
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  ${tabletUp`
+    width: 20%;
+  `};
 `;
 
 export const Errors = styled.div`

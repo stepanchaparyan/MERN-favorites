@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useIntl } from 'react-intl';
 import AuthContext from '../../../context/authContext/authContext';
 import {
@@ -19,11 +19,7 @@ import { LINK } from '../../../constants';
 
 const Welcome = () => {
   const { formatMessage } = useIntl();
-  const { loadUser, isAuthencated } = useContext(AuthContext);
-
-  useEffect(() => {
-    loadUser();
-  }, []);
+  const { isAuthencated } = useContext(AuthContext);
 
   return (
     <Container>

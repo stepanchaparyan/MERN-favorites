@@ -3,7 +3,16 @@ import { useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AuthContext from '../../../context/authContext/authContext';
-import { Container, Title, Form, Input, Errors, QuestionText, ErrorButton } from './LoginStyled';
+import {
+  Container,
+  Title,
+  Form,
+  Input,
+  LoginButton,
+  Errors,
+  QuestionText,
+  ErrorButton
+} from './LoginStyled';
 import localization from './localization';
 import { FORM, LINK } from '../../../constants';
 
@@ -49,13 +58,13 @@ const Login = props => {
   return (
     <Container>
       <Title>{formatMessage(localization.login)}</Title>
-      <Form onSubmit={onsubmit}>
+      <Form onSubmit={e => onsubmit(e)}>
         <Input
           type={INPUT.TYPE.EMAIL}
           name={INPUT.NAME.EMAIL}
           placeholder={formatMessage(localization.email)}
           value={email}
-          onChange={onchange}
+          onChange={e => onchange(e)}
           required
         />
         <Input
@@ -63,10 +72,10 @@ const Login = props => {
           name={INPUT.NAME.PASSWORD}
           placeholder={formatMessage(localization.password)}
           value={password}
-          onChange={onchange}
+          onChange={e => onchange(e)}
           required
         />
-        <Input type={INPUT.TYPE.SUBMIT} value={formatMessage(localization.login)} />
+        <LoginButton>{formatMessage(localization.login)}</LoginButton>
       </Form>
       {error !== null && (
         <Errors>

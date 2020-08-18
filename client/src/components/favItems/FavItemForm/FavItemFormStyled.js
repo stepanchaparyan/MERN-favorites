@@ -63,27 +63,35 @@ export const Input = styled.input`
   margin: 4px;
   outline: none;
   border-radius: 4px;
+`;
 
-  &[type='submit'] {
-    width: 20%;
-    border: 0;
-    background-color: ${props => props.theme.cadetblue};
-    font-weight: 600;
-    font-size: 16px;
-    margin-top: 20px;
-    cursor: pointer;
-    margin-bottom: 10px;
-  }
+export const ButtonSubmit = styled.button`
+  padding: 8px 10px;
+  margin: 4px;
+  outline: none;
+  border-radius: 4px;
+  width: 20%;
+  border: 0;
+  background-color: ${props => props.theme.cadetblue};
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  margin-bottom: 10px;
+`;
 
-  &[type='button'] {
-    width: 30%;
-    border: 0;
-    background-color: gray;
-    font-weight: 600;
-    font-size: 16px;
-    cursor: pointer;
-    margin-bottom: 10px;
-  }
+export const CancelButton = styled.button`
+  padding: 8px 10px;
+  margin: 4px;
+  outline: none;
+  border-radius: 4px;
+  width: 30%;
+  border: 0;
+  background-color: gray;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
 `;
 
 export const Errors = styled.div`

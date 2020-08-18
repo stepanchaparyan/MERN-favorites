@@ -23,7 +23,7 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  border: 0px;
+  border: 0;
   border-bottom: 1px solid ${props => props.theme.cadetblue};
   width: 50%;
   padding: 7px 10px;
@@ -32,20 +32,24 @@ export const Input = styled.input`
   ${tabletUp`
     width: 30%;
   `};
+`;
 
-  &[type='submit'] {
-    width: 40%;
-    border: 0;
-    background-color: ${props => props.theme.cadetblue};
-    font-weight: 600;
-    font-size: 16px;
-    margin-top: 20px;
-    border-radius: 3%;
-    cursor: pointer;
-    ${tabletUp`
-      width: 20%;
-    `};
-  }
+export const LoginButton = styled.button`
+  border-bottom: 1px solid ${props => props.theme.cadetblue};
+  padding: 7px 10px;
+  margin: 2px;
+  outline: none;
+  width: 40%;
+  border: 0;
+  background-color: ${props => props.theme.cadetblue};
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 20px;
+  border-radius: 3%;
+  cursor: pointer;
+  ${tabletUp`
+    width: 20%;
+  `};
 `;
 
 export const Errors = styled.div`

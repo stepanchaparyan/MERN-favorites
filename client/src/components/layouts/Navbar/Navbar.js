@@ -14,8 +14,8 @@ import {
   Hamburger,
   FlagContainer
 } from './NavbarStyled';
-import logo from '../../../assets/logo';
-import hamburger from '../../../assets/hamburger';
+import logo from '../../../assets/logo.png';
+import hamburger from '../../../assets/hamburger.png';
 import localization from './localization';
 import armFlag from '../../../assets/arm.png';
 import usaFlag from '../../../assets/usa.png';
@@ -79,7 +79,7 @@ const Navbar = ({ changeLocale }) => {
 };
 
 Navbar.propTypes = {
-  changeLocale: PropTypes.func.isRequired
+  changeLocale: PropTypes.func
 };
 
 export default Navbar;

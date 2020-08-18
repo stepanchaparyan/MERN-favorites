@@ -106,7 +106,7 @@ const FileUpload = () => {
         <LabelEdit htmlFor={HTML_FOR.FILE_EDIT}>
           <IconEdit src={EditIcon}></IconEdit>
         </LabelEdit>
-        <InputHidden id={HTML_FOR.FILE_EDIT} type={INPUT.TYPE.FILE} onChange={onChange} />
+        <InputHidden id={HTML_FOR.FILE_EDIT} type={INPUT.TYPE.FILE} onChange={e => onChange(e)} />
         {modalType === MODAL_TYPE.FILE_TYPE && (
           <CustomModal
             closeModal={closeFileTypeModal}

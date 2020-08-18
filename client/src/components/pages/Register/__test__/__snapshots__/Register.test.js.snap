@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register component test with Enzyme renders snapshot 1`] = `
+<styled.div>
+  <styled.div>
+    Sign Up
+  </styled.div>
+  <styled.form
+    onSubmit={[Function]}
+  >
+    <styled.input
+      name="name"
+      onChange={[Function]}
+      placeholder="Name"
+      required={true}
+      type="text"
+      value=""
+    />
+    <styled.input
+      name="email"
+      onChange={[Function]}
+      placeholder="Email"
+      required={true}
+      type="email"
+      value=""
+    />
+    <styled.input
+      name="password"
+      onChange={[Function]}
+      placeholder="Password"
+      required={true}
+      type="password"
+      value=""
+    />
+    <styled.input
+      name="password2"
+      onChange={[Function]}
+      placeholder="Confirm Password"
+      required={true}
+      type="password"
+      value=""
+    />
+    <styled.button>
+      Sign Up
+    </styled.button>
+  </styled.form>
+  <styled.div>
+    <styled.button
+      onClick={[Function]}
+      type="button"
+    >
+      a
+    </styled.button>
+  </styled.div>
+  <styled.div>
+    Already have an accout?
+      
+    <Link
+      to="/login"
+    >
+      Sign In
+    </Link>
+  </styled.div>
+</styled.div>
+`;

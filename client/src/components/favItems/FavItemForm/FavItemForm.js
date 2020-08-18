@@ -6,6 +6,8 @@ import {
   Title,
   Form,
   Input,
+  ButtonSubmit,
+  CancelButton,
   Errors,
   ErrorButton,
   Select,
@@ -86,23 +88,23 @@ const FavItemForm = () => {
           ? formatMessage(localization.editFavItem)
           : formatMessage(localization.addNewFavItem)}
       </Title>
-      <Form onSubmit={onsubmit}>
+      <Form onSubmit={e => onsubmit(e)}>
         <Input
           type={INPUT.TYPE.TEXT}
           placeholder={formatMessage(localization.author)}
           name={INPUT.NAME.AUTHOR}
           value={author}
-          onChange={onchange}
+          onChange={e => onchange(e)}
         />
         <Input
           type={INPUT.TYPE.TEXT}
           placeholder={formatMessage(localization.title)}
           name={INPUT.NAME.TITLE}
           value={title}
-          onChange={onchange}
+          onChange={e => onchange(e)}
           required
         />
-        <Select value={category} name={INPUT.NAME.CATEGORY} onChange={onchange}>
+        <Select value={category} name={INPUT.NAME.CATEGORY} onChange={e => onchange(e)}>
           <DefaultOption value={SELECT.VALUES.OTHER}>
             {formatMessage(localization.selectCategory)}
           </DefaultOption>
@@ -118,31 +120,24 @@ const FavItemForm = () => {
           value={description}
           onChange={onchange}
         />
-        <Input
-          type={INPUT.TYPE.SUBMIT}
-          value={
-            editFavItem !== null
-              ? formatMessage(localization.update)
-              : formatMessage(localization.add)
-          }
-        />
+        <ButtonSubmit>
+          {editFavItem !== null
+            ? formatMessage(localization.update)
+            : formatMessage(localization.add)}
+        </ButtonSubmit>
         {editFavItem && (
-          <Input
-            onClick={cancelEdit}
-            type={INPUT.TYPE.BUTTON}
-            value={formatMessage(localization.cancel)}
-          />
+          <CancelButton onClick={cancelEdit}>{formatMessage(localization.cancel)}</CancelButton>
         )}
       </Form>
       {error && (
         <Errors>
           {!Array.isArray(error) ? (
-            <ErrorButton type={INPUT.TYPE.BUTTON} onClick={removeErrors}>
+            <ErrorButton type={INPUT.TYPE.BUTTON} onClick={e => removeErrors(e)}>
               {error}
             </ErrorButton>
           ) : (
             error.map(err => (
-              <ErrorButton key={err.msg} type={INPUT.TYPE.BUTTON} onClick={removeErrors}>
+              <ErrorButton key={err.msg} type={INPUT.TYPE.BUTTON} onClick={e => removeErrors(e)}>
                 {err.msg}
               </ErrorButton>
             ))
