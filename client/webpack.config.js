@@ -113,12 +113,10 @@ module.exports = {
   },
   optimization: optimization(),
   devServer: {
-    proxy: {
-      '/': 'http://localhost:5000'
-    },
     port: 3000,
     hot: isDev,
-    writeToDisk: true
+    writeToDisk: true,
+    historyApiFallback: true
   },
   devtool: isDev ? 'source-map' : '',
   plugins: plugins(),
