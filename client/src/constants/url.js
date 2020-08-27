@@ -1,11 +1,13 @@
+const baseUrl = 'http://localhost:5000';
+
 export const URL = {
-  AUTH: '/auth',
-  REGISTER: '/register',
-  FAVITEM: '/favItem',
-  FAVITEM_ADD: '/favItem/add',
-  FAVITEM_UPDATE: '/favItem/update',
-  PROFILE: '/profile',
-  PROFILE_ADD: '/profile/add',
-  PROFILE_UPDATE: '/profile/update',
-  UPLOAD: '/upload'
+  AUTH: `${baseUrl}/auth`,
+  REGISTER: `${baseUrl}/register`,
+  FAVITEM: `${baseUrl}/favItem`,
+  FAVITEM_ADD: `${baseUrl}/favItem/add`,
+  FAVITEM_UPDATE: `${baseUrl}/favItem/update`,
+  PROFILE: `${baseUrl}/profile`,
+  PROFILE_ADD: `${baseUrl}/profile/add`,
+  PROFILE_UPDATE: `${baseUrl}/profile/update`,
+  UPLOAD: `${baseUrl}/upload`
 };

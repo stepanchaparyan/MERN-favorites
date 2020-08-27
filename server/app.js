@@ -1,8 +1,11 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
+const cors = require('cors');
 const app = express();
 const path = require('path');
 const auth = require('./middleware/auth');
+
+app.use(cors());
 
 //connet to mongoDB
 const connectDB = require('./mongoConfig/mongoDB');
