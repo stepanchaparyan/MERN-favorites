@@ -1,13 +1,13 @@
-const baseUrl = 'http://localhost:5000';
+import { serverUrl } from '../../environment';
 
 export const URL = {
-  AUTH: `${baseUrl}/auth`,
-  REGISTER: `${baseUrl}/register`,
-  FAVITEM: `${baseUrl}/favItem`,
-  FAVITEM_ADD: `${baseUrl}/favItem/add`,
-  FAVITEM_UPDATE: `${baseUrl}/favItem/update`,
-  PROFILE: `${baseUrl}/profile`,
-  PROFILE_ADD: `${baseUrl}/profile/add`,
-  PROFILE_UPDATE: `${baseUrl}/profile/update`,
-  UPLOAD: `${baseUrl}/upload`
+  AUTH: `${serverUrl}/auth`,
+  REGISTER: `${serverUrl}/register`,
+  FAVITEM: `${serverUrl}/favItem`,
+  FAVITEM_ADD: `${serverUrl}/favItem/add`,
+  FAVITEM_UPDATE: `${serverUrl}/favItem/update`,
+  PROFILE: `${serverUrl}/profile`,
+  PROFILE_ADD: `${serverUrl}/profile/add`,
+  PROFILE_UPDATE: `${serverUrl}/profile/update`,
+  UPLOAD: `${serverUrl}/upload`
 };
