@@ -21,7 +21,19 @@ export const Module = styled.div`
 
 export const WelcomeText = styled.div`
   font-size: 30px;
-  padding: 32px;
+  padding: 32px 32px 0 32px;
+  height: 110px;
+  ::after {
+    content: '';
+    width: 0px;
+    height: 5px;
+    display: inline-block;
+    background: ${props => props.theme.cadetblue};
+    transition: 500ms;
+  }
+  :hover::after {
+    width: 100%;
+  }
   ${tabletUp`
     font-size: 50px;
   `};
@@ -56,19 +68,40 @@ export const Logo = styled.img`
 export const Music = styled.span`
   color: blue;
   padding: 5px;
+  transition: 300ms;
+  border-bottom: 3px solid transparent;
+  transition: 1s;
+  :hover {
+    border-color: blue;
+  }
 `;
 
 export const Films = styled.span`
   color: red;
   padding: 5px;
+  border-bottom: 3px solid transparent;
+  transition: 1s;
+  :hover {
+    border-color: red;
+  }
 `;
 
 export const Books = styled.span`
   color: limeGreen;
   padding: 5px;
+  border-bottom: 3px solid transparent;
+  transition: 1s;
+  :hover {
+    border-color: limeGreen;
+  }
 `;
 
 export const Other = styled.span`
   color: orange;
   padding: 5px;
+  border-bottom: 3px solid transparent;
+  transition: 1s;
+  :hover {
+    border-color: orange;
+  }
 `;
