@@ -45,7 +45,7 @@ export const LoginButton = styled.button`
   background-color: ${props => props.theme.cadetblue};
   font-weight: 600;
   font-size: 16px;
-  margin-top: 20px;
+  margin-top: 16px;
   border-radius: 3%;
   cursor: pointer;
   ${tabletUp`
@@ -68,4 +68,19 @@ export const QuestionText = styled.div`
     color: black;
     font-weight: 600;
   }
+`;
+
+export const Errors = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0 0;
+`;
+
+export const ErrorButton = styled.button`
+  color: red;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
 `;

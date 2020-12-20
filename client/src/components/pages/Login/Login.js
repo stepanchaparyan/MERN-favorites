@@ -12,7 +12,9 @@ import {
   QuestionText,
   FormStyled,
   FieldStyled,
-  ErrorMessages
+  ErrorMessages,
+  Errors,
+  ErrorButton
 } from './LoginStyled';
 import localization from './localization';
 import { FORM, LINK } from '../../../constants';
@@ -20,13 +22,14 @@ import { FORM, LINK } from '../../../constants';
 const { INPUT } = FORM;
 
 const Login = props => {
-  const { login, isAuthencated } = useContext(AuthContext);
+  const { login, isAuthencated, error, clearErrors } = useContext(AuthContext);
   const { formatMessage } = useIntl();
 
   useEffect(() => {
     if (isAuthencated) {
       props.history.push(LINK.TO.WELCOME);
     }
+    clearErrors();
   }, [isAuthencated, props.history]);
 
   const initialValues = {
@@ -39,6 +42,7 @@ const Login = props => {
       email,
       password
     });
+    clearErrors();
   };
 
   const validationSchema = Yup.object({
@@ -67,7 +71,16 @@ const Login = props => {
             placeholder={formatMessage(localization.password)}
           />
           <ErrorMessage name={INPUT.NAME.PASSWORD} component={ErrorMessages} />
-          <LoginButton type={INPUT.TYPE.SUBMIT}>{formatMessage(localization.login)}</LoginButton>
+          {error && (
+            <Errors>
+              <ErrorButton type={INPUT.TYPE.BUTTON} onClick={() => clearErrors()}>
+                {error}
+              </ErrorButton>
+            </Errors>
+          )}
+          <LoginButton type={INPUT.TYPE.SUBMIT} disabled={error}>
+            {formatMessage(localization.login)}
+          </LoginButton>
         </FormStyled>
       </Formik>
       <QuestionText>
