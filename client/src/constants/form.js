@@ -7,7 +7,8 @@ export const FORM = {
       BUTTON: 'button',
       PASSWORD: 'password',
       FILE: 'file',
-      TEL: 'tel'
+      TEL: 'tel',
+      SELECT: 'select'
     },
     NAME: {
       AUTHOR: 'author',

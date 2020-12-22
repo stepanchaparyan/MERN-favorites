@@ -71,6 +71,9 @@ const Login = props => {
             placeholder={formatMessage(localization.password)}
           />
           <ErrorMessage name={INPUT.NAME.PASSWORD} component={ErrorMessages} />
+          <LoginButton type={INPUT.TYPE.SUBMIT} disabled={error}>
+            {formatMessage(localization.login)}
+          </LoginButton>
           {error && (
             <Errors>
               <ErrorButton type={INPUT.TYPE.BUTTON} onClick={() => clearErrors()}>
@@ -78,9 +81,6 @@ const Login = props => {
               </ErrorButton>
             </Errors>
           )}
-          <LoginButton type={INPUT.TYPE.SUBMIT} disabled={error}>
-            {formatMessage(localization.login)}
-          </LoginButton>
         </FormStyled>
       </Formik>
       <QuestionText>
