@@ -105,12 +105,12 @@ export const ErrorButton = styled.button`
 `;
 
 export const StyledSelectField = styled(Field)`
-  width: 183px;
+  width: 185px;
   background: white;
   height: 32px;
   outline: none;
   border: none;
-  border-radius: 4px;
+  border-bottom: 1px solid cadetblue;
   padding-left: 5px;
   margin: 4px;
 `;
