@@ -1,8 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import { useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { Formik, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import AuthContext from '../../../context/authContext/authContext';
 import {
@@ -18,6 +17,7 @@ import {
 } from './RegisterStyled';
 import localization from './localization';
 import { FORM, LINK } from '../../../constants';
+import registerFormFormikProps from './RegisterFormFormikProps';
 
 const { INPUT } = FORM;
 
@@ -31,13 +31,6 @@ const Register = props => {
     }
   }, [isAuthencated, props.history]);
 
-  const initialValues = {
-    name: '',
-    email: '',
-    password: '',
-    password2: ''
-  };
-
   const onSubmit = ({ name, email, password, password2 }) => {
     if (password === password2) {
       register({
@@ -48,18 +41,7 @@ const Register = props => {
     }
   };
 
-  const validationSchema = Yup.object({
-    name: Yup.string().required('Required'),
-    email: Yup.string()
-      .email('Invalid Email format')
-      .required('Required'),
-    password: Yup.string()
-      .min(6, 'Password must have min 6 symbols')
-      .required('Required'),
-    password2: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Passwords must match')
-      .required('Required')
-  });
+  const { validationSchema, initialValues } = useMemo(() => registerFormFormikProps(), []);
 
   return (
     <Container>

@@ -1,8 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import { useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { Formik, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import AuthContext from '../../../context/authContext/authContext';
 import {
@@ -18,6 +17,7 @@ import {
 } from './LoginStyled';
 import localization from './localization';
 import { FORM, LINK } from '../../../constants';
+import loginFormFormikProps from './LoginFormFormikProps';
 
 const { INPUT } = FORM;
 
@@ -32,11 +32,6 @@ const Login = props => {
     clearErrors();
   }, [isAuthencated, props.history]);
 
-  const initialValues = {
-    email: '',
-    password: ''
-  };
-
   const onSubmit = ({ email, password }) => {
     login({
       email,
@@ -45,12 +40,7 @@ const Login = props => {
     clearErrors();
   };
 
-  const validationSchema = Yup.object({
-    email: Yup.string()
-      .email('Invalid Email format')
-      .required('Required'),
-    password: Yup.string().required('Required')
-  });
+  const { validationSchema, initialValues } = useMemo(() => loginFormFormikProps(), []);
 
   return (
     <Container>

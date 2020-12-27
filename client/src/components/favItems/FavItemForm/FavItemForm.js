@@ -1,7 +1,6 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useRef, useMemo } from 'react';
 import { useIntl } from 'react-intl';
 import { Formik, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import FavItemContext from '../../../context/favItemContext/favItemContext';
 import {
   Container,
@@ -15,12 +14,12 @@ import {
   Option,
   DefaultOption
 } from './FavItemFormStyled';
-import { FAVITEM, FORM } from '../../../constants';
+import { FORM } from '../../../constants';
 import localization from './localization';
 import { useOnClickOutside } from '../../hooks/clickOutSide';
+import favItemFormFormikProps from './FavItemFormFormikProps';
 
 const { INPUT, SELECT } = FORM;
-const { DEFAULT_VALUES } = FAVITEM;
 
 const FavItemForm = () => {
   const context = useContext(FavItemContext);
@@ -29,15 +28,6 @@ const FavItemForm = () => {
   const { formatMessage } = useIntl();
   const container = useRef();
   useOnClickOutside(container, () => toggle_Form(false));
-
-  const defaultValues = {
-    author: DEFAULT_VALUES.AUTHOR,
-    title: DEFAULT_VALUES.TITLE,
-    category: DEFAULT_VALUES.CATEGORY,
-    description: DEFAULT_VALUES.DESCRIPTION
-  };
-
-  const initialValues = editFavItem ? editFavItem : defaultValues;
 
   const onSubmit = data => {
     if (editFavItem === null) {
@@ -52,14 +42,9 @@ const FavItemForm = () => {
     toggle_Form(!toggleForm);
   };
 
-  const validationSchema = Yup.object({
-    author: Yup.string().required('Required'),
-    title: Yup.string()
-      .min(2, 'Title must have min 2 symbols')
-      .required('Required'),
-    category: Yup.string().required('Required'),
-    description: Yup.string().required('Required')
-  });
+  const { validationSchema, initialValues } = useMemo(() => favItemFormFormikProps(editFavItem), [
+    editFavItem
+  ]);
 
   return (
     <Container ref={container}>

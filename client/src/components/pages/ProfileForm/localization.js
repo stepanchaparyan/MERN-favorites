@@ -49,9 +49,9 @@ export default defineMessages({
     id: 'profileForm.phone',
     defaultMessage: 'Phone'
   },
-  selectCategory: {
-    id: 'profileForm.selectCategory',
-    defaultMessage: 'Select Category'
+  selectGender: {
+    id: 'profileForm.selectGender',
+    defaultMessage: 'Gender'
   },
   male: {
     id: 'profileForm.male',

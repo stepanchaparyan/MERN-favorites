@@ -47,7 +47,8 @@ export const FORM = {
       ALL_CARDS: 'All cards'
     },
     NAME: {
-      GENDER: 'gender'
+      GENDER: 'gender',
+      BIRTHDAY: 'birthDay'
     }
   },
   TEL_PLACEHOLDER: '93123456',
