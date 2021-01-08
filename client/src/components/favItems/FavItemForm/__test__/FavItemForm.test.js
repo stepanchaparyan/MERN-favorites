@@ -3,7 +3,10 @@ import { shallow } from 'enzyme';
 import 'jest-styled-components';
 import { renderSnapshot } from '../../../../utils/tests';
 import FavItemForm from '../FavItemForm.js';
-import { Form, CancelButton, Input, ErrorButton, Select } from '../FavItemFormStyled';
+import { FieldStyled, ErrorButton } from '../FavItemFormStyled';
+import { FAVITEM } from '../../../../constants';
+
+const { DEFAULT_VALUES } = FAVITEM;
 
 jest.mock('react-intl', () => ({
   useIntl: jest.fn(() => ({ formatMessage: m => m.defaultMessage })),
@@ -30,88 +33,82 @@ describe('FavItemForm component test with Enzyme', () => {
 
   test('render submit on Form component', () => {
     const component = shallow(<FavItemForm />);
-    const form = component.find(Form);
-
-    const preventDefault = jest.fn();
-    form.simulate('submit', { preventDefault });
-    expect(preventDefault).toHaveBeenCalled();
+    const form = component.find('Formik');
+    form.simulate('submit', { target: { name: '123' } });
   });
 
-  test('render submit on Form component when editFavitem is true', () => {
+  test('should pass the correct initial values', () => {
+    const component = shallow(<FavItemForm />);
+    const initialValues = component.find('Formik').props().initialValues;
+
+    expect(initialValues.author).toBe(DEFAULT_VALUES.AUTHOR);
+    expect(initialValues.title).toBe(DEFAULT_VALUES.TITLE);
+    expect(initialValues.category).toBe(DEFAULT_VALUES.CATEGORY);
+    expect(initialValues.description).toBe(DEFAULT_VALUES.DESCRIPTION);
+  });
+
+  test('should pass the correct initial values when editFavitem is true', () => {
+    useContext.mockImplementationOnce(
+      jest.fn(() => ({
+        editFavItem: { author: 'Joe' }
+      }))
+    );
+
+    const component = shallow(<FavItemForm />);
+    const initialValues = component.find('Formik').props().initialValues;
+
+    expect(initialValues.author).toBe('Joe');
+  });
+
+  test('render change on Input component', () => {
     useContext.mockImplementationOnce(
       jest.fn(() => ({
         editFavItem: {},
         clearEdit: jest.fn(),
         toggle_Form: jest.fn(),
-        update_FavItem: jest.fn()
+        update_FavItem: jest.fn(),
+        clearErrors: jest.fn()
       }))
     );
 
     const component = shallow(<FavItemForm />);
 
-    const cancelButton = component.find(CancelButton);
-    cancelButton.simulate('click');
-
-    const form = component.find(Form);
-    const preventDefault = jest.fn();
-    form.simulate('submit', { preventDefault });
-    expect(preventDefault).toHaveBeenCalled();
+    const inputs = component.find(FieldStyled);
+    inputs.forEach(input => {
+      input.simulate('change', { target: { value: 'target' } });
+    });
 
     expect(component).toMatchSnapshot();
   });
-});
 
-test('render change on Input component', () => {
-  useContext.mockImplementationOnce(
-    jest.fn(() => ({
-      editFavItem: {},
-      clearEdit: jest.fn(),
-      toggle_Form: jest.fn(),
-      update_FavItem: jest.fn(),
-      clearErrors: jest.fn()
-    }))
-  );
+  test('render click on ErrorButton when error is not array', () => {
+    const component = shallow(<FavItemForm />);
 
-  const component = shallow(<FavItemForm />);
-
-  const inputs = component.find(Input);
-  inputs.forEach(input => {
-    input.simulate('change', { target: { value: 'target' } });
+    const errorButtons = component.find(ErrorButton);
+    errorButtons.forEach(errorButton => {
+      errorButton.simulate('click');
+    });
+    expect(component).toMatchSnapshot();
   });
 
-  const select = component.find(Select);
-  select.simulate('change', { target: { value: 'target' } });
+  test('render click on ErrorButton when error is array', () => {
+    useContext.mockImplementationOnce(
+      jest.fn(() => ({
+        editFavItem: {},
+        clearEdit: jest.fn(),
+        toggle_Form: jest.fn(),
+        update_FavItem: jest.fn(),
+        clearErrors: jest.fn(),
+        error: ['a', 'b']
+      }))
+    );
 
-  expect(component).toMatchSnapshot();
-});
+    const component = shallow(<FavItemForm />);
 
-test('render click on ErrorButton when error is not array', () => {
-  const component = shallow(<FavItemForm />);
-
-  const errorButtons = component.find(ErrorButton);
-  errorButtons.forEach(errorButton => {
-    errorButton.simulate('click');
+    const errorButtons = component.find(ErrorButton);
+    errorButtons.forEach(errorButton => {
+      errorButton.simulate('click');
+    });
+    expect(component).toMatchSnapshot();
   });
-  expect(component).toMatchSnapshot();
-});
-
-test('render click on ErrorButton when error is array', () => {
-  useContext.mockImplementationOnce(
-    jest.fn(() => ({
-      editFavItem: {},
-      clearEdit: jest.fn(),
-      toggle_Form: jest.fn(),
-      update_FavItem: jest.fn(),
-      clearErrors: jest.fn(),
-      error: ['a', 'b']
-    }))
-  );
-
-  const component = shallow(<FavItemForm />);
-
-  const errorButtons = component.find(ErrorButton);
-  errorButtons.forEach(errorButton => {
-    errorButton.simulate('click');
-  });
-  expect(component).toMatchSnapshot();
 });
