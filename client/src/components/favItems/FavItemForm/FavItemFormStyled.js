@@ -105,7 +105,7 @@ export const ErrorButton = styled.button`
 `;
 
 export const StyledSelectField = styled(Field)`
-  width: 185px;
+  width: 58%;
   background: white;
   height: 32px;
   outline: none;
@@ -113,6 +113,9 @@ export const StyledSelectField = styled(Field)`
   border-bottom: 1px solid cadetblue;
   padding-left: 5px;
   margin: 4px;
+  ${tabletUp`
+    width: 44%;
+  `};
 `;
 
 export const Option = styled.option`
