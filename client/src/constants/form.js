@@ -7,7 +7,8 @@ export const FORM = {
       BUTTON: 'button',
       PASSWORD: 'password',
       FILE: 'file',
-      TEL: 'tel'
+      TEL: 'tel',
+      SELECT: 'select'
     },
     NAME: {
       AUTHOR: 'author',
@@ -46,7 +47,8 @@ export const FORM = {
       ALL_CARDS: 'All cards'
     },
     NAME: {
-      GENDER: 'gender'
+      GENDER: 'gender',
+      BIRTHDAY: 'birthDay'
     }
   },
   TEL_PLACEHOLDER: '93123456',

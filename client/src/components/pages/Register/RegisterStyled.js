@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { tabletUp } from '../../../styles/mediaQueries/mixins';
+import { Form, Field } from 'formik';
 
 export const Container = styled.div`
   display: flex;
@@ -16,13 +17,13 @@ export const Title = styled.div`
   font-size: 30px;
 `;
 
-export const Form = styled.form`
+export const FormStyled = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export const Input = styled.input`
+export const FieldStyled = styled(Field)`
   border: 0px;
   border-bottom: 1px solid ${props => props.theme.cadetblue};
   width: 50%;
@@ -44,7 +45,7 @@ export const RegisterButton = styled.button`
   background-color: ${props => props.theme.cadetblue};
   font-weight: 600;
   font-size: 16px;
-  margin-top: 20px;
+  margin-top: 16px;
   border-radius: 4px;
   cursor: pointer;
   ${tabletUp`
@@ -56,7 +57,7 @@ export const Errors = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px;
+  margin: 10px 0 0;
 `;
 
 export const QuestionText = styled.div`
@@ -68,6 +69,12 @@ export const QuestionText = styled.div`
     color: black;
     font-weight: 600;
   }
+`;
+
+export const ErrorMessages = styled.div`
+  color: red;
+  width: 30%;
+  font-size: 12px;
 `;
 
 export const ErrorButton = styled.button`

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { tabletUp } from '../../../styles/mediaQueries/mixins';
+import { Form, Field } from 'formik';
 
 export const Container = styled.div`
   display: flex;
@@ -63,7 +64,7 @@ export const TextData = styled.div`
 export const ProfileData = styled.div`
   display: flex;
   font-size: 20px;
-  padding: 8px;
+  padding: 8px 8px 0;
   width: 100%;
   align-items: center;
 `;
@@ -86,13 +87,13 @@ export const Data = styled.div`
   width: 50%;
 `;
 
-export const Form = styled.form`
+export const FormStyled = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export const Input = styled.input`
+export const FieldStyled = styled(Field)`
   border: 0;
   width: 150px;
   padding: 4px 8px;
@@ -122,7 +123,7 @@ export const UpdateButton = styled.button`
   ${tabletUp`
     width: 90%;
     padding: 8px 10px;
-    margin: 4px;
+    margin: 16px 4px 4px;
   `};
 `;
 
@@ -145,7 +146,7 @@ export const CancelButton = styled.button`
   `};
 `;
 
-export const Select = styled.select`
+export const StyledSelectField = styled(Field)`
   width: 166px;
   background: white;
   height: 22px;
@@ -185,4 +186,10 @@ export const DatePickerStyled = styled(DatePicker)`
     height: 30px;
     margin: 4px;
   `};
+`;
+
+export const ErrorMessages = styled.div`
+  color: red;
+  font-size: 12px;
+  margin-left: -10px;
 `;

@@ -44,6 +44,7 @@ export const NavLinks = styled.div`
   right: 0px;
   top: 56px;
   height: 120px;
+  z-index: 1;
   ${tabletUp`
     display: flex;
     flex-direction: row;
@@ -74,9 +75,6 @@ export const LinkStyled = styled(Link)`
   color: black;
   margin: 10px 20px;
   align-self: center;
-  &:hover {
-    color: white;
-  }
   ${tabletUp`
     margin: 0 16px 0 0;
     align-self: auto;

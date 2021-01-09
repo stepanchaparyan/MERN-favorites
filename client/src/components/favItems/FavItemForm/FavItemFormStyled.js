@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { tabletUp, desktopUp, desktopLargeUp } from '../../../styles/mediaQueries/mixins';
+import { Form, Field } from 'formik';
 
 export const Container = styled.div`
   display: flex;
@@ -48,12 +49,6 @@ export const Title = styled.div`
   ${desktopLargeUp`
     font-size: 30px;
   `};
-`;
-
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
 
 export const Input = styled.input`
@@ -109,15 +104,18 @@ export const ErrorButton = styled.button`
   cursor: pointer;
 `;
 
-export const Select = styled.select`
-  width: 220px;
+export const StyledSelectField = styled(Field)`
+  width: 58%;
   background: white;
   height: 32px;
   outline: none;
   border: none;
-  border-radius: 4px;
+  border-bottom: 1px solid cadetblue;
   padding-left: 5px;
   margin: 4px;
+  ${tabletUp`
+    width: 44%;
+  `};
 `;
 
 export const Option = styled.option`
@@ -130,4 +128,27 @@ export const Option = styled.option`
 
 export const DefaultOption = styled.option`
   display: none;
+`;
+
+export const FormStyled = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const FieldStyled = styled(Field)`
+  border: 0;
+  border-bottom: 1px solid ${props => props.theme.cadetblue};
+  width: 50%;
+  padding: 7px 10px;
+  margin: 3px;
+  outline: none;
+  ${tabletUp`
+    width: 40%;
+  `};
+`;
+
+export const ErrorMessages = styled.div`
+  color: red;
+  font-size: 12px;
 `;

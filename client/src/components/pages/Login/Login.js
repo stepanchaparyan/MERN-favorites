@@ -1,20 +1,23 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import { useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
+import { Formik, ErrorMessage } from 'formik';
 import PropTypes from 'prop-types';
 import AuthContext from '../../../context/authContext/authContext';
 import {
   Container,
   Title,
-  Form,
-  Input,
   LoginButton,
-  Errors,
   QuestionText,
+  FormStyled,
+  FieldStyled,
+  ErrorMessages,
+  Errors,
   ErrorButton
 } from './LoginStyled';
 import localization from './localization';
 import { FORM, LINK } from '../../../constants';
+import loginFormFormikProps from './LoginFormFormikProps';
 
 const { INPUT } = FORM;
 
@@ -25,29 +28,11 @@ const Login = props => {
   useEffect(() => {
     if (isAuthencated) {
       props.history.push(LINK.TO.WELCOME);
-      clearErrors();
-    } else {
-      clearErrors();
     }
+    clearErrors();
   }, [isAuthencated, props.history]);
 
-  const [user, setUser] = useState({
-    email: '',
-    password: ''
-  });
-  const { email, password } = user;
-
-  const onchange = e => {
-    setUser({
-      ...user,
-      [e.target.name]: e.target.value
-    });
-    if (error !== null) {
-      clearErrors();
-    }
-  };
-  const onsubmit = e => {
-    e.preventDefault();
+  const onSubmit = ({ email, password }) => {
     login({
       email,
       password
@@ -55,43 +40,39 @@ const Login = props => {
     clearErrors();
   };
 
+  const { validationSchema, initialValues } = useMemo(() => loginFormFormikProps(), []);
+
   return (
     <Container>
       <Title>{formatMessage(localization.login)}</Title>
-      <Form onSubmit={e => onsubmit(e)}>
-        <Input
-          type={INPUT.TYPE.EMAIL}
-          name={INPUT.NAME.EMAIL}
-          placeholder={formatMessage(localization.email)}
-          value={email}
-          onChange={e => onchange(e)}
-          required
-        />
-        <Input
-          type={INPUT.TYPE.PASSWORD}
-          name={INPUT.NAME.PASSWORD}
-          placeholder={formatMessage(localization.password)}
-          value={password}
-          onChange={e => onchange(e)}
-          required
-        />
-        <LoginButton>{formatMessage(localization.login)}</LoginButton>
-      </Form>
-      {error !== null && (
-        <Errors>
-          {!Array.isArray(error) ? (
-            <ErrorButton type={INPUT.TYPE.BUTTON} onClick={() => clearErrors()}>
-              {error}
-            </ErrorButton>
-          ) : (
-            error.map(err => (
-              <ErrorButton key={err.msg} type={INPUT.TYPE.BUTTON} onClick={() => clearErrors()}>
-                {err.msg}
+      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+        <FormStyled>
+          <FieldStyled
+            type={INPUT.TYPE.EMAIL}
+            name={INPUT.NAME.EMAIL}
+            id={INPUT.NAME.EMAIL}
+            placeholder={formatMessage(localization.email)}
+          />
+          <ErrorMessage name={INPUT.NAME.EMAIL} component={ErrorMessages} />
+          <FieldStyled
+            type={INPUT.TYPE.PASSWORD}
+            name={INPUT.NAME.PASSWORD}
+            id={INPUT.NAME.PASSWORD}
+            placeholder={formatMessage(localization.password)}
+          />
+          <ErrorMessage name={INPUT.NAME.PASSWORD} component={ErrorMessages} />
+          <LoginButton type={INPUT.TYPE.SUBMIT} disabled={error}>
+            {formatMessage(localization.login)}
+          </LoginButton>
+          {error && (
+            <Errors>
+              <ErrorButton type={INPUT.TYPE.BUTTON} onClick={() => clearErrors()}>
+                {error}
               </ErrorButton>
-            ))
+            </Errors>
           )}
-        </Errors>
-      )}
+        </FormStyled>
+      </Formik>
       <QuestionText>
         {formatMessage(localization.dontHaveAnAccout)} &nbsp;
         <Link to={LINK.TO.REGISTER}>{formatMessage(localization.signup)}</Link>

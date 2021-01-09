@@ -3,7 +3,7 @@ import { renderSnapshot } from '../../../../utils/tests';
 import { shallow } from 'enzyme';
 import 'jest-styled-components';
 import ProfileForm from '../ProfileForm.js';
-import { Form, DatePickerStyled, Input, CancelButton } from '../ProfileFormStyled';
+import { FieldStyled } from '../ProfileFormStyled';
 
 jest.mock('react-intl', () => ({
   useIntl: jest.fn(() => ({ formatMessage: m => m.defaultMessage })),
@@ -37,7 +37,7 @@ describe('ProfileForm component test with Enzyme', () => {
 
   test('should click on Input elements', () => {
     const component = shallow(<ProfileForm />);
-    const inputs = component.find(Input);
+    const inputs = component.find(FieldStyled);
     inputs.forEach(input => {
       input.simulate('change', { target: { value: 'target' } });
       expect();
@@ -46,21 +46,7 @@ describe('ProfileForm component test with Enzyme', () => {
 
   test('should click on Form element', () => {
     const component = shallow(<ProfileForm />);
-    const form = component.find(Form);
-    const preventDefault = jest.fn();
-    form.simulate('submit', { preventDefault });
-    expect(preventDefault).toHaveBeenCalled();
-  });
-
-  test('should click on DatePicker element', () => {
-    const component = shallow(<ProfileForm />);
-    const datePicker = component.find(DatePickerStyled);
-    datePicker.simulate('change');
-  });
-
-  test('should click on CancelButton element', () => {
-    const component = shallow(<ProfileForm />);
-    const cancelButton = component.find(CancelButton);
-    cancelButton.simulate('click');
+    const form = component.find('Formik');
+    form.simulate('submit', { target: { name: 'name' } });
   });
 });

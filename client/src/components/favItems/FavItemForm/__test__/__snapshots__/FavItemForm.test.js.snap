@@ -1,75 +1,615 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FavItemForm component test with Enzyme render submit on Form component when editFavitem is true 1`] = `
+exports[`FavItemForm component test with Enzyme render change on Input component 1`] = `
 <styled.div>
   <styled.div>
     Edit favorite item
   </styled.div>
-  <styled.form
+  <Formik
+    initialValues={Object {}}
     onSubmit={[Function]}
+    validationSchema={
+      ObjectSchema {
+        "_blacklist": ReferenceSet {
+          "list": Set {},
+          "refs": Map {},
+        },
+        "_excludedEdges": Array [],
+        "_mutate": undefined,
+        "_nodes": Array [
+          "description",
+          "category",
+          "title",
+          "author",
+        ],
+        "_sortErrors": [Function],
+        "_typeError": [Function],
+        "_whitelist": ReferenceSet {
+          "list": Set {},
+          "refs": Map {},
+        },
+        "conditions": Array [],
+        "deps": Array [],
+        "exclusiveTests": Object {},
+        "fields": Object {
+          "author": StringSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_mutate": undefined,
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {
+              "required": true,
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "label": undefined,
+              "meta": undefined,
+              "nullable": false,
+              "presence": "required",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "string",
+          },
+          "category": StringSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_mutate": undefined,
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {
+              "required": true,
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "label": undefined,
+              "meta": undefined,
+              "nullable": false,
+              "presence": "required",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "string",
+          },
+          "description": StringSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_mutate": undefined,
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {
+              "required": true,
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "label": undefined,
+              "meta": undefined,
+              "nullable": false,
+              "presence": "required",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "string",
+          },
+          "title": StringSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_mutate": undefined,
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {
+              "min": true,
+              "required": true,
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "label": undefined,
+              "meta": undefined,
+              "nullable": false,
+              "presence": "required",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [
+              [Function],
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "string",
+          },
+        },
+        "spec": Object {
+          "abortEarly": true,
+          "label": undefined,
+          "meta": undefined,
+          "nullable": false,
+          "presence": "optional",
+          "recursive": true,
+          "strict": false,
+          "strip": false,
+        },
+        "tests": Array [],
+        "transforms": Array [
+          [Function],
+        ],
+        "type": "object",
+      }
+    }
   >
-    <styled.input
-      name="author"
-      onChange={[Function]}
-      placeholder="Author"
-      type="text"
-      value=""
-    />
-    <styled.input
-      name="title"
-      onChange={[Function]}
-      placeholder="Title"
-      required={true}
-      type="text"
-      value=""
-    />
-    <styled.select
-      name="category"
-      onChange={[Function]}
-      value=""
-    >
-      <styled.option
-        value="Other"
-      >
-        Select Category
-      </styled.option>
-      <styled.option
-        value="Film"
-      >
-        Films
-      </styled.option>
-      <styled.option
-        value="Music"
-      >
-        Music
-      </styled.option>
-      <styled.option
-        value="Books"
-      >
-        Books
-      </styled.option>
-      <styled.option
-        value="Other"
-      >
-        Other
-      </styled.option>
-    </styled.select>
-    <styled.input
-      name="description"
-      onChange={[Function]}
-      placeholder="Description"
-      type="text"
-      value=""
-    />
-    <styled.button>
-      Update
-    </styled.button>
-    <styled.button
-      onClick={[Function]}
-    >
-      Cancel
-    </styled.button>
-  </styled.form>
+    <Component />
+  </Formik>
+</styled.div>
+`;
+
+exports[`FavItemForm component test with Enzyme render click on ErrorButton when error is array 1`] = `
+<styled.div>
+  <styled.div>
+    Edit favorite item
+  </styled.div>
+  <Formik
+    initialValues={Object {}}
+    onSubmit={[Function]}
+    validationSchema={
+      ObjectSchema {
+        "_blacklist": ReferenceSet {
+          "list": Set {},
+          "refs": Map {},
+        },
+        "_excludedEdges": Array [],
+        "_mutate": undefined,
+        "_nodes": Array [
+          "description",
+          "category",
+          "title",
+          "author",
+        ],
+        "_sortErrors": [Function],
+        "_typeError": [Function],
+        "_whitelist": ReferenceSet {
+          "list": Set {},
+          "refs": Map {},
+        },
+        "conditions": Array [],
+        "deps": Array [],
+        "exclusiveTests": Object {},
+        "fields": Object {
+          "author": StringSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_mutate": undefined,
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {
+              "required": true,
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "label": undefined,
+              "meta": undefined,
+              "nullable": false,
+              "presence": "required",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "string",
+          },
+          "category": StringSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_mutate": undefined,
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {
+              "required": true,
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "label": undefined,
+              "meta": undefined,
+              "nullable": false,
+              "presence": "required",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "string",
+          },
+          "description": StringSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_mutate": undefined,
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {
+              "required": true,
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "label": undefined,
+              "meta": undefined,
+              "nullable": false,
+              "presence": "required",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "string",
+          },
+          "title": StringSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_mutate": undefined,
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {
+              "min": true,
+              "required": true,
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "label": undefined,
+              "meta": undefined,
+              "nullable": false,
+              "presence": "required",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [
+              [Function],
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "string",
+          },
+        },
+        "spec": Object {
+          "abortEarly": true,
+          "label": undefined,
+          "meta": undefined,
+          "nullable": false,
+          "presence": "optional",
+          "recursive": true,
+          "strict": false,
+          "strip": false,
+        },
+        "tests": Array [],
+        "transforms": Array [
+          [Function],
+        ],
+        "type": "object",
+      }
+    }
+  >
+    <Component />
+  </Formik>
+</styled.div>
+`;
+
+exports[`FavItemForm component test with Enzyme render click on ErrorButton when error is not array 1`] = `
+<styled.div>
+  <styled.div>
+    Edit favorite item
+  </styled.div>
+  <Formik
+    initialValues={
+      Object {
+        "author": "Unknown",
+        "category": "Other",
+        "description": "Description",
+        "title": "",
+      }
+    }
+    onSubmit={[Function]}
+    validationSchema={
+      ObjectSchema {
+        "_blacklist": ReferenceSet {
+          "list": Set {},
+          "refs": Map {},
+        },
+        "_excludedEdges": Array [],
+        "_mutate": undefined,
+        "_nodes": Array [
+          "description",
+          "category",
+          "title",
+          "author",
+        ],
+        "_sortErrors": [Function],
+        "_typeError": [Function],
+        "_whitelist": ReferenceSet {
+          "list": Set {},
+          "refs": Map {},
+        },
+        "conditions": Array [],
+        "deps": Array [],
+        "exclusiveTests": Object {},
+        "fields": Object {
+          "author": StringSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_mutate": undefined,
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {
+              "required": true,
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "label": undefined,
+              "meta": undefined,
+              "nullable": false,
+              "presence": "required",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "string",
+          },
+          "category": StringSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_mutate": undefined,
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {
+              "required": true,
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "label": undefined,
+              "meta": undefined,
+              "nullable": false,
+              "presence": "required",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "string",
+          },
+          "description": StringSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_mutate": undefined,
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {
+              "required": true,
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "label": undefined,
+              "meta": undefined,
+              "nullable": false,
+              "presence": "required",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "string",
+          },
+          "title": StringSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_mutate": undefined,
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {
+              "min": true,
+              "required": true,
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "label": undefined,
+              "meta": undefined,
+              "nullable": false,
+              "presence": "required",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [
+              [Function],
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "string",
+          },
+        },
+        "spec": Object {
+          "abortEarly": true,
+          "label": undefined,
+          "meta": undefined,
+          "nullable": false,
+          "presence": "optional",
+          "recursive": true,
+          "strict": false,
+          "strip": false,
+        },
+        "tests": Array [],
+        "transforms": Array [
+          [Function],
+        ],
+        "type": "object",
+      }
+    }
+  >
+    <Component />
+  </Formik>
 </styled.div>
 `;
 
@@ -78,308 +618,206 @@ exports[`FavItemForm component test with Enzyme renders correct snapshot 1`] = `
   <styled.div>
     Edit favorite item
   </styled.div>
-  <styled.form
+  <Formik
+    initialValues={
+      Object {
+        "author": "Unknown",
+        "category": "Other",
+        "description": "Description",
+        "title": "",
+      }
+    }
     onSubmit={[Function]}
+    validationSchema={
+      ObjectSchema {
+        "_blacklist": ReferenceSet {
+          "list": Set {},
+          "refs": Map {},
+        },
+        "_excludedEdges": Array [],
+        "_mutate": undefined,
+        "_nodes": Array [
+          "description",
+          "category",
+          "title",
+          "author",
+        ],
+        "_sortErrors": [Function],
+        "_typeError": [Function],
+        "_whitelist": ReferenceSet {
+          "list": Set {},
+          "refs": Map {},
+        },
+        "conditions": Array [],
+        "deps": Array [],
+        "exclusiveTests": Object {},
+        "fields": Object {
+          "author": StringSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_mutate": undefined,
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {
+              "required": true,
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "label": undefined,
+              "meta": undefined,
+              "nullable": false,
+              "presence": "required",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "string",
+          },
+          "category": StringSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_mutate": undefined,
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {
+              "required": true,
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "label": undefined,
+              "meta": undefined,
+              "nullable": false,
+              "presence": "required",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "string",
+          },
+          "description": StringSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_mutate": undefined,
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {
+              "required": true,
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "label": undefined,
+              "meta": undefined,
+              "nullable": false,
+              "presence": "required",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "string",
+          },
+          "title": StringSchema {
+            "_blacklist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_blacklistError": undefined,
+            "_mutate": undefined,
+            "_typeError": [Function],
+            "_whitelist": ReferenceSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_whitelistError": undefined,
+            "conditions": Array [],
+            "deps": Array [],
+            "exclusiveTests": Object {
+              "min": true,
+              "required": true,
+            },
+            "spec": Object {
+              "abortEarly": true,
+              "label": undefined,
+              "meta": undefined,
+              "nullable": false,
+              "presence": "required",
+              "recursive": true,
+              "strict": false,
+              "strip": false,
+            },
+            "tests": Array [
+              [Function],
+              [Function],
+            ],
+            "transforms": Array [
+              [Function],
+            ],
+            "type": "string",
+          },
+        },
+        "spec": Object {
+          "abortEarly": true,
+          "label": undefined,
+          "meta": undefined,
+          "nullable": false,
+          "presence": "optional",
+          "recursive": true,
+          "strict": false,
+          "strip": false,
+        },
+        "tests": Array [],
+        "transforms": Array [
+          [Function],
+        ],
+        "type": "object",
+      }
+    }
   >
-    <styled.input
-      name="author"
-      onChange={[Function]}
-      placeholder="Author"
-      type="text"
-      value=""
-    />
-    <styled.input
-      name="title"
-      onChange={[Function]}
-      placeholder="Title"
-      required={true}
-      type="text"
-      value=""
-    />
-    <styled.select
-      name="category"
-      onChange={[Function]}
-      value=""
-    >
-      <styled.option
-        value="Other"
-      >
-        Select Category
-      </styled.option>
-      <styled.option
-        value="Film"
-      >
-        Films
-      </styled.option>
-      <styled.option
-        value="Music"
-      >
-        Music
-      </styled.option>
-      <styled.option
-        value="Books"
-      >
-        Books
-      </styled.option>
-      <styled.option
-        value="Other"
-      >
-        Other
-      </styled.option>
-    </styled.select>
-    <styled.input
-      name="description"
-      onChange={[Function]}
-      placeholder="Description"
-      type="text"
-      value=""
-    />
-    <styled.button>
-      Update
-    </styled.button>
-  </styled.form>
-  <styled.div>
-    <styled.button
-      onClick={[Function]}
-      type="button"
-    >
-      a
-    </styled.button>
-  </styled.div>
-</styled.div>
-`;
-
-exports[`render change on Input component 1`] = `
-<styled.div>
-  <styled.div>
-    Edit favorite item
-  </styled.div>
-  <styled.form
-    onSubmit={[Function]}
-  >
-    <styled.input
-      name="author"
-      onChange={[Function]}
-      placeholder="Author"
-      type="text"
-      value=""
-    />
-    <styled.input
-      name="title"
-      onChange={[Function]}
-      placeholder="Title"
-      required={true}
-      type="text"
-      value=""
-    />
-    <styled.select
-      name="category"
-      onChange={[Function]}
-      value=""
-    >
-      <styled.option
-        value="Other"
-      >
-        Select Category
-      </styled.option>
-      <styled.option
-        value="Film"
-      >
-        Films
-      </styled.option>
-      <styled.option
-        value="Music"
-      >
-        Music
-      </styled.option>
-      <styled.option
-        value="Books"
-      >
-        Books
-      </styled.option>
-      <styled.option
-        value="Other"
-      >
-        Other
-      </styled.option>
-    </styled.select>
-    <styled.input
-      name="description"
-      onChange={[Function]}
-      placeholder="Description"
-      type="text"
-      value=""
-    />
-    <styled.button>
-      Update
-    </styled.button>
-  </styled.form>
-  <styled.div>
-    <styled.button
-      onClick={[Function]}
-      type="button"
-    >
-      a
-    </styled.button>
-  </styled.div>
-</styled.div>
-`;
-
-exports[`render click on ErrorButton when error is array 1`] = `
-<styled.div>
-  <styled.div>
-    Edit favorite item
-  </styled.div>
-  <styled.form
-    onSubmit={[Function]}
-  >
-    <styled.input
-      name="author"
-      onChange={[Function]}
-      placeholder="Author"
-      type="text"
-      value=""
-    />
-    <styled.input
-      name="title"
-      onChange={[Function]}
-      placeholder="Title"
-      required={true}
-      type="text"
-      value=""
-    />
-    <styled.select
-      name="category"
-      onChange={[Function]}
-      value=""
-    >
-      <styled.option
-        value="Other"
-      >
-        Select Category
-      </styled.option>
-      <styled.option
-        value="Film"
-      >
-        Films
-      </styled.option>
-      <styled.option
-        value="Music"
-      >
-        Music
-      </styled.option>
-      <styled.option
-        value="Books"
-      >
-        Books
-      </styled.option>
-      <styled.option
-        value="Other"
-      >
-        Other
-      </styled.option>
-    </styled.select>
-    <styled.input
-      name="description"
-      onChange={[Function]}
-      placeholder="Description"
-      type="text"
-      value=""
-    />
-    <styled.button>
-      Update
-    </styled.button>
-    <styled.button
-      onClick={[Function]}
-    >
-      Cancel
-    </styled.button>
-  </styled.form>
-  <styled.div>
-    <styled.button
-      onClick={[Function]}
-      type="button"
-    />
-    <styled.button
-      onClick={[Function]}
-      type="button"
-    />
-  </styled.div>
-</styled.div>
-`;
-
-exports[`render click on ErrorButton when error is not array 1`] = `
-<styled.div>
-  <styled.div>
-    Edit favorite item
-  </styled.div>
-  <styled.form
-    onSubmit={[Function]}
-  >
-    <styled.input
-      name="author"
-      onChange={[Function]}
-      placeholder="Author"
-      type="text"
-      value=""
-    />
-    <styled.input
-      name="title"
-      onChange={[Function]}
-      placeholder="Title"
-      required={true}
-      type="text"
-      value=""
-    />
-    <styled.select
-      name="category"
-      onChange={[Function]}
-      value=""
-    >
-      <styled.option
-        value="Other"
-      >
-        Select Category
-      </styled.option>
-      <styled.option
-        value="Film"
-      >
-        Films
-      </styled.option>
-      <styled.option
-        value="Music"
-      >
-        Music
-      </styled.option>
-      <styled.option
-        value="Books"
-      >
-        Books
-      </styled.option>
-      <styled.option
-        value="Other"
-      >
-        Other
-      </styled.option>
-    </styled.select>
-    <styled.input
-      name="description"
-      onChange={[Function]}
-      placeholder="Description"
-      type="text"
-      value=""
-    />
-    <styled.button>
-      Update
-    </styled.button>
-  </styled.form>
-  <styled.div>
-    <styled.button
-      onClick={[Function]}
-      type="button"
-    >
-      a
-    </styled.button>
-  </styled.div>
+    <Component />
+  </Formik>
 </styled.div>
 `;
