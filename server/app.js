@@ -5,6 +5,10 @@ const app = express();
 const path = require('path');
 const auth = require('./middleware/auth');
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+};
+
 app.use(cors());
 
 //connet to mongoDB

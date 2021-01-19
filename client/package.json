@@ -4,7 +4,7 @@
   "description": "Mongo, Express, React, Node",
   "main": "index.js",
   "scripts": {
-    "server": "cd ../server && npm run start",
+    "server": "cd ../server && npm run dev",
     "client": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
     "start": "npm-run-all --parallel server client",
     "build": "rimraf build && cross-env NODE_ENV=production webpack --mode production",

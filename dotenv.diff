@@ -1,0 +1,185 @@
+diff --git a/README.md b/README.md
+index d71bfff..17ebee3 100644
+--- a/README.md
++++ b/README.md
+@@ -193,7 +193,6 @@ $ npm start
+ |   │   └── upload.js
+ |   ├── .gitignore
+ |   ├── app.js
+-|   ├── environment.js
+ |   ├── package.json
+ |   └── package-lock.json
+ ├── UML_diagrams
+diff --git a/client/package.json b/client/package.json
+index 65cc5ad..2d830d6 100644
+--- a/client/package.json
++++ b/client/package.json
+@@ -4,7 +4,7 @@
+   "description": "Mongo, Express, React, Node",
+   "main": "index.js",
+   "scripts": {
+-    "server": "cd ../server && npm run start",
++    "server": "cd ../server && npm run dev",
+     "client": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
+     "start": "npm-run-all --parallel server client",
+     "build": "rimraf build && cross-env NODE_ENV=production webpack --mode production",
+diff --git a/server/.gitignore b/server/.gitignore
+index b512c09..1dcef2d 100644
+--- a/server/.gitignore
++++ b/server/.gitignore
+@@ -1 +1,2 @@
+-node_modules
+\ No newline at end of file
++node_modules
++.env
+\ No newline at end of file
+diff --git a/server/app.js b/server/app.js
+index 59cfb96..86868fe 100644
+--- a/server/app.js
++++ b/server/app.js
+@@ -5,6 +5,10 @@ const app = express();
+ const path = require('path');
+ const auth = require('./middleware/auth');
+ 
++if (process.env.NODE_ENV !== 'production') {
++  require('dotenv').config();
++};
++
+ app.use(cors());
+ 
+ //connet to mongoDB
+diff --git a/server/environment.js b/server/environment.js
+deleted file mode 100644
+index 1527cc4..0000000
+--- a/server/environment.js
++++ /dev/null
+@@ -1,17 +0,0 @@
+-const dev = {
+-  mongoDB_URI:
+-    'mongodb+srv://User1:User1@cluster0-rj0rl.mongodb.net/MERN-favorites?retryWrites=true&w=majority',
+-  JWT_SECRET: 'mySecret'
+-};
+-
+-const prod = {
+-  // Add prod config here
+-};
+-
+-const config = process.env.NODE_ENV === 'production' ? prod : dev;
+-
+-module.exports = {
+-  // Add common config values here
+-  PORT: 5000,
+-  ...config
+-};
+diff --git a/server/middleware/auth.js b/server/middleware/auth.js
+index 2aeffa2..1dd5db0 100644
+--- a/server/middleware/auth.js
++++ b/server/middleware/auth.js
+@@ -1,5 +1,4 @@
+ const jwt = require('jsonwebtoken');
+-const environment = require('../environment');
+ 
+ const auth = (req, res, next) => {
+   //Get token from header
+@@ -9,7 +8,7 @@ const auth = (req, res, next) => {
+     return res.status(401).json({ msg: 'No token, authorization denied' });
+   }
+   try {
+-    const decoded = jwt.verify(token, environment.JWT_SECRET);
++    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+ 
+     req.user = decoded.user;
+     next();
+diff --git a/server/mongoConfig/mongoDB.js b/server/mongoConfig/mongoDB.js
+index 3112220..e37ad88 100644
+--- a/server/mongoConfig/mongoDB.js
++++ b/server/mongoConfig/mongoDB.js
+@@ -1,9 +1,8 @@
+ const mongoose = require('mongoose');
+-const environment = require('../environment');
+ 
+ const Connect_DB = async () => {
+   try {
+-    await mongoose.connect(environment.mongoDB_URI, {
++    await mongoose.connect(process.env.MONGO_DB_URI, {
+       useNewUrlParser: true,
+       useUnifiedTopology: true,
+       useCreateIndex: true,
+diff --git a/server/package-lock.json b/server/package-lock.json
+index 5fd25d7..89cda42 100644
+--- a/server/package-lock.json
++++ b/server/package-lock.json
+@@ -440,6 +440,11 @@
+         "is-obj": "^2.0.0"
+       }
+     },
++    "dotenv": {
++      "version": "8.2.0",
++      "resolved": "https://registry.npmjs.org/dotenv/-/dotenv-8.2.0.tgz",
++      "integrity": "sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw=="
++    },
+     "duplexer3": {
+       "version": "0.1.4",
+       "resolved": "https://registry.npmjs.org/duplexer3/-/duplexer3-0.1.4.tgz",
+diff --git a/server/package.json b/server/package.json
+index 97069ac..e802ee8 100644
+--- a/server/package.json
++++ b/server/package.json
+@@ -3,12 +3,14 @@
+   "version": "1.0.0",
+   "main": "index.js",
+   "scripts": {
+-    "start": "nodemon app.js"
++    "dev": "NODE_ENV=development nodemon app.js",
++    "prod": "NODE_ENV=production nodemon app.js"
+   },
+   "author": "Stepan Chaparyan",
+   "dependencies": {
+     "bcryptjs": "^2.4.3",
+     "cors": "^2.8.5",
++    "dotenv": "^8.2.0",
+     "express": "^4.17.1",
+     "express-fileupload": "^1.1.9",
+     "express-validator": "^6.4.0",
+diff --git a/server/routes/auth.js b/server/routes/auth.js
+index 1a6b175..802d69f 100644
+--- a/server/routes/auth.js
++++ b/server/routes/auth.js
+@@ -4,7 +4,6 @@ const auth = require('../middleware/auth');
+ const { check, validationResult } = require('express-validator');
+ const bcrypt = require('bcryptjs');
+ const jwt = require('jsonwebtoken');
+-const environment = require('../environment');
+ 
+ //user Model
+ const User = require('../models/User');
+@@ -39,7 +38,7 @@ router.post(
+ 
+       jwt.sign(
+         { user: { id: user.id } },
+-        environment.JWT_SECRET,
++        process.env.JWT_SECRET,
+         {
+           expiresIn: 36000
+         },
+diff --git a/server/routes/register.js b/server/routes/register.js
+index caa4c3a..0b82f32 100644
+--- a/server/routes/register.js
++++ b/server/routes/register.js
+@@ -3,7 +3,6 @@ const router = express.Router();
+ const { check, validationResult } = require('express-validator');
+ const bcrypt = require('bcryptjs');
+ const jwt = require('jsonwebtoken');
+-const environment = require('../environment');
+ 
+ //user Model
+ const User = require('../models/User');
+@@ -49,7 +48,7 @@ router.post(
+ 
+       jwt.sign(
+         { user: { id: user.id } },
+-        environment.JWT_SECRET,
++        process.env.JWT_SECRET,
+         {
+           expiresIn: 36000
+         },

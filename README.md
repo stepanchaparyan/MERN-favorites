@@ -193,7 +193,6 @@ $ npm start
 |   │   └── upload.js
 |   ├── .gitignore
 |   ├── app.js
-|   ├── environment.js
 |   ├── package.json
 |   └── package-lock.json
 ├── UML_diagrams
